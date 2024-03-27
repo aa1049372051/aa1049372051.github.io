@@ -1,3 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>欢迎来到啾啾家</title><link>https://aa1049372051.github.io</link><description>童话是一种生活态度，仅此而已。</description><copyright>欢迎来到啾啾家</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://aa1049372051.github.io</link></image><lastBuildDate>Wed, 27 Mar 2024 02:14:45 +0000</lastBuildDate><managingEditor>欢迎来到啾啾家</managingEditor><ttl>60</ttl><webMaster>欢迎来到啾啾家</webMaster><item><title>Gmeek快速上手</title><link>https://aa1049372051.github.io/post/Gmeek-kuai-su-shang-shou.html</link><description>[点击跳转至百度](http://www.baidu.com)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>欢迎来到啾啾家</title><link>https://aa1049372051.github.io</link><description>童话是一种生活态度，仅此而已。</description><copyright>欢迎来到啾啾家</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://aa1049372051.github.io</link></image><lastBuildDate>Wed, 27 Mar 2024 02:28:46 +0000</lastBuildDate><managingEditor>欢迎来到啾啾家</managingEditor><ttl>60</ttl><webMaster>欢迎来到啾啾家</webMaster><item><title> Ubuntu安装ftp踩坑记</title><link>https://aa1049372051.github.io/post/%20Ubuntu-an-zhuang-ftp-cai-keng-ji.html</link><description> 本来是按照这个链接的教程安装vsftpd,一切顺利，就是安装完成后死活登不上去&#13;
+一直提示530错误&#13;
+在网上查了一大堆，都没说到点子上，最后才找到一篇文章说是pam认证问题&#13;
+[ubuntu安装ftp教程]( https://blog.csdn.net/weixin_52799373/article/details/131045373)&#13;
+vsftpd: version 3.0.5&#13;
+&#13;
+[vsftpd中pam认证导致出现530报错]( https://blog.csdn.net/qq_35502243/article/details/104194691)&#13;
+&#13;
+![image](https://github.com/aa1049372051/aa1049372051.github.io/assets/13846404/3bebaa09-3195-4c4c-9b67-31f4f62e4fca)&#13;
+&#13;
+&#13;
+&#13;
+。</description><guid isPermaLink="true">https://aa1049372051.github.io/post/%20Ubuntu-an-zhuang-ftp-cai-keng-ji.html</guid><pubDate>Wed, 27 Mar 2024 02:28:17 +0000</pubDate></item><item><title>Gmeek快速上手</title><link>https://aa1049372051.github.io/post/Gmeek-kuai-su-shang-shou.html</link><description>[点击跳转至百度](http://www.baidu.com)&#13;
 ![图片](https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)。</description><guid isPermaLink="true">https://aa1049372051.github.io/post/Gmeek-kuai-su-shang-shou.html</guid><pubDate>Wed, 27 Mar 2024 02:09:32 +0000</pubDate></item></channel></rss>
