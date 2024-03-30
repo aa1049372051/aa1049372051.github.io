@@ -14,8 +14,8 @@
         else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
     </script>
     
-<meta name="description" content="Markdown使用表格组织信息">
-<title>Markdown使用表格组织信息</title>
+<meta name="description" content="测试默认标签">
+<title>测试默认标签</title>
 
 
 </head>
@@ -65,7 +65,7 @@
 
 <body>
     <div id="header">
-<h1 class="postTitle">Markdown使用表格组织信息</h1>
+<h1 class="postTitle">测试默认标签</h1>
 <div class="title-right">
     
     <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
@@ -75,7 +75,7 @@
     </button></a>
 
     
-    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/8" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/9" target="_blank"><button class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -91,137 +91,11 @@
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>使用表格组织信息<br>
-您可以创建表格来组织评论、议题、拉取请求和 wiki 中的信息。</p>
-<p>创建表<br>
-可以使用竖线 | 和连字符 - 创建表。 连字符用于创建每列的标题，而竖线用于分隔每列。 必须在表格前包含空白链接，以便其正确呈现。</p>
-<table role="table">
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>在 GitHub 上呈现的两列宽度相等的 Markdown 表的屏幕截图。 标题以粗体呈现，备用内容行具有灰色底纹。</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>表格末尾的竖线可选。</p>
-<p>单元格的宽度可以不同，无需在列内准确对齐。 标题行的第一列中必须至少有三个横线。</p>
-<table role="table">
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>git status</td>
-<td>List all new or modified files</td>
-</tr>
-<tr>
-<td>git diff</td>
-<td>Show file differences that haven't been staged</td>
-</tr>
-<tr>
-<td>在 GitHub 上呈现的两列宽度不同的 Markdown 表的屏幕截图。 行列出命令“git status”和“git diff”及其说明。</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>如果经常编辑代码片段和表，则可能受益于在 GitHub 上启用对所有注释字段采用固定宽度字体。 有关详细信息，请参阅“关于在 GitHub 上编写和设置格式”。</p>
-<p>格式化表格中的内容<br>
-可以在表格中使用格式，例如链接、内联代码块和文本样式：</p>
-<table role="table">
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code class="notranslate">git status</code></td>
-<td>List all <em>new or modified</em> files</td>
-</tr>
-<tr>
-<td><code class="notranslate">git diff</code></td>
-<td>Show file differences that <strong>haven't been</strong> staged</td>
-</tr>
-<tr>
-<td>在 GitHub 上呈现的两列宽度不同的 Markdown 表的屏幕截图。 命令“git status”和“git diff”将格式设置为代码块。</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>可以通过在标题行中连字符的左侧、右侧或两侧添加冒号 :，来靠左、靠右或居中对齐列中的文本。</p>
-<table role="table">
-<thead>
-<tr>
-<th align="left">Left-aligned</th>
-<th align="center">Center-aligned</th>
-<th align="right">Right-aligned</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">git status</td>
-<td align="center">git status</td>
-<td align="right">git status</td>
-</tr>
-<tr>
-<td align="left">git diff</td>
-<td align="center">git diff</td>
-<td align="right">git diff</td>
-</tr>
-<tr>
-<td align="left">具有 GitHub 上呈现的三列的 Markdown 表的屏幕截图，其中显示了如何将单元格中的文本设置为左对齐、居中或右对齐。</td>
-<td align="center"></td>
-<td align="right"></td>
-</tr>
-</tbody>
-</table>
-<p>若要包含竖线 | 作为单元格中的内容，请在竖线前使用 \：</p>
-<table role="table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Character</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Backtick</td>
-<td>`</td>
-</tr>
-<tr>
-<td>Pipe</td>
-<td>|</td>
-</tr>
-<tr>
-<td>GitHub 上呈现的 Markdown 表的屏幕截图，其中显示了通常关闭单元格的管道在用反斜杠开头时如何在单元格内显示。</td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
+<div class="markdown-body" id="postBody"><p>测试默认标签测试默认标签测试默认标签测试默认标签</p></div>
 <div>
     
-    <a style="float: left" id="prevPostUrl" href="/post/ce-shi-mo-ren-biao-qian.html">上一篇：测试默认标签</a>
     
-    
-    <a style="float: right" id="nextPostUrl" href="/post/Markdown%20-ji-ben-zhuan-xie-he-ge-shi-yu-fa.html">下一篇：Markdown 基本撰写和格式语法</a>
+    <a style="float: right" id="nextPostUrl" href="/post/Markdown-shi-yong-biao-ge-zu-zhi-xin-xi.html">下一篇：Markdown使用表格组织信息</a>
     
 </div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
