@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="http://cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="Markdown 基本撰写和格式语法">
+<title>Markdown 基本撰写和格式语法</title>
+
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Markdown 基本撰写和格式语法</h1>
+<div class="title-right">
+    
+    <a href="https://aa1049372051.github.io"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/7" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>基本撰写和格式语法<br>
+使用简单的语法在 GitHub 上为您的散文和代码创建复杂的格式。</p>
+<p>标题<br>
+要创建标题，请在标题文本前添加一至六个 # 符号。 你使用的 # 数量将决定层次结构级别和标题的大小。</p>
+<h1>A first-level heading</h1>
+<h2>A second-level heading</h2>
+<h3>A third-level heading</h3>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了示例 h1、h2 和 h3 标头，这些标头按类型大小和视觉权重降序，以指示降序排列的层次结构级别。</p>
+<p>使用两个或多个标题时，GitHub 会自动生成一个目录，可以通过单击文件标题中的  来访问该目录。 每个标题都列在目录中，可以单击某个标题导航到所选部分。</p>
+<p>GitHub Docs 开放源代码存储库中自述文件的屏幕截图，其中显示了公开的目录的下拉菜单。 目录图标以深橙色框出。</p>
+<p>文本样式<br>
+可以在评论字段和 .md 文件中以粗体、斜体、删除线、下标或上标文本表示强调。</p>
+<p>Style	语法	键盘快捷键	示例	输出<br>
+加粗	** ** 或 __ __	Command+B (Mac) 或 Ctrl+B (Windows/Linux)	<strong>This is bold text</strong>	这是粗体文本<br>
+斜体	* * 或 _ _     	Command+I (Mac) 或 Ctrl+I (Windows/Linux)	<em>This text is italicized</em>	这是斜体文本<br>
+删除线	~~ ~~	无	<del>This was mistaken text</del>	这是错误文本<br>
+粗体和嵌入的斜体	** ** 和 _ _	无	<strong>This text is <em>extremely</em> important</strong>	此文本_非常_重要<br>
+全部粗体和斜体	*** ***	无	<em><strong>All this text is important</strong></em>	所有这些文本都很重要<br>
+下标	<sub> </sub>	无	This is a <sub>subscript</sub> text	这是下标文本<br>
+上标	<sup> </sup>	无	This is a <sup>superscript</sup> text	这是上标文本<br>
+引用文本<br>
+可以使用 &gt; 来引用文本。</p>
+<p>Text that is not a quote</p>
+<blockquote>
+<p>Text that is a quote<br>
+引用文本缩进，具有不同的类型颜色。</p>
+</blockquote>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了示例引用文本。 引号文本左侧缩进一条垂直线，其文本为深灰色而不是黑色。</p>
+<p>注意：查看对话时，可以通过突出显示文本，然后键入 R 来自动引用评论中的文本。可以通过依次单击  和“引用回复”来引用整条评论。 有关键盘快捷方式的详细信息，请参阅“键盘快捷方式”。</p>
+<p>引用代码<br>
+使用单反引号可标注句子中的代码或命令。 反引号中的文本不会被格式化。 你也可以按 Command+E (Mac) 或 Ctrl+E (Windows/Linux) 键盘快捷方式将代码块的反引号插入到 Markdown 一行中。</p>
+<p>Use <code class="notranslate">git status</code> to list all new or modified files that haven't yet been committed.<br>
+呈现的 GitHub Markdown 的屏幕截图，其中显示了被反引号包围的字符的外观。 “git status”一词显示在固定宽度的字样中，以浅灰色突出显示。</p>
+<p>要将代码或文本格式化为各自的不同块，请使用三反引号。</p>
+<p>Some basic Git commands are:</p>
+<pre class="notranslate"><code class="notranslate">git status
+git add
+git commit
+</code></pre>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了代码块。 “git status”、“git add”和“git commit”等词显示在固定宽度的字样中，以浅灰色突出显示。</p>
+<p>有关详细信息，请参阅“创建和突显代码块”。</p>
+<p>如果经常编辑代码片段和表，则可能受益于在 GitHub 上启用对所有注释字段采用固定宽度字体。 有关详细信息，请参阅“关于在 GitHub 上编写和设置格式”。</p>
+<p>支持的颜色模型<br>
+在问题、拉取请求和讨论中，可以使用反引号在句子中标注颜色。 反引号内支持的颜色模型将显示颜色的可视化效果。</p>
+<p>The background color is <code class="notranslate">#ffffff<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #ffffff; height: 8px; width: 8px;"></span></code> for light mode and <code class="notranslate">#000000<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #000000; height: 8px; width: 8px;"></span></code> for dark mode.<br>
+呈现的 GitHub Markdown 的屏幕截图，其中显示了反引号内的十六进制值如何创建有颜色的小圆圈。 #ffffff 显示一个白色圆圈，#000000 显示一个黑色圆圈。</p>
+<p>下面是当前支持的颜色模型。</p>
+<p>Color	语法	示例	输出<br>
+HEX	<code class="notranslate">#RRGGBB</code>	<code class="notranslate">#0969DA<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #0969DA; height: 8px; width: 8px;"></span></code>	呈现的 GitHub Markdown 的屏幕截图，其中显示了十六进制值 (#0969DA) 如何以蓝色圆圈显示。<br>
+RGB	<code class="notranslate">rgb(R,G,B)</code>	<code class="notranslate">rgb(9, 105, 218)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(9, 105, 218); height: 8px; width: 8px;"></span></code>	呈现的 GitHub Markdown 的屏幕截图，其中显示了 RGB (9, 105, 218) 如何以蓝色圆圈显示。<br>
+HSL	<code class="notranslate">hsl(H,S,L)</code>	<code class="notranslate">hsl(212, 92%, 45%)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: hsl(212, 92%, 45%); height: 8px; width: 8px;"></span></code>	呈现的 GitHub Markdown 的屏幕截图，其中显示了 HSL 值 (212, 92%, 45%) 如何以蓝色圆圈显示。<br>
+注意：</p>
+<p>支持的颜色模型在反引号内不能有任何前导或尾随空格。<br>
+颜色的可视化效果仅在问题、拉取请求和讨论中受支持。<br>
+链接<br>
+通过将链接文本用方括号 [ ] 括起来，然后将 URL 用括号 ( ) 括起来，可创建内联链接。 还可以使用键盘快捷方式 Command+K 创建链接。 选择文本后，可以粘贴剪贴板中的 URL 以自动从所选内容创建链接。</p>
+<p>还可以通过突出显示文本并使用键盘快捷方式 Command+V 创建 Markdown 超链接。 如果要将文本替换为链接，请使用键盘快捷方式 Command+Shift+V。</p>
+<p>This site was built using <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了括号中的文本“GitHub Pages”如何作为蓝色超链接出现。</p>
+<p>注意：当评论中写入了有效 URL 时，GitHub 会自动创建链接。 有关详细信息，请参阅“自动链接引用和 URL”。</p>
+<p>章节链接<br>
+你可以直接链接到渲染文件中的某个部分，方法是将鼠标悬停在该部分标题上以显示 。</p>
+<p>存储库的自述文件的屏幕截图。 在部分标题的左侧，链接图标以深橙色标出。</p>
+<p>relative links (相对链接)<br>
+您可以在渲染的文件中定义相对链接和图像路径，以帮助读者导航到仓库中的其他文件。</p>
+<p>相对链接是相对于当前文件的链接。 例如，如果在仓库根目录下有一个自述文件，而在 docs/CONTRIBUTING.md 中有另一个文件，则自述文件中的 CONTRIBUTING.md 的相关链接如下所示 ：</p>
+<p><a href="docs/CONTRIBUTING.md">Contribution guidelines for this project</a><br>
+GitHub 将根据您当前使用的分支自动转换相对链接或图像路径，从而使链接或路径始终有效。 链接的路径将相对于当前文件。 以 / 开头的链接将相对于存储库根目录。 可使用所有相对链接操作数，例如 ./ 和 ../。</p>
+<p>相对链接更便于用户克隆仓库。 绝对链接可能无法用于仓库的克隆 - 建议使用相对链接引用仓库中的其他文件。</p>
+<p>图像<br>
+通过添加 ! 并 将 alt 文本用 [ ] 括起来，可显示图像。 替换文字是等效于图像中信息的短文本。 然后将图像的链接用括号 () 括起来。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/72a24c39b9d4de8cf929bf1b5df860194d6d6f2ef68a3bec8a8be06d5dc68a04/68747470733a2f2f6d796f63746f6361742e636f6d2f6173736574732f696d616765732f626173652d6f63746f6361742e737667"><img src="https://camo.githubusercontent.com/72a24c39b9d4de8cf929bf1b5df860194d6d6f2ef68a3bec8a8be06d5dc68a04/68747470733a2f2f6d796f63746f6361742e636f6d2f6173736574732f696d616765732f626173652d6f63746f6361742e737667" alt="Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle." data-canonical-src="https://myoctocat.com/assets/images/base-octocat.svg" style="max-width: 100%;"></a></p>
+<p>GitHub 问题评论的屏幕截图，其中显示了添加在 Markdown 中的 Octocat 微笑并举起触手的图像。</p>
+<p>GitHub 支持将图像嵌入到议题、拉取请求、讨论、评论和 .md 文件中。 您可以从仓库显示图像、添加在线图像链接或上传图像。 有关详细信息，请参阅“上传资产”。</p>
+<p>注意：想要显示存储库中的图像时，请使用相对链接而不是绝对链接。</p>
+<p>下面是一些使用相对链接显示图像的示例。</p>
+<p>上下文	相对链接<br>
+在同一分支的 .md 文件中	/assets/images/electrocat.png<br>
+在另一个分支的 .md 文件中	/../main/assets/images/electrocat.png<br>
+在仓库的议题、拉取请求和评论中	../blob/main/assets/images/electrocat.png?raw=true<br>
+在另一个存储库的 .md 文件中	/../../../../github/docs/blob/main/assets/images/electrocat.png<br>
+在另一个仓库的议题、拉取请求和评论中	../../../github/docs/blob/main/assets/images/electrocat.png?raw=true<br>
+注意：上表中的最后两个相对链接只有在查看者至少对包含这些图像的专用存储库具有读取访问权限时，才可用于专用存储库中的图像。</p>
+<p>有关详细信息，请参阅“相对链接”。</p>
+<p>指定图像显示的主题<br>
+你可以通过结合使用 HTML <themed-picture data-catalyst-inline="true"><picture> 元素和 prefers-color-scheme 媒体功能来指定在 Markdown 中显示图像的主题。 我们区分浅色和深色模式，因此有两个选项可用。 可以使用这些选项来显示针对深色或浅色背景进行了优化的图像。 这对于透明的 PNG 图像特别有用。</picture></themed-picture></p>
+<p>例如，以下代码显示浅色主题的太阳图像和深色主题的月亮：</p>
+<themed-picture data-catalyst-inline="true"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture></themed-picture>
+通过使用附加到 URL（#gh-dark-mode-only 或 #gh-light-mode-only）的片段来基于主题指定图像的旧方法已被弃用并将被删除，以支持上述新方法。
+<p>列表<br>
+可通过在一行或多行文本前面加上 -、* 或 + 来创建一个无序列表。</p>
+<ul>
+<li>George Washington</li>
+</ul>
+<ul>
+<li>John Adams</li>
+</ul>
+<ul>
+<li>Thomas Jefferson<br>
+呈现的 GitHub Markdown 的屏幕截图，其中显示了前三位美国总统姓名的项目符号列表。</li>
+</ul>
+<p>要对列表排序，请在每行前面添加一个编号。</p>
+<ol>
+<li>James Madison</li>
+<li>James Monroe</li>
+<li>John Quincy Adams<br>
+呈现的 GitHub Markdown 的屏幕截图，其中显示了第四位、第五位和第六位美国总统姓名的编号列表。</li>
+</ol>
+<p>嵌套列表<br>
+通过在一个列表项下面缩进一个或多个其他列表项，可创建嵌套列表。</p>
+<p>若要使用 GitHub 上的 Web 编辑器或使用等宽字体的文本编辑器（例如 Visual Studio Code）创建嵌套列表，可以直观地对齐列表。 在嵌套列表项的前面键入空格字符，直至列表标记字符（- 或 *）位于其上方条目中第一个文本字符的正下方。</p>
+<ol>
+<li>First list item
+<ul>
+<li>First nested list item
+<ul>
+<li>Second nested list item<br>
+注意：在基于 Web 的编辑器中，可以先突出显示所需的行，然后分别使用 Tab 或 Shift+Tab 来缩进或取消缩进一行或多行文本。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Visual Studio Code 中的 Markdown 的屏幕截图，其中显示了缩进项目符号如何与其上方文本行的第一个字母垂直对齐。</p>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了一个编号项，后跟一个向右嵌套一级的项目符号项，另一个项目符号项嵌套在更右侧。</p>
+<p>要在 GitHub 上的评论编辑器中创建嵌套列表（不使用等宽字体），您可以查看嵌套列表正上方的列表项，并计算该条目内容前面的字符数量。 然后在嵌套列表项的前面键入该数量的空格字符。</p>
+<p>在本例中，可以通过将嵌套列表项缩进至少五个空格来在列表项 100. First list item 下添加一个嵌套列表项，因为在 First list item 前面有五个字符 (100 .)。</p>
+<ol start="100">
+<li>First list item
+<ul>
+<li>First nested list item<br>
+呈现的 GitHub Markdown 的屏幕截图，其中列表项以数字 100 开头，后跟一个向右嵌套一级的项目符号项。</li>
+</ul>
+</li>
+</ol>
+<p>您可以使用相同的方法创建多层级嵌套列表。 例如，由于在第一个嵌套列表项中，嵌套列表项内容 First nested list item 之前有七个字符 (␣␣␣␣␣-␣)，因此需要将第二个嵌套列表项至少缩进两个以上的字符（最少九个空格）。</p>
+<ol start="100">
+<li>First list item
+<ul>
+<li>First nested list item
+<ul>
+<li>Second nested list item<br>
+呈现的 GitHub Markdown 的屏幕截图，其中列表项以数字 100 开头，后跟一个向右嵌套一级的项目符号项，另一个项目符号项嵌套在更右侧。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>有关更多示例，请参阅 GitHub 式 Markdown 规范。</p>
+<p>任务列表<br>
+若要创建任务列表，请在列表项前加连字符和空格，后接 [ ]。 要将任务标记为完成，请使用 [x]。</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> #739</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> <a href="https://github.com/octo-org/octo-repo/issues/740">https://github.com/octo-org/octo-repo/issues/740</a></li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> Add delight to the experience when all tasks are complete 🎉<br>
+显示 Markdown 的呈现版本的屏幕截图。 对问题的引用呈现为问题标题。</li>
+</ul>
+<p>如果任务列表项说明以括号开头，则需要使用 \ 进行转义：</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> (Optional) Open a followup issue</li>
+</ul>
+<p>有关详细信息，请参阅“关于任务列表”。</p>
+<p>提及人员和团队<br>
+可以在 GitHub 上提及人员或团队，方法是键入 @ 加上其用户名或团队名称。 这将触发通知并提请他们注意对话。 如果您在编辑的评论中提及某人的用户名或团队名称，该用户也会收到通知。 有关通知的详细信息，请参阅“关于通知”。</p>
+<p>注意：仅当该人员具有对存储库的读取访问权限，该存储库为组织所拥有，且此人是组织成员时，才会收到有关提及的通知。</p>
+<p>@github/support What do you think about these updates?</p>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了团队提及“@github/support”的方式呈现为粗体、可单击的文本。</p>
+<p>当您提及父团队时，其子团队的成员也会收到通知，这简化了与多个人员团队的沟通。 有关详细信息，请参阅“关于团队”。</p>
+<p>键入 @ 符号将显示项目中的人员或团队列表。 列表会在您键入时进行过滤，因此一旦找到所需人员或团队的名称，您可以使用箭头键选择它，然后按 Tab 或 Enter 键以填写名称。 对于团队，输入 @organization/team-name，该团队的所有成员都将订阅对话。</p>
+<p>自动填写结果仅限于仓库协作者和该线程上的任何其他参与者。</p>
+<p>引用议题和拉取请求<br>
+可以通过键入 # 在存储库中调出建议的议题和拉取请求的列表。 键入议题或拉取请求的编号或标题以过滤列表，然后按 Tab 或 Enter 键以填写选中的结果。</p>
+<p>有关详细信息，请参阅“自动链接引用和 URL”。</p>
+<p>引用外部资源<br>
+如果自定义自动链接引用配置用于仓库，则对外部资源（如 JIRA 议题或 Zendesk 事件单）的引用将转换为缩短的链接。 要了解在您的仓库中哪些自动链接可用，请联系拥有仓库管理员权限的人。 有关详细信息，请参阅“配置自动链接以引用外部资源”。</p>
+<p>上传资产<br>
+您可以通过拖放、从文件浏览器中选择或粘贴来上传图像等资产。 可以将资产上传到议题、拉取请求、评论和存储库中的 .md 文件。</p>
+<p>使用表情符号<br>
+你可以通过键入 :EMOJICODE:（冒号后跟表情符号的名称）将表情符号添加到写作中。</p>
+<p><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/octocat/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/octocat">@octocat</a> 👍 This PR looks great - it's ready to merge! <img class="emoji" title=":shipit:" alt=":shipit:" src="https://github.githubassets.com/images/icons/emoji/shipit.png" height="20" width="20" align="absmiddle"></p>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了 +1 的表情符号代码以及 shipit 如何直观呈现表情符号。</p>
+<p>键入 : 将显示建议的表情符号列表。 列表将在你键入时进行筛选，因此一旦找到所需表情符号，请按 Tab 或 Enter 键以填写突出显示的结果 。</p>
+<p>有关可用表情符号和代码的完整列表，请参阅 Emoji-Cheat-Sheet。</p>
+<p>段落<br>
+通过在文本行之间留一个空白行，可创建新段落。</p>
+<p>脚注<br>
+您可以使用此括号语法为您的内容添加脚注：</p>
+<p>Here is a simple footnote<sup><a href="#user-content-fn-1-077bb84e58694501316af5d224027db6" id="user-content-fnref-1-077bb84e58694501316af5d224027db6" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
+<p>A footnote can also have multiple lines<sup><a href="#user-content-fn-2-077bb84e58694501316af5d224027db6" id="user-content-fnref-2-077bb84e58694501316af5d224027db6" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<p>呈现的 Markdown 的屏幕截图，其中显示了用于指示脚注的上标数字，以及笔记中的可选换行符。</p>
+<p>注意：Markdown 中脚注的位置不会影响该脚注的呈现位置。 您可以在引用脚注后立即写脚注，脚注仍将呈现在 Markdown 的底部。</p>
+<p>Wiki 不支持脚注。</p>
+<p>警报<br>
+警报是基于块引用语法的 Markdown 扩展，可用于强调关键信息。 在 GitHub 上，它们以独特的颜色和图标显示，以指示内容的显著性。</p>
+<p>只有在对用户成功至关重要时才使用警报，并将每篇文章的警报限制在一到两个，以防止读者负担过重。 此外，应避免连续发出警报。 警报无法嵌套在其他元素中。</p>
+<p>要添加警报，请使用指定警报类型的特殊块引用行，然后在标准块引用中添加警报信息。 可以使用以下五种类型的警报：</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Useful information that users should know, even when skimming content.</p>
+</div>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>Helpful advice for doing things better or more easily.</p>
+</div>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>Key information users need to know to achieve their goal.</p>
+</div>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Urgent info that needs immediate user attention to avoid problems.</p>
+</div>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>Advises about risks or negative outcomes of certain actions.<br>
+下面是呈现的警报：</p>
+</div>
+<p>呈现的 Markdown 警报的屏幕截图，其中显示了“注释”、“使用技巧”、“重要”、“警告”和“注意”如何以不同的彩色文本和图标呈现。</p>
+<p>隐藏有评论的内容<br>
+您可以通过在 HTML 评论中加入内容来指示 GitHub 隐藏渲染的 Markdown 中的内容。</p>
+
+<p>忽略 Markdown 格式<br>
+通过在 Markdown 字符前面输入 \，可指示 GitHub 忽略 Markdown 格式（或对其进行转义）。</p>
+<p>Let's rename *our-new-project* to *our-old-project*.</p>
+<p>呈现的 GitHub Markdown 的屏幕截图，其中显示了反斜杠如何阻止将星号转换为斜体。 文本显示“让我们将 our-new-project 重命名为 our-old-project”。</p>
+<p>有关反斜杠的详细信息，请参阅 Daring Fireball 的“Markdown 语法”。</p>
+<p>注意：在问题或拉取请求的标题中不会忽略 Markdown 格式。</p>
+<p>禁用 Markdown 渲染<br>
+查看 Markdown 文件时，可单击文件顶部的 “代码”****，以禁用 Markdown 呈现并改为查看文件的源。</p>
+<p>GitHub 存储库中的 Markdown 文件的屏幕截图，其中显示了用于与文件交互的选项。 标有“代码”的按钮用深橙色框出。</p>
+<p>禁用 Markdown 呈现使你能够使用源视图功能，例如行链接，这在查看呈现的 Markdown 文件时不可用。</p>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1-077bb84e58694501316af5d224027db6">
+<p>My reference. <a href="#user-content-fnref-1-077bb84e58694501316af5d224027db6" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-077bb84e58694501316af5d224027db6">
+<p>To add line breaks within a footnote, prefix new lines with 2 spaces.<br>
+This is a second line.<br>
+脚注将呈现如下： <a href="#user-content-fnref-2-077bb84e58694501316af5d224027db6" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/guan-luo-wen-chi-cun-can-kao.html">上一篇：管螺纹尺寸参考</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://aa1049372051.github.io"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
