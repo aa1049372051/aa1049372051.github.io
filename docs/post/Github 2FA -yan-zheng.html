@@ -99,8 +99,8 @@
 <a href="https://www.v2ex.com/t/967533" rel="nofollow">https://www.v2ex.com/t/967533</a></p></div>
 <div>
     
-    <a style="float: left" id="prevPostUrl" href="/post/hao-yong-de-Windows-ying-yong-tui-jian.html">上一篇：好用的Windows应用推荐</a>
     
+    <a style="float: right" id="nextPostUrl" href="/post/hao-yong-de-Windows-ying-yong-tui-jian.html">下一篇：好用的Windows应用推荐</a>
     
 </div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
@@ -160,7 +160,11 @@ if(""!=""){
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
-
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="1";
+    cmButton.appendChild(span);
 
 function openComments(){
     cm=document.getElementById("comments");
