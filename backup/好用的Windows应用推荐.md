@@ -14,3 +14,5 @@
 🖥️ [CPU-Z](http://www.cpuid.com/softwares/cpu-z.html) - 免费且功能齐全的 CPU 监控工具
 🖥️ [GPU-Z](http://www.techpowerup.com/gpuz/) - 免费且功能齐全的 GPU 监控工具
 💾 [DiskGenius](https://www.diskgenius.cn/) - 老牌国产软件，专注数据恢复与磁盘管理，中文界面
+
+请大家也推荐下
