@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="这是一份非常棒的命令行工具包">
+<title>这是一份非常棒的命令行工具包</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">这是一份非常棒的命令行工具包</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/22" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>Awesome Shell <a href="https://github.com/sindresorhus/awesome"><img src="https://raw.githubusercontent.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" style="max-width: 100%;"></a></h1>
+<p><a href="https://github.com/alebcay/awesome-shell">原文地址</a></p>
+<p>这是一份非常棒的命令行框架、工具包、指南、以及小玩意儿组织清单。由 awesome-php 获得灵感。该 awesome 收集在 <a href="https://unix-shell.zeef.com/caleb.xu" rel="nofollow">Unix-Shell.ZEEF.com</a> 上也可用。</p>
+<ul>
+<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%95%88%E7%8E%87">命令行效率</a></li>
+<li><a href="#%E5%AE%9A%E5%88%B6">定制</a></li>
+<li><a href="#%E9%92%88%E5%AF%B9%E5%BC%80%E5%8F%91%E8%80%85">针对开发者</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7">系统工具</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%9C%8D%E5%8A%A1">下载与服务</a></li>
+<li><a href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E4%B8%8E%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">多媒体与文件格式</a></li>
+<li><a href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F">应用程序</a></li>
+<li><a href="#%E6%B8%B8%E6%88%8F">游戏</a></li>
+<li><a href="#shell-%E5%8C%85%E7%AE%A1%E7%90%86">Shell 包管理</a></li>
+<li><a href="#shell-%E8%84%9A%E6%9C%AC%E5%BC%80%E5%8F%91">Shell 脚本开发</a></li>
+<li><a href="#%E6%8C%87%E5%8D%97">指南</a></li>
+<li><a href="https://github.com/unixorn/awesome-zsh-plugins"><strong>Awesome Zsh</strong></a>  <a href="https://github.com/unixorn/awesome-zsh-plugins"><img src="https://raw.githubusercontent.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" style="max-width: 100%;"></a></li>
+<li><a href="https://github.com/jorgebucaran/awsm.fish"><strong>Awesome Fish</strong></a> <a href="https://github.com/jorgebucaran/awsm.fish"><img src="https://raw.githubusercontent.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" style="max-width: 100%;"></a></li>
+<li><a href="https://github.com/awesome-lists/awesome-bash"><strong>Awesome Bash</strong></a> <a href="https://github.com/awesome-lists/awesome-bash"><img src="https://raw.githubusercontent.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" style="max-width: 100%;"></a></li>
+<li><a href="#%E5%85%B6%E5%AE%83-awesome-%E6%B8%85%E5%8D%95">其它 Awesome 清单</a></li>
+</ul>
+<h2>命令行效率</h2>
+<p><em>使你的终端体验更有效率的搜索、书签、多路复用、以及其它工具。</em></p>
+<ul>
+<li><a href="https://github.com/tanrax/terminal-AdvancedNewFile">AdvancedNewFile</a> - 以递归的方式快速创建文件和目录。 受Vim插件启发。</li>
+<li><a href="https://github.com/ggreer/the_silver_searcher">ag</a> - 在层级目录中超快的搜索字符串</li>
+<li><a href="https://github.com/sebglazebrook/aliases">aliases</a> - 针对 bash 的上下文动态组织别名</li>
+<li><a href="https://github.com/Jintin/aliasme">aliasme</a> - 用来快速更改目录的 alias 辅助程序</li>
+<li><a href="https://github.com/inishchith/autoenv">autoenv</a> - 基于目录的环境</li>
+<li><a href="https://github.com/wting/autojump">autojump</a> - 自带学习功能的 cd 命令，从命令行轻易地导航目录</li>
+<li><a href="https://github.com/rcaloras/bashhub-client">bashhub</a> - ☁️ 在云中的 bash 历史，已索引且可搜索。</li>
+<li><a href="https://github.com/huyng/bashmarks">bashmarks</a> - 适用于 shell 的目录书签</li>
+<li><a href="https://github.com/vigneshwaranr/bd">bd</a> - 迅速回到父目录</li>
+<li><a href="https://github.com/tmrts/boilr">boilr</a> - 从 boilerplate 模板创建项目的超快命令行工具</li>
+<li><a href="https://github.com/holman/boom">boom</a> - 在命令行中存储链接及片断</li>
+<li><a href="https://github.com/ok-borg/borg">borg</a> - 基于终端的 bash 命令搜索引擎</li>
+<li><a href="https://www.byobu.org" rel="nofollow">byobu</a> - 基于文本的窗口管理器及终端多路复用器</li>
+<li><a href="https://github.com/skywind3000/CloudClip">CloudClip</a> - 云剪贴板，在不同的系统之间 copy/paste （使用 gist 作为后端）</li>
+<li><a href="https://github.com/shyiko/commacd">commacd</a> - 在 Bash 中更快速的移动方式</li>
+<li><a href="https://github.com/jamesob/desk">desk</a> - 适用于 shell 的轻量级工作区管理器</li>
+<li><a href="https://github.com/direnv/direnv">direnv</a> - 针对 shell 的环境切换工具（利用 autoenv 比较）</li>
+<li><a href="https://github.com/dnote/dnote">dnote</a> - 命令行上的笔记本，支持多设备同步和网络界面。</li>
+<li><a href="https://github.com/b4b4r07/enhancd">enhancd</a> - 🚀 具有交互式过滤功能的下一代 cd 命令</li>
+<li><a href="https://github.com/clvv/fasd">fasd</a> - 命令行效率提升器，提供快速访问文件及目录</li>
+<li><a href="https://github.com/s-p-k/foxy">foxy</a> - 适合 Firefox 及 Surf 浏览器的无格式文本书签</li>
+<li><a href="https://github.com/changyuheng/fz">fz</a> - z 的无缝模糊补全</li>
+<li><a href="https://github.com/junegunn/fzf">fzf</a> - 命令行下的模糊搜索器</li>
+<li><a href="https://github.com/paoloantinori/hhighlighter">hhighlighter</a> - 在命令输出中给单词着色</li>
+<li><a href="https://github.com/LuRsT/hr">hr</a> - 适用于终端的 <code class="notranslate">&lt;hr /&gt;</code></li>
+<li><a href="https://github.com/six-ddc/hss">hss</a> - 可交互的ssh批量执行客户端，具有自动完成远端路径和异步执行的特性</li>
+<li><a href="https://github.com/dvorka/hstr">hstr</a> - Bash 历史建议框</li>
+<li><a href="https://github.com/supercrabtree/k">k</a> - k 是一个使目录列表更可读的 Zsh 脚本，它增添了 Git 状态、文件颜色、以及腐朽的日期</li>
+<li><a href="https://github.com/lingtalfi/k">k alias</a> - 获得用于单行的酷 alias</li>
+<li><a href="https://github.com/pindexis/marker">marker</a> - 将你的 shell 命令加到书签</li>
+<li><a href="https://github.com/lra/mackup/">mackup</a> - 云同步应用程序的配置文件(OS X/Linux)</li>
+<li><a href="http://www.gnu.org/software/parallel/" rel="nofollow">parallel</a> - 以并行化方式从标准输入构造并执行 shell 命令行</li>
+<li><a href="https://github.com/facebook/PathPicker">pathpicker</a> - 允许将 grep、搜索、git 等的输出结果作为输入，并提供友好的选择界面，以便打开或作为命令的参数</li>
+<li><a href="https://github.com/mooz/percol">percol</a> - 为传统的 UNIX shell 管道添加交互式的过滤</li>
+<li><a href="https://github.com/pindexis/qfc">qfc</a> - 针对 Bash 和 Zsh 的文件补全 widget</li>
+<li><a href="https://github.com/odb/shml">SHML</a> - 适用于终端的样式框架 (Shell 标记语言)</li>
+<li><a href="https://github.com/benlinton/slugify">slugify</a> - 将文件名及目录转换为 web 友好的格式</li>
+<li><a href="https://github.com/tokozedg/sman">sman</a> - 🐛 命令行下的片断管理器</li>
+<li><a href="https://github.com/holman/spark">spark</a> - ▁▂▃▅▂▇ 在你的 shell 中</li>
+<li><a href="https://github.com/jorgebucaran/spark.fish">spark.fish</a> - ▁▂▃▅ Sparkline 生成器</li>
+<li><a href="https://github.com/oscardelben/sheet">sheet</a> -  用于命令行的文本片断</li>
+<li><a href="https://github.com/rauchg/spot">spot</a> - 微型的文件搜索工具</li>
+<li><a href="https://github.com/srijanshetty/snips">snips</a> - 管理代码片断的命令行工具</li>
+<li><a href="https://github.com/osxfuse/sshfs">sshfs</a> - 通过 SSH 挂载远程文件系统的工具</li>
+<li><a href="https://sourceforge.net/projects/sshpass/" rel="nofollow">sshpass</a> - 通过命令行传递ssh密码，无需再次输入，适合用于脚本之中</li>
+<li><a href="https://mosh.org" rel="nofollow">mosh</a> - 第一个实现SSP的应用，MIT的博士项目，使得C/S之间可以保持链接持续，即使断开还能恢复之前的状态</li>
+<li><a href="https://github.com/badarsh2/Sudocabulary">sudocabulary</a> - 从终端学习英语词汇</li>
+<li><a href="https://github.com/darrikonn/td-cli">td-cli</a> - 组织者命令行管理器，用于跨多个项目组织和管理您的待办事项。</li>
+<li><a href="https://github.com/nvbn/thefuck">thefuck</a> - 通过使用容易记住的命令修正常见的 shell 错误</li>
+<li><a href="http://tmux.github.io/" rel="nofollow">tmux</a> - 很棒的终端复用器</li>
+<li><a href="https://github.com/shannonmoeller/up">up</a> - 按名称或计数升序排列目录，支持 bash 和 zsh</li>
+<li><a href="https://github.com/rupa/v">v</a> - 适用于 Vim 的 z</li>
+<li><a href="https://github.com/zolrath/wemux">wemux</a> - 多用户使用 Tmux 变得更容易</li>
+<li><a href="https://github.com/rupa/z">z</a> - z 是新的 j</li>
+<li><a href="https://github.com/skywind3000/z.lua">z.lua</a> - 一个会学习你使用习惯的快速 cd 命令</li>
+<li><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> - 用Rust编写的浏览文件系统的更快方法</li>
+</ul>
+<h2>定制</h2>
+<p><em>定制提示符、颜色主题等。</em></p>
+<ul>
+<li><a href="https://github.com/chriskempson/base16-shell">base16-shell</a> - 适用于 shell 的 Base16</li>
+<li><a href="https://github.com/slomkowski/bash-full-of-colors">bash-full-of-colors</a> - 超强的命令行提示（含 screen、tmux、git 等支持）</li>
+<li><a href="https://github.com/magicmonty/bash-git-prompt">bash-git-prompt</a> - 针对 Git 用户的信息及梦幻提示符</li>
+<li><a href="https://github.com/riobard/bash-powerline">bash-powerline</a> - Powerline 风格的 Bash 提示符，纯 Bash 脚本</li>
+<li><a href="https://github.com/barryclark/bashstrap">bashstrap</a> - 美化 OS X 终端的快速方法</li>
+<li><a href="https://github.com/caiogondim/bullet-train.zsh">bullet-train-oh-my-zsh-theme</a> - 🚄 基于 Powerline Vim 插件的 oh-my-zsh shell 主题</li>
+<li><a href="https://github.com/mrowa44/emojify">emojify</a> - 适用于命令行的表情 😱</li>
+<li><a href="https://dribbble.com/shots/1021755-Flat-UI-Terminal-Theme" rel="nofollow">flatui-terminal-theme</a> - 很好的终端颜色主题</li>
+<li><a href="https://github.com/lvv/git-prompt">git-prompt</a> - 包含 Git、SVN 及 HG 模块的 Bash 提示符</li>
+<li><a href="https://github.com/momeni/gittify">gittify</a> - 彩色的 Bash 提示符及定制的 Git 别名</li>
+<li><a href="https://github.com/Mayccoll/Gogh">Gogh - Color Scheme</a> - 适用于 GNOME 终端的颜色主题</li>
+<li><a href="https://github.com/nojhan/liquidprompt">liquidprompt</a> - 针对 Bash 和 Zsh 的全功能及用心设计的自适应提示符</li>
+<li><a href="https://github.com/zpm-zsh/mysql-colorize">mysql-colorize</a> -  彩色的 MySQL 命令行客户端</li>
+<li><a href="https://github.com/arialdomartini/oh-my-git">oh-my-git</a> - 针对 Bash 和 Zsh 的自用 Git 提示符</li>
+<li><a href="https://github.com/twolfson/sexy-bash-prompt">sexy-bash-prompt</a> - 包含颜色、Git 状态及 Git 分支的 Bash 提示符</li>
+</ul>
+<h2>针对开发者</h2>
+<p><em>命令行开发、版本控制、以及部署。</em></p>
+<ul>
+<li><a href="https://github.com/p8952/bocker">bocker</a> - 使用百行 bash 实现的 Docker</li>
+<li><a href="https://github.com/AlDanial/cloc">cloc</a> - 统计代码行数</li>
+<li><a href="https://github.com/dokku/dokku">dokku</a> - 百行 Bash 打造的 Docker 迷你 Heroku</li>
+<li><a href="https://github.com/jorgebucaran/getopts.fish">getopts.fish</a> - 适用于 fish 的命令行解析器</li>
+<li><a href="https://github.com/wfxr/forgit">forgit</a> - Git工具，使用<code class="notranslate">fzf</code>提供交互式的操作模式</li>
+<li><a href="https://github.com/unixorn/git-extra-commands">git-extra-commands</a> - 很多 Git 扩展工具，包括 churn、cut-branch、improved-merge 等</li>
+<li><a href="https://github.com/tj/git-extras">git-extras</a> - Git 工具，包括仓库摘要、repl、更改日志人数、作者提交百分比等</li>
+<li><a href="https://github.com/paulirish/git-open">git-open</a> - 输入 <code class="notranslate">git open</code> 在浏览器中打开 GitHub 页面或仓库网站</li>
+<li><a href="https://github.com/markchalloner/git-semver">git-semver</a> - 用来方便的语义化版本及更改日志验证的 Git 插件</li>
+<li><a href="https://github.com/rtomayko/git-sh">git-sh</a> - 适合 Git 工作的定制 Bash 环境</li>
+<li><a href="https://github.com/github/hub">hub</a> - 更易使用 GitHub 的命令行工具</li>
+<li><a href="https://myrepos.branchable.com" rel="nofollow">mr</a> - 多仓库管理工具</li>
+<li><a href="https://github.com/sds/overcommit">overcommit</a> - 完全可配置且可扩展的 Git hook 管理器</li>
+<li><a href="https://pre-commit.com" rel="nofollow">pre-commit</a> - 用于管理及维护多语言 pre-commit hooks 的框架</li>
+<li><a href="https://github.com/jlevy/repren">repren</a> - 命令行搜索与替换及文件重命名的瑞士军刀式工具</li>
+<li><a href="https://github.com/slap-editor/slap">slap</a> - 运行在 Node.js 上的基于终端的类 Sublime 文本编辑器</li>
+<li><a href="https://github.com/sapegin/shipit">shipit</a> - 极简 SSH 部署</li>
+<li><a href="https://github.com/aykamko/tag">tag</a> - 立即跳到你的公牛队比赛</li>
+</ul>
+<h2>系统工具</h2>
+<p><em>操作系统相关工具，包括系统管理、系统调试、及文件和进程管理。</em></p>
+<ul>
+<li><a href="https://www.atoptool.nl" rel="nofollow">atop</a> - 能够报告所有进程活动的 ASCII 全屏性能监视器</li>
+<li><a href="https://github.com/Xfennec/progress">cv</a> - 显示 cp、rm、dd 等命令进度的 Linux 工具</li>
+<li><a href="https://github.com/nicolargo/glances">glances</a> - 系统监视之眼</li>
+<li><a href="https://github.com/allinurl/goaccess">goaccess</a> - 运行于 *nix 系统终端中的实时 web 日志分析器及交互式查看器</li>
+<li><a href="https://github.com/vesche/histstat">histstat</a> - 适用于 netstat 的历史</li>
+<li><a href="https://github.com/hishamhm/htop">htop</a> - 基于 ncurses 的交互式进程查看器，其目标是比 <code class="notranslate">top</code> 更好</li>
+<li><a href="http://lnav.org" rel="nofollow">lnav</a> - 小型的高级日志文件查看器</li>
+<li><a href="https://github.com/dborzov/lsp">lsp</a> - 改进的 <code class="notranslate">ls</code>，包含无格式语言的文件说明及智能的文件分组</li>
+<li><a href="https://github.com/traviscross/mtr">mtr</a> - traceroute 和 ping 功能合二为一的网络诊断工具</li>
+<li><a href="https://dev.yorhel.nl/ncdu" rel="nofollow">ncdu</a> - NCurses 磁盘占用统计</li>
+<li><a href="https://github.com/fenrus75/powertop">powertop</a> - 电池/电源占用及设备状态监视命令行工具，包含调整选项</li>
+<li><a href="https://github.com/jlevy/procdog">procdog</a> - 轻量级的命令行控制类似服务器的长实时进程</li>
+<li><a href="https://github.com/marshyski/quick-secure">quick-secure</a> - 快速的安全并加固 UNIX/Linux 系统</li>
+<li><a href="https://github.com/keithrbennett/wifiwand">wifi-wand</a> - 一个用来管理MacOs上 WiFi无线网络的Ruby命令行应用程序, 安装请执行 <code class="notranslate">gem install wifi-wand</code>)</li>
+</ul>
+<h2>下载与服务</h2>
+<p><em>使用 shell 脚本编写的自架、轻量级服务器与网络工具。</em></p>
+<ul>
+<li><a href="https://github.com/aria2/aria2">aria2</a> - aria2 是一款在命令行中操作的轻量级多协议、多来源、及跨平台下载工具，它支持 HTTP/HTTPS、FTP、BitTorrent 及 Metalink</li>
+<li><a href="https://github.com/jneen/balls">balls</a> - Bash on Balls，全功能的 web 平台</li>
+<li><a href="https://github.com/avleen/bashttpd">bashttpd</a> - 使用 Bash 编写的 web 服务器</li>
+<li><a href="https://github.com/sickill/bitpocket">bitpocket</a> - "DIY Dropbox" 或 "双向目录同步（含正确删除）"</li>
+<li><a href="https://github.com/coursera-dl/coursera-dl">coursera-dl</a> - 从Course公开课上下载视频</li>
+<li><a href="https://github.com/andreafabrizi/Dropbox-Uploader">Dropbox-Uploader</a> - Dropbox Uploader 是用来从 Dropbox 上传、下载、列出或删除文件的 Bash 脚本</li>
+<li><a href="https://github.com/httpie/httpie">httpie</a> - HTTPie 是一个命令行 HTTP 客户端，用户友好的 cURL 替代品</li>
+<li><a href="https://www.npmjs.com/package/http-server" rel="nofollow">http-server</a> - http-server可以启动一个轻量级的http服务</li>
+<li><a href="https://github.com/jaburns/ngincat">ngincat</a> - 使用 netcat 的微型 Bash HTTP 服务器</li>
+<li><a href="https://github.com/micha/resty">resty</a> - 你可以在管道中使用的小型命令行 REST 客户端</li>
+<li><a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> - 从 YouTube.com 及其它视频站点下载视频的小命令行程序</li>
+</ul>
+<h2>多媒体与文件格式</h2>
+<p><em>用于处理视频及音频文件的工具。</em></p>
+<ul>
+<li><a href="https://github.com/sromku/adb-export">adb-export</a> - 导出 Android 内容提供商为 CSV 格式</li>
+<li><a href="https://github.com/dsixda/Android-Kitchen">Android-Kitchen</a> - 基于文本的 Android ROM 定制 kitchen，使用 shell 脚本并支持 Cygwin/OS X/Linux</li>
+<li><a href="https://github.com/beetbox/beets">Beets</a> - 音乐库管理器及 MusicBrainz 标签工具</li>
+<li><a href="https://github.com/cmus/cmus">cmus</a> - 跨平台的命令行音乐播放器</li>
+<li><a href="https://github.com/lukechilds/gifgen">gifgen</a> - 简单高质量的 GIF 编码</li>
+<li><a href="https://github.com/sananth12/ImageScraper">image-scraper</a> - 包含诸多特性的酷命令行图像 scraper</li>
+<li><a href="https://github.com/stedolan/jq">jq</a> - 针对 json 数据的 Sed，你可以使用它分片、过滤、映射及变换结构化数据</li>
+<li><a href="https://csvkit.readthedocs.io/en/0.9.1/" rel="nofollow">csvtookit</a> - 使用pip install csvki安装, csv文件进行处理的强大工具</li>
+<li><a href="http://www.mplayerhq.hu/design7/news.html" rel="nofollow">mplayer</a> - 让你在 shell 中播放主流的音频及视频格式（使用 ASCII 字符）</li>
+<li><a href="https://github.com/bogem/nehm">nehm</a> - 下载、设置 IDv3 标签、并添加到 iTunes 的控制台工具</li>
+<li><a href="https://github.com/lanceseidman/PiCAST">PiCAST</a> - PiCAST 将你的 35 刀 Raspberry Pi 变成类 Chromecast 设备</li>
+<li><a href="https://github.com/torakiki/sejda/">sejda</a> - 命令行下的 PDF 文档处理工具（分割、合并、旋转、转换为 jpg、提取文本等）</li>
+<li><a href="http://xmlstar.sourceforge.net/" rel="nofollow">xmlstarlet</a> - 古老而强大的命令行 XML 格式化、过滤及处理工具</li>
+<li><a href="http://ffmpeg.org/" rel="nofollow">ffmpeg</a> - 非常强大的视频处理工具</li>
+<li><a href="http://www.imagemagick.org/script/index.php" rel="nofollow">imageMagick</a> - 其强大有目共睹</li>
+</ul>
+<h2>应用程序</h2>
+<p><em>基于命令行的应用程序或从命令行访问现有服务。</em></p>
+<ul>
+<li><a href="https://github.com/fcambus/ansiweather">ansiweather</a> - 终端中的天气预报，包含 ANSI 颜色及 Unicode 符号</li>
+<li><a href="https://github.com/cfenollosa/bashblog">bashblog</a> - 处理 blog 投递的 Bash 脚本</li>
+<li><a href="https://github.com/lord63/choosealicense-cli">choosealicense-cli</a> - 从终端选授權合約</li>
+<li><a href="https://github.com/huydx/facy">facy</a> - 命令行下的 Facebook 客户端</li>
+<li><a href="https://github.com/afc163/fanyi">fanyi</a> - 翻译英文为中文的命令行工具</li>
+<li><a href="https://github.com/VitaliyRodnenko/geeknote">geeknote</a> - 命令行的 Evernote 客户端</li>
+<li><a href="https://github.com/donnemartin/haxor-news">haxor-news</a> - 像黑客一样浏览 Hacker News</li>
+<li><a href="https://github.com/rafaelrinaldi/hn-cli">hn-cli</a> - 从终端舒服的浏览 Hacker News</li>
+<li><a href="https://github.com/nogizhopaboroda/iponmap">iponmap</a> - 利用 IP 地址在世界地图上绘点</li>
+<li><a href="https://github.com/lord63/isitup">isitup</a> - 检查一个网站是否正常上线</li>
+<li><a href="https://github.com/jrnl-org/jrnl">jrnl</a> - 使用无格式文本文件存储日记的简单命令行程序</li>
+<li><a href="https://github.com/ledger/ledger">ledger</a> - 命令行记账</li>
+<li><a href="https://github.com/lord63/licen">licen</a> - 生成项目 license</li>
+<li><a href="https://github.com/weaming/md2png">md2png</a> - 从 markdown 文件生成 png 图片</li>
+<li><a href="https://github.com/iCHAIT/moviemon">moviemon</a> - 有关在命令行下看电影的每样东东</li>
+<li><a href="https://github.com/alebcay/pushblast">pushblast</a> - 当 shell 程序退出时获得 PushBullet 通知</li>
+<li><a href="https://github.com/Red5d/pushbullet-bash">pushbullet-bash</a> - PushBullet API 的 Bash 接口</li>
+<li><a href="https://github.com/michael-lazar/rtv">Reddit Terminal Viewer</a> - 从终端浏览 Reddit</li>
+<li><a href="https://github.com/donnemartin/saws">SAWS</a> - 超强的 AWS 命令行界面</li>
+<li><a href="https://taskwarrior.org/" rel="nofollow">taskwarrior</a> - 一个命令行去做列表管理器</li>
+<li><a href="https://github.com/ellisonleao/vl">vl</a> - 针对文本文档的 URL 链接检查器</li>
+<li><a href="https://github.com/schachmat/wego">wego</a> - 适用于终端的天气预报应用</li>
+<li><a href="https://github.com/rafaelrinaldi/whereami">whereami</a> - 从命令行获得你的地理位置信息</li>
+<li><a href="http://www.fail2ban.org/wiki/index.php/Main_Page" rel="nofollow">fail2ban</a> - SSH防爆破</li>
+</ul>
+<h2>游戏</h2>
+<p><em>只顾工作而不玩玩是一种糟糕的度日方式。</em></p>
+<ul>
+<li><a href="https://github.com/mydzor/bash2048">bash2048</a> - 2048 游戏的 Bash 实现</li>
+<li><a href="https://github.com/feherke/Bash-script/tree/master/minesweeper">minesweeper</a> - 扫雷的 Bash 实现</li>
+<li><a href="https://github.com/vaniacer/piu-piu-SH">piu-piu</a> - 水平滚动游戏 Bash 实现</li>
+<li><a href="https://github.com/uuner/sedtris">sedtris</a> - 使用 sed 实现的俄罗斯方块</li>
+<li><a href="https://github.com/aureliojargas/sed-scripts">sed-scripts</a> - 使用 sed 编写的 Arkanoid 和 Sokoban</li>
+</ul>
+<h2>Shell 包管理</h2>
+<p><em>用于管理多个 shell 配置的工具。对于特定的 zsh 工具，参阅 Zsh 节。</em></p>
+<ul>
+<li><a href="https://github.com/Bash-it/bash-it">bash-it</a> - 社区化的 Bash 框架</li>
+<li><a href="https://github.com/basherpm/basher">basher</a> - 针对 shell 脚本的包管理器</li>
+<li><a href="http://www.bpkg.sh/" rel="nofollow">bpkg</a> - JavaScript 有 npm、Ruby 有 Gems、Python 有 pip，现在 Shell 有 bpkg</li>
+<li><a href="https://github.com/svetlyak40wt/dotfiler">dotfiler</a> – 使用 Python 编写的基于 Git 的 Shell dotfiles 管理器</li>
+<li><a href="https://github.com/freshshell/fresh">fresh</a> - 使你的 dotfiles 保持更新</li>
+<li><a href="https://github.com/andsens/homeshick">homeshick</a> - 使用 Bash 编写的 Git dotfile 同步器</li>
+<li><a href="https://github.com/RichiH/vcsh">vcsh</a> - 基于 Git 的配置管理器</li>
+<li><a href="https://github.com/javier-lopez/shundle">shundle</a> - 适用于 shell 脚本的插件管理器</li>
+</ul>
+<h2>Shell 脚本开发</h2>
+<p><em>用于编写、改进、及管理 Bash 或其它 shell 脚本的工具。</em></p>
+<ul>
+<li><a href="https://github.com/fidian/ansi">ansi</a> - 使用纯 Bash 实现的 ANSI 转义码，包括更改文本颜色、定位光标等等</li>
+<li><a href="https://github.com/lehmannro/assert.sh">assert.sh</a> - Bash 单元测试框架</li>
+<li><a href="https://github.com/jmcantrell/bashful">bashful</a> - 简化编写 Bash 脚本的库收集</li>
+<li><a href="https://github.com/lingtalfi/bashmanager">bashmanager</a> - 用来创建命令行工具的微型 Bash 框架</li>
+<li><a href="https://github.com/bats-core/bats-core">bats</a> - Bash 自动化测试系统</li>
+<li><a href="https://github.com/jorgebucaran/fishtape">Fishtape</a> - 适用于 fish 的 TAP 产生器及测试工具</li>
+<li><a href="https://github.com/erichs/composure">composure</a> - 撰写、文档、版本、及组织你的 shell 函数</li>
+<li><a href="https://github.com/Mosai/workshop/blob/master/doc/dispatch.md">dispatch</a> - 使用 50 行可移植 shell 脚本写成的命令行参数解析器</li>
+<li><a href="https://github.com/qzb/is.sh">is.sh</a> - 内置 test 命令的替代品，使 "if" 语句更漂亮</li>
+<li><a href="https://github.com/tests-always-included/mo">mo</a> - 使用纯 Bash 实现的 Mustache 模板</li>
+<li><a href="https://github.com/nk412/optparse">optparse</a> - 针对 getopts 的 BASH wrapper，用于简单的命令行参数</li>
+<li><a href="https://github.com/rerun/rerun">rerun</a> - 用来管理保留脚本的模块化 shell 自动化框架</li>
+<li><a href="https://github.com/cloudflare/semver_bash">semver_bash</a> - 使用 Bash 实现的语义化版本</li>
+<li><a href="https://github.com/qzb/sh-semver">sh-semver</a> - 适用于 bash 的 Semver 工具，匹配指定规则来查找版本</li>
+<li><a href="https://github.com/koalaman/shellcheck">shellcheck</a> - 针对 shell 脚本的静态化分析工具</li>
+<li><a href="https://github.com/shellfire-dev/shellfire">shellfire</a> - 命名空间仓库，可写 shell (bash、sh 及 dash) 函数库</li>
+<li><a href="https://github.com/rylnd/shpec">shpec</a> - shell 测试框架</li>
+<li><a href="https://github.com/basecamp/sub">sub</a> - 以美味之道来管理程序</li>
+<li><a href="https://github.com/thinkerbot/ts">ts</a> - shell 测试脚本</li>
+<li><a href="https://github.com/kward/shunit2">shunit2</a> - 适用于 Bash 脚本的单元测试框架（具有 JUnit/PyUnit 风味）</li>
+<li><a href="https://github.com/jandob/rebash">rebash</a> - 脚本库/框架，包含 imports、exceptions、doc-tests 等功能</li>
+</ul>
+<h1>指南</h1>
+<ul>
+<li><a href="https://web.archive.org/web/20230406205817/https://wiki.bash-hackers.org/" rel="nofollow">Bash 黑客的维基</a></li>
+<li><a href="http://mywiki.wooledge.org" rel="nofollow">Greg Wooledge（又名 "greycat"）的维基</a>：尤其是 <a href="http://mywiki.wooledge.org/BashGuide" rel="nofollow">Bash 指南</a>、<a href="http://mywiki.wooledge.org/BashFAQ" rel="nofollow">Bash 疑难问答</a> 及 <a href="http://mywiki.wooledge.org/BashPitfalls" rel="nofollow">Bash 陷阱</a></li>
+<li><a href="https://google.github.io/styleguide/shell.xml" rel="nofollow">Google 的 Shell 风格指南</a></li>
+<li><a href="https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html" rel="nofollow">Linux 文档项目: Bash 编程 - 简介/如何做</a></li>
+<li><a href="https://tldp.org/LDP/abs/html/" rel="nofollow">Linux 文档项目: 高级 Bash 脚本指南</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Bash_Shell_Scripting" rel="nofollow">WikiBooks: Bash Shell 脚本</a></li>
+<li><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/" rel="nofollow">使用非官方的 Bash 严格模式 (除非你爱调试)</a></li>
+<li><a href="https://github.com/jlevy/the-art-of-command-line">命令行的艺术</a></li>
+<li><a href="https://www.learnenough.com/command-line-tutorial/basics" rel="nofollow">学会成为命令行杀手</a></li>
+<li><a href="https://github.com/Idnan/bash-guide">学习bash的指南</a></li>
+</ul>
+<h1>其它 Awesome 清单</h1>
+<p>其它很棒的 awesome 清单可在 <a href="https://github.com/emijrp/awesome-awesome">awesome-awesome</a> 和 <a href="https://github.com/bayandin/awesome-awesomeness">awesome-awesomeness</a> 找到。</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/ming-ling-xing-de-yi-shu.html">上一篇：命令行的艺术</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
