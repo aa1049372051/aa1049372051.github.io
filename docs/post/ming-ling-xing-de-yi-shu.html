@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="命令行的艺术">
+<title>命令行的艺术</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">命令行的艺术</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/21" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>🌍<br>
+<em><a href="README-cs.md">Čeština</a> ∙ <a href="README-de.md">Deutsch</a> ∙ <a href="README-el.md">Ελληνικά</a> ∙ <a href="README.md">English</a> ∙ <a href="README-es.md">Español</a> ∙ <a href="README-fr.md">Français</a> ∙ <a href="README-id.md">Indonesia</a> ∙ <a href="README-it.md">Italiano</a> ∙ <a href="README-ja.md">日本語</a> ∙ <a href="README-ko.md">한국어</a> ∙ <a href="README-pl.md">polski</a> ∙ <a href="README-pt.md">Português</a> ∙ <a href="README-ro.md">Română</a> ∙ <a href="README-ru.md">Русский</a> ∙ <a href="README-sl.md">Slovenščina</a> ∙ <a href="README-uk.md">Українська</a> ∙ <a href="README-zh.md">简体中文</a> ∙ <a href="README-zh-Hant.md">繁體中文</a></em></p>
+<h1>命令行的艺术</h1>
+<p><a href="https://gitter.im/jlevy/the-art-of-command-line?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" rel="nofollow"><img src="https://camo.githubusercontent.com/2da7039d862cabe847953554272000b86e80b158a0723c9a832720b935df3f43/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat at https://gitter.im/jlevy/the-art-of-command-line" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width: 100%;"></a></p>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80">基础</a></li>
+<li><a href="#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8">日常使用</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">文件及数据处理</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95">系统调试</a></li>
+<li><a href="#%E5%8D%95%E8%A1%8C%E8%84%9A%E6%9C%AC">单行脚本</a></li>
+<li><a href="#%E5%86%B7%E9%97%A8%E4%BD%86%E6%9C%89%E7%94%A8">冷门但有用</a></li>
+<li><a href="#%E4%BB%85%E9%99%90-os-x-%E7%B3%BB%E7%BB%9F">仅限 OS X 系统</a></li>
+<li><a href="#%E4%BB%85%E9%99%90-windows-%E7%B3%BB%E7%BB%9F">仅限 Windows 系统</a></li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E8%B5%84%E6%BA%90">更多资源</a></li>
+<li><a href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E">免责声明</a></li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer" href="cowsay.png"><img src="cowsay.png" alt="curl -s 'https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md' | egrep -o '\w+' | tr -d '`' | cowsay -W50" style="max-width: 100%;"></a></p>
+<p>熟练使用命令行是一种常常被忽视，或被认为难以掌握的技能，但实际上，它会提高你作为工程师的灵活性以及生产力。本文是一份我在 Linux 上工作时，发现的一些命令行使用技巧的摘要。有些技巧非常基础，而另一些则相当复杂，甚至晦涩难懂。这篇文章并不长，但当你能够熟练掌握这里列出的所有技巧时，你就学会了很多关于命令行的东西了。</p>
+<p>这篇文章是<a href="AUTHORS.md">许多作者和译者</a>共同的成果。<br>
+这里的部分内容<br>
+<a href="http://www.quora.com/What-are-some-lesser-known-but-useful-Unix-commands" rel="nofollow">首次</a><br>
+<a href="http://www.quora.com/What-are-the-most-useful-Swiss-army-knife-one-liners-on-Unix" rel="nofollow">出现</a><br>
+于 <a href="http://www.quora.com/What-are-some-time-saving-tips-that-every-Linux-user-should-know" rel="nofollow">Quora</a>，<br>
+但已经迁移到了 GitHub，并由众多高手做出了许多改进。<br>
+如果你在本文中发现了错误或者存在可以改善的地方，请<a href="/CONTRIBUTING.md"><strong>贡献你的一份力量</strong></a>。</p>
+<h2>前言</h2>
+<p>涵盖范围：</p>
+<ul>
+<li>这篇文章不仅能帮助刚接触命令行的新手，而且对具有经验的人也大有裨益。本文致力于做到<em>覆盖面广</em>（涉及所有重要的内容），<em>具体</em>（给出具体的最常用的例子），以及<em>简洁</em>（避免冗余的内容，或是可以在其他地方轻松查到的细枝末节）。在特定应用场景下，本文的内容属于基本功或者能帮助您节约大量的时间。</li>
+<li>本文主要为 Linux 所写，但在<a href="#%E4%BB%85%E9%99%90-os-x-%E7%B3%BB%E7%BB%9F">仅限 OS X 系统</a>章节和<a href="#%E4%BB%85%E9%99%90-windows-%E7%B3%BB%E7%BB%9F">仅限 Windows 系统</a>章节中也包含有对应操作系统的内容。除去这两个章节外，其它的内容大部分均可在其他类 Unix 系统或 OS X，甚至 Cygwin 中得到应用。</li>
+<li>本文主要关注于交互式 Bash，但也有很多技巧可以应用于其他 shell 和 Bash 脚本当中。</li>
+<li>除去“标准的”Unix 命令，本文还包括了一些依赖于特定软件包的命令（前提是它们具有足够的价值）。</li>
+</ul>
+<p>注意事项：</p>
+<ul>
+<li>为了能在一页内展示尽量多的东西，一些具体的信息可以在引用的页面中找到。我们相信机智的你知道如何使用 Google 或者其他搜索引擎来查阅到更多的详细信息。文中部分命令需要您使用 <code class="notranslate">apt-get</code>，<code class="notranslate">yum</code>，<code class="notranslate">dnf</code>，<code class="notranslate">pacman</code>，<br>
+<code class="notranslate">pip</code> 或 <code class="notranslate">brew</code>（以及其它合适的包管理器）来安装依赖的程序。</li>
+<li>遇到问题的话，请尝试使用 <a href="http://explainshell.com/" rel="nofollow">Explainshell</a> 去获取相关命令、参数、管道等内容的解释。</li>
+</ul>
+<h2>基础</h2>
+<ul>
+<li>
+<p>学习 Bash 的基础知识。具体地，在命令行中输入 <code class="notranslate">man bash</code> 并至少全文浏览一遍; 它理解起来很简单并且不冗长。其他的 shell 可能很好用，但 Bash 的功能已经足够强大并且到几乎总是可用的（ 如果你<em>只</em>学习 zsh，fish 或其他的 shell 的话，在你自己的设备上会显得很方便，但过度依赖这些功能会给您带来不便，例如当你需要在服务器上工作时）。</p>
+</li>
+<li>
+<p>熟悉至少一个基于文本的编辑器。通常而言 Vim （<code class="notranslate">vi</code>） 会是你最好的选择，毕竟在终端中编辑文本时 Vim 是最好用的工具（甚至大部分情况下 Vim 要比 Emacs、大型 IDE 或是炫酷的编辑器更好用）。</p>
+</li>
+<li>
+<p>学会如何使用 <code class="notranslate">man</code> 命令去阅读文档。学会使用 <code class="notranslate">apropos</code> 去查找文档。知道有些命令并不对应可执行文件，而是在 Bash 内置好的，此时可以使用 <code class="notranslate">help</code> 和 <code class="notranslate">help -d</code> 命令获取帮助信息。你可以用 <code class="notranslate">type 命令</code> 来判断这个命令到底是可执行文件、shell 内置命令还是别名。</p>
+</li>
+<li>
+<p>学会使用 <code class="notranslate">&gt;</code> 和 <code class="notranslate">&lt;</code> 来重定向输出和输入，学会使用 <code class="notranslate">|</code> 来重定向管道。明白 <code class="notranslate">&gt;</code> 会覆盖了输出文件而 <code class="notranslate">&gt;&gt;</code> 是在文件末添加。了解标准输出 stdout 和标准错误 stderr。</p>
+</li>
+<li>
+<p>学会使用通配符 <code class="notranslate">*</code> （或许再算上 <code class="notranslate">?</code> 和 <code class="notranslate">[</code>...<code class="notranslate">]</code>） 和引用以及引用中 <code class="notranslate">'</code> 和 <code class="notranslate">"</code> 的区别（后文中有一些具体的例子）。</p>
+</li>
+<li>
+<p>熟悉 Bash 中的任务管理工具：<code class="notranslate">&amp;</code>，<strong>ctrl-z</strong>，<strong>ctrl-c</strong>，<code class="notranslate">jobs</code>，<code class="notranslate">fg</code>，<code class="notranslate">bg</code>，<code class="notranslate">kill</code> 等。</p>
+</li>
+<li>
+<p>学会使用 <code class="notranslate">ssh</code> 进行远程命令行登录，最好知道如何使用 <code class="notranslate">ssh-agent</code>，<code class="notranslate">ssh-add</code> 等命令来实现基础的无密码认证登录。</p>
+</li>
+<li>
+<p>学会基本的文件管理工具：<code class="notranslate">ls</code> 和 <code class="notranslate">ls -l</code> （了解 <code class="notranslate">ls -l</code> 中每一列代表的意义），<code class="notranslate">less</code>，<code class="notranslate">head</code>，<code class="notranslate">tail</code> 和 <code class="notranslate">tail -f</code> （甚至 <code class="notranslate">less +F</code>），<code class="notranslate">ln</code> 和 <code class="notranslate">ln -s</code> （了解硬链接与软链接的区别），<code class="notranslate">chown</code>，<code class="notranslate">chmod</code>，<code class="notranslate">du</code> （硬盘使用情况概述：<code class="notranslate">du -hs *</code>）。 关于文件系统的管理，学习 <code class="notranslate">df</code>，<code class="notranslate">mount</code>，<code class="notranslate">fdisk</code>，<code class="notranslate">mkfs</code>，<code class="notranslate">lsblk</code>。知道 inode 是什么（与 <code class="notranslate">ls -i</code> 和 <code class="notranslate">df -i</code> 等命令相关）。</p>
+</li>
+<li>
+<p>学习基本的网络管理工具：<code class="notranslate">ip</code> 或 <code class="notranslate">ifconfig</code>，<code class="notranslate">dig</code>。</p>
+</li>
+<li>
+<p>学习并使用一种版本控制管理系统，例如 <code class="notranslate">git</code>。</p>
+</li>
+<li>
+<p>熟悉正则表达式，学会使用 <code class="notranslate">grep</code>／<code class="notranslate">egrep</code>，它们的参数中 <code class="notranslate">-i</code>，<code class="notranslate">-o</code>，<code class="notranslate">-v</code>，<code class="notranslate">-A</code>，<code class="notranslate">-B</code> 和 <code class="notranslate">-C</code> 这些是很常用并值得认真学习的。</p>
+</li>
+<li>
+<p>学会使用 <code class="notranslate">apt-get</code>，<code class="notranslate">yum</code>，<code class="notranslate">dnf</code> 或 <code class="notranslate">pacman</code> （具体使用哪个取决于你使用的 Linux 发行版）来查找和安装软件包。并确保你的环境中有 <code class="notranslate">pip</code> 来安装基于 Python 的命令行工具 （接下来提到的部分程序使用 <code class="notranslate">pip</code> 来安装会很方便）。</p>
+</li>
+</ul>
+<h2>日常使用</h2>
+<ul>
+<li>
+<p>在 Bash 中，可以通过按 <strong>Tab</strong> 键实现自动补全参数，使用 <strong>ctrl-r</strong> 搜索命令行历史记录（按下按键之后，输入关键字便可以搜索，重复按下 <strong>ctrl-r</strong> 会向后查找匹配项，按下 <strong>Enter</strong> 键会执行当前匹配的命令，而按下右方向键会将匹配项放入当前行中，不会直接执行，以便做出修改）。</p>
+</li>
+<li>
+<p>在 Bash 中，可以按下 <strong>ctrl-w</strong> 删除你键入的最后一个单词，<strong>ctrl-u</strong> 可以删除行内光标所在位置之前的内容，<strong>alt-b</strong> 和 <strong>alt-f</strong> 可以以单词为单位移动光标，<strong>ctrl-a</strong> 可以将光标移至行首，<strong>ctrl-e</strong> 可以将光标移至行尾，<strong>ctrl-k</strong> 可以删除光标至行尾的所有内容，<strong>ctrl-l</strong> 可以清屏。键入 <code class="notranslate">man readline</code> 可以查看 Bash 中的默认快捷键。内容有很多，例如 <strong>alt-.</strong> 循环地移向前一个参数，而 <strong>alt-</strong>* 可以展开通配符。</p>
+</li>
+<li>
+<p>你喜欢的话，可以执行 <code class="notranslate">set -o vi</code> 来使用 vi 风格的快捷键，而执行 <code class="notranslate">set -o emacs</code> 可以把它改回来。</p>
+</li>
+<li>
+<p>为了便于编辑长命令，在设置你的默认编辑器后（例如 <code class="notranslate">export EDITOR=vim</code>），<strong>ctrl-x</strong> <strong>ctrl-e</strong> 会打开一个编辑器来编辑当前输入的命令。在 vi 风格下快捷键则是 <strong>escape-v</strong>。</p>
+</li>
+<li>
+<p>键入 <code class="notranslate">history</code> 查看命令行历史记录，再用 <code class="notranslate">!n</code>（<code class="notranslate">n</code> 是命令编号）就可以再次执行。其中有许多缩写，最有用的大概就是 <code class="notranslate">!$</code>， 它用于指代上次键入的参数，而 <code class="notranslate">!!</code> 可以指代上次键入的命令了（参考 man 页面中的“HISTORY EXPANSION”）。不过这些功能，你也可以通过快捷键 <strong>ctrl-r</strong> 和 <strong>alt-.</strong> 来实现。</p>
+</li>
+<li>
+<p><code class="notranslate">cd</code> 命令可以切换工作路径，输入 <code class="notranslate">cd ~</code> 可以进入 home 目录。要访问你的 home 目录中的文件，可以使用前缀 <code class="notranslate">~</code>（例如 <code class="notranslate">~/.bashrc</code>）。在 <code class="notranslate">sh</code> 脚本里则用环境变量 <code class="notranslate">$HOME</code> 指代 home 目录的路径。</p>
+</li>
+<li>
+<p>回到前一个工作路径：<code class="notranslate">cd -</code>。</p>
+</li>
+<li>
+<p>如果你输入命令的时候中途改了主意，按下 <strong>alt-#</strong> 在行首添加 <code class="notranslate">#</code> 把它当做注释再按下回车执行（或者依次按下 <strong>ctrl-a</strong>， <strong>#</strong>， <strong>enter</strong>）。这样做的话，之后借助命令行历史记录，你可以很方便恢复你刚才输入到一半的命令。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">xargs</code> （ 或 <code class="notranslate">parallel</code>）。他们非常给力。注意到你可以控制每行参数个数（<code class="notranslate">-L</code>）和最大并行数（<code class="notranslate">-P</code>）。如果你不确定它们是否会按你想的那样工作，先使用 <code class="notranslate">xargs echo</code> 查看一下。此外，使用 <code class="notranslate">-I{}</code> 会很方便。例如：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      find <span class="pl-c1">.</span> -name <span class="pl-s"><span class="pl-pds">'</span>*.py<span class="pl-pds">'</span></span> <span class="pl-k">|</span> xargs grep some_function
+      cat hosts <span class="pl-k">|</span> xargs -I{} ssh root@{} hostname</pre></div>
+<ul>
+<li>
+<p><code class="notranslate">pstree -p</code> 以一种优雅的方式展示进程树。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">pgrep</code> 和 <code class="notranslate">pkill</code> 根据名字查找进程或发送信号（<code class="notranslate">-f</code> 参数通常有用）。</p>
+</li>
+<li>
+<p>了解你可以发往进程的信号的种类。比如，使用 <code class="notranslate">kill -STOP [pid]</code> 停止一个进程。使用 <code class="notranslate">man 7 signal</code> 查看详细列表。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">nohup</code> 或 <code class="notranslate">disown</code> 使一个后台进程持续运行。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">netstat -lntp</code> 或 <code class="notranslate">ss -plat</code> 检查哪些进程在监听端口（默认是检查 TCP 端口; 添加参数 <code class="notranslate">-u</code> 则检查 UDP 端口）或者 <code class="notranslate">lsof -iTCP -sTCP:LISTEN -P -n</code> (这也可以在 OS X 上运行)。</p>
+</li>
+<li>
+<p><code class="notranslate">lsof</code> 来查看开启的套接字和文件。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">uptime</code> 或 <code class="notranslate">w</code> 来查看系统已经运行多长时间。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">alias</code> 来创建常用命令的快捷形式。例如：<code class="notranslate">alias ll='ls -latr'</code> 创建了一个新的命令别名 <code class="notranslate">ll</code>。</p>
+</li>
+<li>
+<p>可以把别名、shell 选项和常用函数保存在 <code class="notranslate">~/.bashrc</code>，具体看下这篇<a href="http://superuser.com/a/183980/7106" rel="nofollow">文章</a>。这样做的话你就可以在所有 shell 会话中使用你的设定。</p>
+</li>
+<li>
+<p>把环境变量的设定以及登陆时要执行的命令保存在 <code class="notranslate">~/.bash_profile</code>。而对于从图形界面启动的 shell 和 <code class="notranslate">cron</code> 启动的 shell，则需要单独配置文件。</p>
+</li>
+<li>
+<p>要想在几台电脑中同步你的配置文件（例如 <code class="notranslate">.bashrc</code> 和 <code class="notranslate">.bash_profile</code>），可以借助 Git。</p>
+</li>
+<li>
+<p>当变量和文件名中包含空格的时候要格外小心。Bash 变量要用引号括起来，比如 <code class="notranslate">"$FOO"</code>。尽量使用 <code class="notranslate">-0</code> 或 <code class="notranslate">-print0</code> 选项以便用 NULL 来分隔文件名，例如 <code class="notranslate">locate -0 pattern | xargs -0 ls -al</code> 或 <code class="notranslate">find / -print0 -type d | xargs -0 ls -al</code>。如果 for 循环中循环访问的文件名含有空字符（空格、tab 等字符），只需用 <code class="notranslate">IFS=$'\n'</code> 把内部字段分隔符设为换行符。</p>
+</li>
+<li>
+<p>在 Bash 脚本中，使用 <code class="notranslate">set -x</code> 去调试输出（或者使用它的变体 <code class="notranslate">set -v</code>，它会记录原始输入，包括多余的参数和注释）。尽可能地使用严格模式：使用 <code class="notranslate">set -e</code> 令脚本在发生错误时退出而不是继续运行；使用 <code class="notranslate">set -u</code> 来检查是否使用了未赋值的变量；试试 <code class="notranslate">set -o pipefail</code>，它可以监测管道中的错误。当牵扯到很多脚本时，使用 <code class="notranslate">trap</code> 来检测 ERR 和 EXIT。一个好的习惯是在脚本文件开头这样写，这会使它能够检测一些错误，并在错误发生时中断程序并输出信息：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c1">set</span> -euo pipefail
+      <span class="pl-c1">trap</span> <span class="pl-s"><span class="pl-pds">"</span>echo 'error: Script failed: see failed command above'<span class="pl-pds">"</span></span> ERR</pre></div>
+<ul>
+<li>在 Bash 脚本中，子 shell（使用括号 <code class="notranslate">(...)</code>）是一种组织参数的便捷方式。一个常见的例子是临时地移动工作路径，代码如下：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c"><span class="pl-c">#</span> do something in current dir</span>
+      (cd /some/other/dir <span class="pl-k">&amp;&amp;</span> other-command)
+      <span class="pl-c"><span class="pl-c">#</span> continue in original dir</span></pre></div>
+<ul>
+<li>
+<p>在 Bash 中，变量有许多的扩展方式。<code class="notranslate">${name:?error message}</code> 用于检查变量是否存在。此外，当 Bash 脚本只需要一个参数时，可以使用这样的代码 <code class="notranslate">input_file=${1:?usage: $0 input_file}</code>。在变量为空时使用默认值：<code class="notranslate">${name:-default}</code>。如果你要在之前的例子中再加一个（可选的）参数，可以使用类似这样的代码 <code class="notranslate">output_file=${2:-logfile}</code>，如果省略了 $2，它的值就为空，于是 <code class="notranslate">output_file</code> 就会被设为 <code class="notranslate">logfile</code>。数学表达式：<code class="notranslate">i=$(( (i + 1) % 5 ))</code>。序列：<code class="notranslate">{1..10}</code>。截断字符串：<code class="notranslate">${var%suffix}</code> 和 <code class="notranslate">${var#prefix}</code>。例如，假设 <code class="notranslate">var=foo.pdf</code>，那么 <code class="notranslate">echo ${var%.pdf}.txt</code> 将输出 <code class="notranslate">foo.txt</code>。</p>
+</li>
+<li>
+<p>使用括号扩展（<code class="notranslate">{</code>...<code class="notranslate">}</code>）来减少输入相似文本，并自动化文本组合。这在某些情况下会很有用，例如 <code class="notranslate">mv foo.{txt,pdf} some-dir</code>（同时移动两个文件），<code class="notranslate">cp somefile{,.bak}</code>（会被扩展成 <code class="notranslate">cp somefile somefile.bak</code>）或者 <code class="notranslate">mkdir -p test-{a,b,c}/subtest-{1,2,3}</code>（会被扩展成所有可能的组合，并创建一个目录树）。</p>
+</li>
+<li>
+<p>通过使用 <code class="notranslate">&lt;(some command)</code> 可以将输出视为文件。例如，对比本地文件 <code class="notranslate">/etc/hosts</code> 和一个远程文件：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      diff /etc/hosts <span class="pl-s"><span class="pl-pds">&lt;(</span>ssh somehost cat /etc/hosts<span class="pl-pds">)</span></span></pre></div>
+<ul>
+<li>编写脚本时，你可能会想要把代码都放在大括号里。缺少右括号的话，代码就会因为语法错误而无法执行。如果你的脚本是要放在网上分享供他人使用的，这样的写法就体现出它的好处了，因为这样可以防止下载不完全代码被执行。</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">{
+      <span class="pl-c"><span class="pl-c">#</span> 在这里写代码</span>
+}</pre></div>
+<ul>
+<li>
+<p>了解 Bash 中的“here documents”，例如 <code class="notranslate">cat &lt;&lt;EOF ...</code>。</p>
+</li>
+<li>
+<p>在 Bash 中，同时重定向标准输出和标准错误：<code class="notranslate">some-command &gt;logfile 2&gt;&amp;1</code> 或者 <code class="notranslate">some-command &amp;&gt;logfile</code>。通常，为了保证命令不会在标准输入里残留一个未关闭的文件句柄捆绑在你当前所在的终端上，在命令后添加 <code class="notranslate">&lt;/dev/null</code> 是一个好习惯。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">man ascii</code> 查看具有十六进制和十进制值的ASCII表。<code class="notranslate">man unicode</code>，<code class="notranslate">man utf-8</code>，以及 <code class="notranslate">man latin1</code> 有助于你去了解通用的编码信息。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">screen</code> 或 <a href="https://tmux.github.io/" rel="nofollow"><code class="notranslate">tmux</code></a> 来使用多份屏幕，当你在使用 ssh 时（保存 session 信息）将尤为有用。而 <code class="notranslate">byobu</code> 可以为它们提供更多的信息和易用的管理工具。另一个轻量级的 session 持久化解决方案是 <a href="https://github.com/bogner/dtach"><code class="notranslate">dtach</code></a>。</p>
+</li>
+<li>
+<p>ssh 中，了解如何使用 <code class="notranslate">-L</code> 或 <code class="notranslate">-D</code>（偶尔需要用 <code class="notranslate">-R</code>）开启隧道是非常有用的，比如当你需要从一台远程服务器上访问 web 页面。</p>
+</li>
+<li>
+<p>对 ssh 设置做一些小优化可能是很有用的，例如这个 <code class="notranslate">~/.ssh/config</code> 文件包含了防止特定网络环境下连接断开、压缩数据、多通道等选项：</p>
+</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">      TCPKeepAlive=yes
+      ServerAliveInterval=15
+      ServerAliveCountMax=6
+      Compression=yes
+      ControlMaster auto
+      ControlPath /tmp/%r@%h:%p
+      ControlPersist yes
+</code></pre>
+<ul>
+<li>
+<p>一些其他的关于 ssh 的选项是与安全相关的，应当小心翼翼的使用。例如你应当只能在可信任的网络中启用 <code class="notranslate">StrictHostKeyChecking=no</code>，<code class="notranslate">ForwardAgent=yes</code>。</p>
+</li>
+<li>
+<p>考虑使用 <a href="https://mosh.org/" rel="nofollow"><code class="notranslate">mosh</code></a> 作为 ssh 的替代品，它使用 UDP 协议。它可以避免连接被中断并且对带宽需求更小，但它需要在服务端做相应的配置。</p>
+</li>
+<li>
+<p>获取八进制形式的文件访问权限（修改系统设置时通常需要，但 <code class="notranslate">ls</code> 的功能不那么好用并且通常会搞砸），可以使用类似如下的代码：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      stat -c <span class="pl-s"><span class="pl-pds">'</span>%A %a %n<span class="pl-pds">'</span></span> /etc/timezone</pre></div>
+<ul>
+<li>
+<p>使用 <a href="https://github.com/mooz/percol"><code class="notranslate">percol</code></a> 或者 <a href="https://github.com/junegunn/fzf"><code class="notranslate">fzf</code></a> 可以交互式地从另一个命令输出中选取值。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">fpp</code>（<a href="https://github.com/facebook/PathPicker">PathPicker</a>）可以与基于另一个命令(例如 <code class="notranslate">git</code>）输出的文件交互。</p>
+</li>
+<li>
+<p>将 web 服务器上当前目录下所有的文件（以及子目录）暴露给你所处网络的所有用户，使用：<br>
+<code class="notranslate">python -m SimpleHTTPServer 7777</code> （使用端口 7777 和 Python 2）或<code class="notranslate">python -m http.server 7777</code> （使用端口 7777 和 Python 3）。</p>
+</li>
+<li>
+<p>以其他用户的身份执行命令，使用 <code class="notranslate">sudo</code>。默认以 root 用户的身份执行；使用 <code class="notranslate">-u</code> 来指定其他用户。使用 <code class="notranslate">-i</code> 来以该用户登录（需要输入_你自己的_密码）。</p>
+</li>
+<li>
+<p>将 shell 切换为其他用户，使用 <code class="notranslate">su username</code> 或者 <code class="notranslate">su - username</code>。加入 <code class="notranslate">-</code> 会使得切换后的环境与使用该用户登录后的环境相同。省略用户名则默认为 root。切换到哪个用户，就需要输入_哪个用户的_密码。</p>
+</li>
+<li>
+<p>了解命令行的 <a href="https://wiki.debian.org/CommonErrorMessages/ArgumentListTooLong" rel="nofollow">128K 限制</a>。使用通配符匹配大量文件名时，常会遇到“Argument list too long”的错误信息。（这种情况下换用 <code class="notranslate">find</code> 或 <code class="notranslate">xargs</code> 通常可以解决。）</p>
+</li>
+<li>
+<p>当你需要一个基本的计算器时，可以使用 <code class="notranslate">python</code> 解释器（当然你要用 python 的时候也是这样）。例如：</p>
+</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">&gt;&gt;&gt; 2+3
+5
+</code></pre>
+<h2>文件及数据处理</h2>
+<ul>
+<li>
+<p>在当前目录下通过文件名查找一个文件，使用类似于这样的命令：<code class="notranslate">find . -iname '*something*'</code>。在所有路径下通过文件名查找文件，使用 <code class="notranslate">locate something</code> （但注意到 <code class="notranslate">updatedb</code> 可能没有对最近新建的文件建立索引，所以你可能无法定位到这些未被索引的文件）。</p>
+</li>
+<li>
+<p>使用 <a href="https://github.com/ggreer/the_silver_searcher"><code class="notranslate">ag</code></a> 在源代码或数据文件里检索（<code class="notranslate">grep -r</code> 同样可以做到，但相比之下 <code class="notranslate">ag</code> 更加先进）。</p>
+</li>
+<li>
+<p>将 HTML 转为文本：<code class="notranslate">lynx -dump -stdin</code>。</p>
+</li>
+<li>
+<p>Markdown，HTML，以及所有文档格式之间的转换，试试 <a href="http://pandoc.org/" rel="nofollow"><code class="notranslate">pandoc</code></a>。</p>
+</li>
+<li>
+<p>当你要处理棘手的 XML 时候，<code class="notranslate">xmlstarlet</code> 算是上古时代流传下来的神器。</p>
+</li>
+<li>
+<p>使用 <a href="http://stedolan.github.io/jq/" rel="nofollow"><code class="notranslate">jq</code></a> 处理 JSON。</p>
+</li>
+<li>
+<p>使用 <a href="https://github.com/0k/shyaml"><code class="notranslate">shyaml</code></a> 处理 YAML。</p>
+</li>
+<li>
+<p>要处理 Excel 或 CSV 文件的话，<a href="https://github.com/onyxfish/csvkit">csvkit</a> 提供了 <code class="notranslate">in2csv</code>，<code class="notranslate">csvcut</code>，<code class="notranslate">csvjoin</code>，<code class="notranslate">csvgrep</code> 等方便易用的工具。</p>
+</li>
+<li>
+<p>当你要处理 Amazon S3 相关的工作的时候，<a href="https://github.com/s3tools/s3cmd"><code class="notranslate">s3cmd</code></a> 是一个很方便的工具而 <a href="https://github.com/bloomreach/s4cmd"><code class="notranslate">s4cmd</code></a> 的效率更高。Amazon 官方提供的 <a href="https://github.com/aws/aws-cli"><code class="notranslate">aws</code></a> 以及  <a href="https://github.com/donnemartin/saws"><code class="notranslate">saws</code></a> 是其他 AWS 相关工作的基础，值得学习。</p>
+</li>
+<li>
+<p>了解如何使用 <code class="notranslate">sort</code> 和 <code class="notranslate">uniq</code>，包括 uniq 的 <code class="notranslate">-u</code> 参数和 <code class="notranslate">-d</code> 参数，具体内容在后文单行脚本节中。另外可以了解一下 <code class="notranslate">comm</code>。</p>
+</li>
+<li>
+<p>了解如何使用 <code class="notranslate">cut</code>，<code class="notranslate">paste</code> 和 <code class="notranslate">join</code> 来更改文件。很多人都会使用 <code class="notranslate">cut</code>，但遗忘了 <code class="notranslate">join</code>。</p>
+</li>
+<li>
+<p>了解如何运用 <code class="notranslate">wc</code> 去计算新行数（<code class="notranslate">-l</code>），字符数（<code class="notranslate">-m</code>），单词数（<code class="notranslate">-w</code>）以及字节数（<code class="notranslate">-c</code>）。</p>
+</li>
+<li>
+<p>了解如何使用 <code class="notranslate">tee</code> 将标准输入复制到文件甚至标准输出，例如 <code class="notranslate">ls -al | tee file.txt</code>。</p>
+</li>
+<li>
+<p>要进行一些复杂的计算，比如分组、逆序和一些其他的统计分析，可以考虑使用 <a href="https://www.gnu.org/software/datamash/" rel="nofollow"><code class="notranslate">datamash</code></a>。</p>
+</li>
+<li>
+<p>注意到语言设置（中文或英文等）对许多命令行工具有一些微妙的影响，比如排序的顺序和性能。大多数 Linux 的安装过程会将 <code class="notranslate">LANG</code> 或其他有关的变量设置为符合本地的设置。要意识到当你改变语言设置时，排序的结果可能会改变。明白国际化可能会使 sort 或其他命令运行效率下降<em>许多倍</em>。某些情况下（例如集合运算）你可以放心的使用 <code class="notranslate">export LC_ALL=C</code> 来忽略掉国际化并按照字节来判断顺序。</p>
+</li>
+<li>
+<p>你可以单独指定某一条命令的环境，只需在调用时把环境变量设定放在命令的前面，例如 <code class="notranslate">TZ=Pacific/Fiji date</code> 可以获取斐济的时间。</p>
+</li>
+<li>
+<p>了解如何使用 <code class="notranslate">awk</code> 和 <code class="notranslate">sed</code> 来进行简单的数据处理。 参阅 <a href="#one-liners">One-liners</a> 获取示例。</p>
+</li>
+<li>
+<p>替换一个或多个文件中出现的字符串：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      perl -pi.bak -e <span class="pl-s"><span class="pl-pds">'</span>s/old-string/new-string/g<span class="pl-pds">'</span></span> my-files-<span class="pl-k">*</span>.txt</pre></div>
+<ul>
+<li>使用 <a href="https://github.com/jlevy/repren"><code class="notranslate">repren</code></a> 来批量重命名文件，或是在多个文件中搜索替换内容。（有些时候 <code class="notranslate">rename</code> 命令也可以批量重命名，但要注意，它在不同 Linux 发行版中的功能并不完全一样。）</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c"><span class="pl-c">#</span> 将文件、目录和内容全部重命名 foo -&gt; bar:</span>
+      repren --full --preserve-case --from foo --to bar <span class="pl-c1">.</span>
+      <span class="pl-c"><span class="pl-c">#</span> 还原所有备份文件 whatever.bak -&gt; whatever:</span>
+      repren --renames --from <span class="pl-s"><span class="pl-pds">'</span>(.*)\.bak<span class="pl-pds">'</span></span> --to <span class="pl-s"><span class="pl-pds">'</span>\1<span class="pl-pds">'</span></span> <span class="pl-k">*</span>.bak
+      <span class="pl-c"><span class="pl-c">#</span> 用 rename 实现上述功能（若可用）:</span>
+      rename <span class="pl-s"><span class="pl-pds">'</span>s/\.bak$//<span class="pl-pds">'</span></span> <span class="pl-k">*</span>.bak</pre></div>
+<ul>
+<li>根据 man 页面的描述，<code class="notranslate">rsync</code> 是一个快速且非常灵活的文件复制工具。它闻名于设备之间的文件同步，但其实它在本地情况下也同样有用。在安全设置允许下，用 <code class="notranslate">rsync</code> 代替 <code class="notranslate">scp</code> 可以实现文件续传，而不用重新从头开始。它同时也是删除大量文件的<a href="https://web.archive.org/web/20130929001850/http://linuxnote.net/jianingy/en/linux/a-fast-way-to-remove-huge-number-of-files.html" rel="nofollow">最快方法</a>之一：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir empty <span class="pl-k">&amp;&amp;</span> rsync -r --delete empty/ some-dir <span class="pl-k">&amp;&amp;</span> rmdir some-dir</pre></div>
+<ul>
+<li>
+<p>若要在复制文件时获取当前进度，可使用 <code class="notranslate">pv</code>，<a href="https://github.com/dmerejkowsky/pycp"><code class="notranslate">pycp</code></a>，<a href="https://github.com/Xfennec/progress"><code class="notranslate">progress</code></a>，<code class="notranslate">rsync --progress</code>。若所执行的复制为block块拷贝，可以使用 <code class="notranslate">dd status=progress</code>。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">shuf</code> 可以以行为单位来打乱文件的内容或从一个文件中随机选取多行。</p>
+</li>
+<li>
+<p>了解 <code class="notranslate">sort</code> 的参数。显示数字时，使用 <code class="notranslate">-n</code> 或者 <code class="notranslate">-h</code> 来显示更易读的数（例如 <code class="notranslate">du -h</code> 的输出）。明白排序时关键字的工作原理（<code class="notranslate">-t</code> 和 <code class="notranslate">-k</code>）。例如，注意到你需要 <code class="notranslate">-k1，1</code> 来仅按第一个域来排序，而 <code class="notranslate">-k1</code> 意味着按整行排序。稳定排序（<code class="notranslate">sort -s</code>）在某些情况下很有用。例如，以第二个域为主关键字，第一个域为次关键字进行排序，你可以使用 <code class="notranslate">sort -k1，1 | sort -s -k2，2</code>。</p>
+</li>
+<li>
+<p>如果你想在 Bash 命令行中写 tab 制表符，按下 <strong>ctrl-v</strong> <strong>[Tab]</strong> 或键入 <code class="notranslate">$'\t'</code> （后者可能更好，因为你可以复制粘贴它）。</p>
+</li>
+<li>
+<p>标准的源代码对比及合并工具是 <code class="notranslate">diff</code> 和 <code class="notranslate">patch</code>。使用 <code class="notranslate">diffstat</code> 查看变更总览数据。注意到 <code class="notranslate">diff -r</code> 对整个文件夹有效。使用 <code class="notranslate">diff -r tree1 tree2 | diffstat</code> 查看变更的统计数据。<code class="notranslate">vimdiff</code> 用于比对并编辑文件。</p>
+</li>
+<li>
+<p>对于二进制文件，使用 <code class="notranslate">hd</code>，<code class="notranslate">hexdump</code> 或者 <code class="notranslate">xxd</code> 使其以十六进制显示，使用 <code class="notranslate">bvi</code>，<code class="notranslate">hexedit</code> 或者 <code class="notranslate">biew</code> 来进行二进制编辑。</p>
+</li>
+<li>
+<p>同样对于二进制文件，<code class="notranslate">strings</code>（包括 <code class="notranslate">grep</code> 等工具）可以帮助在二进制文件中查找特定比特。</p>
+</li>
+<li>
+<p>制作二进制差分文件（Delta 压缩），使用 <code class="notranslate">xdelta3</code>。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">iconv</code> 更改文本编码。需要更高级的功能，可以使用 <code class="notranslate">uconv</code>，它支持一些高级的 Unicode 功能。例如，这条命令移除了所有重音符号：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      uconv -f utf-8 -t utf-8 -x <span class="pl-s"><span class="pl-pds">'</span>::Any-Lower; ::Any-NFD; [:Nonspacing Mark:] &gt;; ::Any-NFC; <span class="pl-pds">'</span></span> <span class="pl-k">&lt;</span> input.txt <span class="pl-k">&gt;</span> output.txt</pre></div>
+<ul>
+<li>
+<p>拆分文件可以使用 <code class="notranslate">split</code>（按大小拆分）和 <code class="notranslate">csplit</code>（按模式拆分）。</p>
+</li>
+<li>
+<p>操作日期和时间表达式，可以用 <a href="http://www.fresse.org/dateutils/" rel="nofollow"><code class="notranslate">dateutils</code></a> 中的 <code class="notranslate">dateadd</code>、<code class="notranslate">datediff</code>、<code class="notranslate">strptime</code> 等工具。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">zless</code>、<code class="notranslate">zmore</code>、<code class="notranslate">zcat</code> 和 <code class="notranslate">zgrep</code> 对压缩过的文件进行操作。</p>
+</li>
+<li>
+<p>文件属性可以通过 <code class="notranslate">chattr</code> 进行设置，它比文件权限更加底层。例如，为了保护文件不被意外删除，可以使用不可修改标记：<code class="notranslate">sudo chattr +i /critical/directory/or/file</code></p>
+</li>
+<li>
+<p>使用 <code class="notranslate">getfacl</code> 和 <code class="notranslate">setfacl</code> 以保存和恢复文件权限。例如：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">   getfacl -R /some/path <span class="pl-k">&gt;</span> permissions.txt
+   setfacl --restore=permissions.txt</pre></div>
+<ul>
+<li>为了高效地创建空文件，请使用 <code class="notranslate">truncate</code>（创建<a href="https://zh.wikipedia.org/wiki/%E7%A8%80%E7%96%8F%E6%96%87%E4%BB%B6" rel="nofollow">稀疏文件</a>），<code class="notranslate">fallocate</code>（用于 ext4，xfs，btrf 和 ocfs2 文件系统），<code class="notranslate">xfs_mkfile</code>（适用于几乎所有的文件系统，包含在 xfsprogs 包中），<code class="notranslate">mkfile</code>（用于类 Unix 操作系统，比如 Solaris 和 Mac OS）。</li>
+</ul>
+<h2>系统调试</h2>
+<ul>
+<li>
+<p><code class="notranslate">curl</code> 和 <code class="notranslate">curl -I</code> 可以被轻松地应用于 web 调试中，它们的好兄弟 <code class="notranslate">wget</code> 也是如此，或者也可以试试更潮的 <a href="https://github.com/jkbrzt/httpie"><code class="notranslate">httpie</code></a>。</p>
+</li>
+<li>
+<p>获取 CPU 和硬盘的使用状态，通常使用使用 <code class="notranslate">top</code>（<code class="notranslate">htop</code> 更佳），<code class="notranslate">iostat</code> 和 <code class="notranslate">iotop</code>。而 <code class="notranslate">iostat -mxz 15</code> 可以让你获悉 CPU 和每个硬盘分区的基本信息和性能表现。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">netstat</code> 和 <code class="notranslate">ss</code> 查看网络连接的细节。</p>
+</li>
+<li>
+<p><code class="notranslate">dstat</code> 在你想要对系统的现状有一个粗略的认识时是非常有用的。然而若要对系统有一个深度的总体认识，使用 <a href="https://github.com/nicolargo/glances"><code class="notranslate">glances</code></a>，它会在一个终端窗口中向你提供一些系统级的数据。</p>
+</li>
+<li>
+<p>若要了解内存状态，运行并理解 <code class="notranslate">free</code> 和 <code class="notranslate">vmstat</code> 的输出。值得留意的是“cached”的值，它指的是 Linux 内核用来作为文件缓存的内存大小，而与空闲内存无关。</p>
+</li>
+<li>
+<p>Java 系统调试则是一件截然不同的事，一个可以用于 Oracle 的 JVM 或其他 JVM 上的调试的技巧是你可以运行 <code class="notranslate">kill -3 &lt;pid&gt;</code> 同时一个完整的栈轨迹和堆概述（包括 GC 的细节）会被保存到标准错误或是日志文件。JDK 中的 <code class="notranslate">jps</code>，<code class="notranslate">jstat</code>，<code class="notranslate">jstack</code>，<code class="notranslate">jmap</code> 很有用。<a href="https://github.com/aragozin/jvm-tools">SJK tools</a> 更高级。</p>
+</li>
+<li>
+<p>使用 <a href="http://www.bitwizard.nl/mtr/" rel="nofollow"><code class="notranslate">mtr</code></a> 去跟踪路由，用于确定网络问题。</p>
+</li>
+<li>
+<p>用 <a href="https://dev.yorhel.nl/ncdu" rel="nofollow"><code class="notranslate">ncdu</code></a> 来查看磁盘使用情况，它比寻常的命令，如 <code class="notranslate">du -sh *</code>，更节省时间。</p>
+</li>
+<li>
+<p>查找正在使用带宽的套接字连接或进程，使用 <a href="http://www.ex-parrot.com/~pdw/iftop/" rel="nofollow"><code class="notranslate">iftop</code></a> 或 <a href="https://github.com/raboof/nethogs"><code class="notranslate">nethogs</code></a>。</p>
+</li>
+<li>
+<p><code class="notranslate">ab</code> 工具（Apache 中自带）可以简单粗暴地检查 web 服务器的性能。对于更复杂的负载测试，使用 <code class="notranslate">siege</code>。</p>
+</li>
+<li>
+<p><a href="https://wireshark.org/" rel="nofollow"><code class="notranslate">wireshark</code></a>，<a href="https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html" rel="nofollow"><code class="notranslate">tshark</code></a> 和 <a href="http://ngrep.sourceforge.net/" rel="nofollow"><code class="notranslate">ngrep</code></a> 可用于复杂的网络调试。</p>
+</li>
+<li>
+<p>了解 <code class="notranslate">strace</code> 和 <code class="notranslate">ltrace</code>。这俩工具在你的程序运行失败、挂起甚至崩溃，而你却不知道为什么或你想对性能有个总体的认识的时候是非常有用的。注意 profile 参数（<code class="notranslate">-c</code>）和附加到一个运行的进程参数 （<code class="notranslate">-p</code>）。</p>
+</li>
+<li>
+<p>了解使用 <code class="notranslate">ldd</code> 来检查共享库。但是<a href="http://www.catonmat.net/blog/ldd-arbitrary-code-execution/" rel="nofollow">永远不要在不信任的文件上运行</a>。</p>
+</li>
+<li>
+<p>了解如何运用 <code class="notranslate">gdb</code> 连接到一个运行着的进程并获取它的堆栈轨迹。</p>
+</li>
+<li>
+<p>学会使用 <code class="notranslate">/proc</code>。它在调试正在出现的问题的时候有时会效果惊人。比如：<code class="notranslate">/proc/cpuinfo</code>，<code class="notranslate">/proc/meminfo</code>，<code class="notranslate">/proc/cmdline</code>，<code class="notranslate">/proc/xxx/cwd</code>，<code class="notranslate">/proc/xxx/exe</code>，<code class="notranslate">/proc/xxx/fd/</code>，<code class="notranslate">/proc/xxx/smaps</code>（这里的 <code class="notranslate">xxx</code> 表示进程的 id 或 pid）。</p>
+</li>
+<li>
+<p>当调试一些之前出现的问题的时候，<a href="http://sebastien.godard.pagesperso-orange.fr/" rel="nofollow"><code class="notranslate">sar</code></a> 非常有用。它展示了 cpu、内存以及网络等的历史数据。</p>
+</li>
+<li>
+<p>关于更深层次的系统分析以及性能分析，看看 <code class="notranslate">stap</code>（<a href="https://sourceware.org/systemtap/wiki" rel="nofollow">SystemTap</a>），<a href="https://en.wikipedia.org/wiki/Perf_(Linux)" rel="nofollow"><code class="notranslate">perf</code></a>，以及<a href="https://github.com/draios/sysdig"><code class="notranslate">sysdig</code></a>。</p>
+</li>
+<li>
+<p>查看你当前使用的系统，使用 <code class="notranslate">uname</code>，<code class="notranslate">uname -a</code>（Unix／kernel 信息）或者 <code class="notranslate">lsb_release -a</code>（Linux 发行版信息）。</p>
+</li>
+<li>
+<p>无论什么东西工作得很欢乐（可能是硬件或驱动问题）时可以试试 <code class="notranslate">dmesg</code>。</p>
+</li>
+<li>
+<p>如果你删除了一个文件，但通过 <code class="notranslate">du</code> 发现没有释放预期的磁盘空间，请检查文件是否被进程占用：<br>
+<code class="notranslate">lsof | grep deleted | grep "filename-of-my-big-file"</code></p>
+</li>
+</ul>
+<h2>单行脚本</h2>
+<p>一些命令组合的例子：</p>
+<ul>
+<li>当你需要对文本文件做集合交、并、差运算时，<code class="notranslate">sort</code> 和 <code class="notranslate">uniq</code> 会是你的好帮手。具体例子请参照代码后面的，此处假设 <code class="notranslate">a</code> 与 <code class="notranslate">b</code> 是两内容不同的文件。这种方式效率很高，并且在小文件和上 G 的文件上都能运用（注意尽管在 <code class="notranslate">/tmp</code> 在一个小的根分区上时你可能需要 <code class="notranslate">-T</code> 参数，但是实际上 <code class="notranslate">sort</code> 并不被内存大小约束），参阅前文中关于 <code class="notranslate">LC_ALL</code> 和 <code class="notranslate">sort</code> 的 <code class="notranslate">-u</code> 参数的部分。</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      sort a b <span class="pl-k">|</span> uniq <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a 并 b</span>
+      sort a b <span class="pl-k">|</span> uniq -d <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a 交 b</span>
+      sort a b b <span class="pl-k">|</span> uniq -u <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a - b</span></pre></div>
+<ul>
+<li>
+<p>使用 <code class="notranslate">grep . *</code>（每行都会附上文件名）或者 <code class="notranslate">head -100 *</code>（每个文件有一个标题）来阅读检查目录下所有文件的内容。这在检查一个充满配置文件的目录（如 <code class="notranslate">/sys</code>、<code class="notranslate">/proc</code>、<code class="notranslate">/etc</code>）时特别好用。</p>
+</li>
+<li>
+<p>计算文本文件第三列中所有数的和（可能比同等作用的 Python 代码快三倍且代码量少三倍）：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      awk <span class="pl-s"><span class="pl-pds">'</span>{ x += $3 } END { print x }<span class="pl-pds">'</span></span> myfile</pre></div>
+<ul>
+<li>如果你想在文件树上查看大小/日期，这可能看起来像递归版的 <code class="notranslate">ls -l</code> 但比 <code class="notranslate">ls -lR</code> 更易于理解：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      find <span class="pl-c1">.</span> -type f -ls</pre></div>
+<ul>
+<li>假设你有一个类似于 web 服务器日志文件的文本文件，并且一个确定的值只会出现在某些行上，假设一个 <code class="notranslate">acct_id</code> 参数在 URI 中。如果你想计算出每个 <code class="notranslate">acct_id</code> 值有多少次请求，使用如下代码：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      egrep -o <span class="pl-s"><span class="pl-pds">'</span>acct_id=[0-9]+<span class="pl-pds">'</span></span> access.log <span class="pl-k">|</span> cut -d= -f2 <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -rn</pre></div>
+<ul>
+<li>
+<p>要持续监测文件改动，可以使用 <code class="notranslate">watch</code>，例如检查某个文件夹中文件的改变，可以用 <code class="notranslate">watch -d -n 2 'ls -rtlh | tail'</code>；或者在排查 WiFi 设置故障时要监测网络设置的更改，可以用 <code class="notranslate">watch -d -n 2 ifconfig</code>。</p>
+</li>
+<li>
+<p>运行这个函数从这篇文档中随机获取一条技巧（解析 Markdown 文件并抽取项目）：</p>
+</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-k">function</span> <span class="pl-en">taocl()</span> {
+        curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-zh.md<span class="pl-k">|</span>
+          pandoc -f markdown -t html <span class="pl-k">|</span>
+          iconv -f <span class="pl-s"><span class="pl-pds">'</span>utf-8<span class="pl-pds">'</span></span> -t <span class="pl-s"><span class="pl-pds">'</span>unicode<span class="pl-pds">'</span></span> <span class="pl-k">|</span>
+          xmlstarlet fo --html --dropdtd <span class="pl-k">|</span>
+          xmlstarlet sel -t -v <span class="pl-s"><span class="pl-pds">"</span>(html/body/ul/li[count(p)&gt;0])[<span class="pl-smi">$RANDOM</span> mod last()+1]<span class="pl-pds">"</span></span> <span class="pl-k">|</span>
+          xmlstarlet unesc <span class="pl-k">|</span> fmt -80
+      }</pre></div>
+<h2>冷门但有用</h2>
+<ul>
+<li>
+<p><code class="notranslate">expr</code>：计算表达式或正则匹配</p>
+</li>
+<li>
+<p><code class="notranslate">m4</code>：简单的宏处理器</p>
+</li>
+<li>
+<p><code class="notranslate">yes</code>：多次打印字符串</p>
+</li>
+<li>
+<p><code class="notranslate">cal</code>：漂亮的日历</p>
+</li>
+<li>
+<p><code class="notranslate">env</code>：执行一个命令（脚本文件中很有用）</p>
+</li>
+<li>
+<p><code class="notranslate">printenv</code>：打印环境变量（调试时或在写脚本文件时很有用）</p>
+</li>
+<li>
+<p><code class="notranslate">look</code>：查找以特定字符串开头的单词或行</p>
+</li>
+<li>
+<p><code class="notranslate">cut</code>，<code class="notranslate">paste</code> 和 <code class="notranslate">join</code>：数据修改</p>
+</li>
+<li>
+<p><code class="notranslate">fmt</code>：格式化文本段落</p>
+</li>
+<li>
+<p><code class="notranslate">pr</code>：将文本格式化成页／列形式</p>
+</li>
+<li>
+<p><code class="notranslate">fold</code>：包裹文本中的几行</p>
+</li>
+<li>
+<p><code class="notranslate">column</code>：将文本格式化成多个对齐、定宽的列或表格</p>
+</li>
+<li>
+<p><code class="notranslate">expand</code> 和 <code class="notranslate">unexpand</code>：制表符与空格之间转换</p>
+</li>
+<li>
+<p><code class="notranslate">nl</code>：添加行号</p>
+</li>
+<li>
+<p><code class="notranslate">seq</code>：打印数字</p>
+</li>
+<li>
+<p><code class="notranslate">bc</code>：计算器</p>
+</li>
+<li>
+<p><code class="notranslate">factor</code>：分解因数</p>
+</li>
+<li>
+<p><a href="https://gnupg.org/" rel="nofollow"><code class="notranslate">gpg</code></a>：加密并签名文件</p>
+</li>
+<li>
+<p><code class="notranslate">toe</code>：terminfo 入口列表</p>
+</li>
+<li>
+<p><code class="notranslate">nc</code>：网络调试及数据传输</p>
+</li>
+<li>
+<p><code class="notranslate">socat</code>：套接字代理，与 <code class="notranslate">netcat</code> 类似</p>
+</li>
+<li>
+<p><a href="https://github.com/mattthias/slurm"><code class="notranslate">slurm</code></a>：网络流量可视化</p>
+</li>
+<li>
+<p><code class="notranslate">dd</code>：文件或设备间传输数据</p>
+</li>
+<li>
+<p><code class="notranslate">file</code>：确定文件类型</p>
+</li>
+<li>
+<p><code class="notranslate">tree</code>：以树的形式显示路径和文件，类似于递归的 <code class="notranslate">ls</code></p>
+</li>
+<li>
+<p><code class="notranslate">stat</code>：文件信息</p>
+</li>
+<li>
+<p><code class="notranslate">time</code>：执行命令，并计算执行时间</p>
+</li>
+<li>
+<p><code class="notranslate">timeout</code>：在指定时长范围内执行命令，并在规定时间结束后停止进程</p>
+</li>
+<li>
+<p><code class="notranslate">lockfile</code>：使文件只能通过 <code class="notranslate">rm -f</code> 移除</p>
+</li>
+<li>
+<p><code class="notranslate">logrotate</code>： 切换、压缩以及发送日志文件</p>
+</li>
+<li>
+<p><code class="notranslate">watch</code>：重复运行同一个命令，展示结果并／或高亮有更改的部分</p>
+</li>
+<li>
+<p><a href="https://github.com/joh/when-changed"><code class="notranslate">when-changed</code></a>：当检测到文件更改时执行指定命令。参阅 <code class="notranslate">inotifywait</code> 和 <code class="notranslate">entr</code>。</p>
+</li>
+<li>
+<p><code class="notranslate">tac</code>：反向输出文件</p>
+</li>
+<li>
+<p><code class="notranslate">shuf</code>：文件中随机选取几行</p>
+</li>
+<li>
+<p><code class="notranslate">comm</code>：一行一行的比较排序过的文件</p>
+</li>
+<li>
+<p><code class="notranslate">strings</code>：从二进制文件中抽取文本</p>
+</li>
+<li>
+<p><code class="notranslate">tr</code>：转换字母</p>
+</li>
+<li>
+<p><code class="notranslate">iconv</code> 或 <code class="notranslate">uconv</code>：文本编码转换</p>
+</li>
+<li>
+<p><code class="notranslate">split</code> 和 <code class="notranslate">csplit</code>：分割文件</p>
+</li>
+<li>
+<p><code class="notranslate">sponge</code>：在写入前读取所有输入，在读取文件后再向同一文件写入时比较有用，例如 <code class="notranslate">grep -v something some-file | sponge some-file</code></p>
+</li>
+<li>
+<p><code class="notranslate">units</code>：将一种计量单位转换为另一种等效的计量单位（参阅 <code class="notranslate">/usr/share/units/definitions.units</code>）</p>
+</li>
+<li>
+<p><code class="notranslate">apg</code>：随机生成密码</p>
+</li>
+<li>
+<p><code class="notranslate">xz</code>：高比例的文件压缩</p>
+</li>
+<li>
+<p><code class="notranslate">ldd</code>：动态库信息</p>
+</li>
+<li>
+<p><code class="notranslate">nm</code>：提取 obj 文件中的符号</p>
+</li>
+<li>
+<p><code class="notranslate">ab</code> 或 <a href="https://github.com/wg/wrk"><code class="notranslate">wrk</code></a>：web 服务器性能分析</p>
+</li>
+<li>
+<p><code class="notranslate">strace</code>：调试系统调用</p>
+</li>
+<li>
+<p><a href="http://www.bitwizard.nl/mtr/" rel="nofollow"><code class="notranslate">mtr</code></a>：更好的网络调试跟踪工具</p>
+</li>
+<li>
+<p><code class="notranslate">cssh</code>：可视化的并发 shell</p>
+</li>
+<li>
+<p><code class="notranslate">rsync</code>：通过 ssh 或本地文件系统同步文件和文件夹</p>
+</li>
+<li>
+<p><a href="https://wireshark.org/" rel="nofollow"><code class="notranslate">wireshark</code></a> 和 <a href="https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html" rel="nofollow"><code class="notranslate">tshark</code></a>：抓包和网络调试工具</p>
+</li>
+<li>
+<p><a href="http://ngrep.sourceforge.net/" rel="nofollow"><code class="notranslate">ngrep</code></a>：网络层的 grep</p>
+</li>
+<li>
+<p><code class="notranslate">host</code> 和 <code class="notranslate">dig</code>：DNS 查找</p>
+</li>
+<li>
+<p><code class="notranslate">lsof</code>：列出当前系统打开文件的工具以及查看端口信息</p>
+</li>
+<li>
+<p><code class="notranslate">dstat</code>：系统状态查看</p>
+</li>
+<li>
+<p><a href="https://github.com/nicolargo/glances"><code class="notranslate">glances</code></a>：高层次的多子系统总览</p>
+</li>
+<li>
+<p><code class="notranslate">iostat</code>：硬盘使用状态</p>
+</li>
+<li>
+<p><code class="notranslate">mpstat</code>： CPU 使用状态</p>
+</li>
+<li>
+<p><code class="notranslate">vmstat</code>： 内存使用状态</p>
+</li>
+<li>
+<p><code class="notranslate">htop</code>：top 的加强版</p>
+</li>
+<li>
+<p><code class="notranslate">last</code>：登入记录</p>
+</li>
+<li>
+<p><code class="notranslate">w</code>：查看处于登录状态的用户</p>
+</li>
+<li>
+<p><code class="notranslate">id</code>：用户/组 ID 信息</p>
+</li>
+<li>
+<p><a href="http://sebastien.godard.pagesperso-orange.fr/" rel="nofollow"><code class="notranslate">sar</code></a>：系统历史数据</p>
+</li>
+<li>
+<p><a href="http://www.ex-parrot.com/~pdw/iftop/" rel="nofollow"><code class="notranslate">iftop</code></a> 或 <a href="https://github.com/raboof/nethogs"><code class="notranslate">nethogs</code></a>：套接字及进程的网络利用情况</p>
+</li>
+<li>
+<p><code class="notranslate">ss</code>：套接字数据</p>
+</li>
+<li>
+<p><code class="notranslate">dmesg</code>：引导及系统错误信息</p>
+</li>
+<li>
+<p><code class="notranslate">sysctl</code>： 在内核运行时动态地查看和修改内核的运行参数</p>
+</li>
+<li>
+<p><code class="notranslate">hdparm</code>：SATA/ATA 磁盘更改及性能分析</p>
+</li>
+<li>
+<p><code class="notranslate">lsblk</code>：列出块设备信息：以树形展示你的磁盘以及磁盘分区信息</p>
+</li>
+<li>
+<p><code class="notranslate">lshw</code>，<code class="notranslate">lscpu</code>，<code class="notranslate">lspci</code>，<code class="notranslate">lsusb</code> 和 <code class="notranslate">dmidecode</code>：查看硬件信息，包括 CPU、BIOS、RAID、显卡、USB设备等</p>
+</li>
+<li>
+<p><code class="notranslate">lsmod</code> 和 <code class="notranslate">modinfo</code>：列出内核模块，并显示其细节</p>
+</li>
+<li>
+<p><code class="notranslate">fortune</code>，<code class="notranslate">ddate</code> 和 <code class="notranslate">sl</code>：额，这主要取决于你是否认为蒸汽火车和莫名其妙的名人名言是否“有用”</p>
+</li>
+</ul>
+<h2>仅限 OS X 系统</h2>
+<p>以下是<em>仅限于</em> OS X 系统的技巧。</p>
+<ul>
+<li>
+<p>用 <code class="notranslate">brew</code> （Homebrew）或者 <code class="notranslate">port</code> （MacPorts）进行包管理。这些可以用来在 OS X 系统上安装以上的大多数命令。</p>
+</li>
+<li>
+<p>用 <code class="notranslate">pbcopy</code> 复制任何命令的输出到桌面应用，用 <code class="notranslate">pbpaste</code> 粘贴输入。</p>
+</li>
+<li>
+<p>若要在 OS X 终端中将 Option 键视为 alt 键（例如在上面介绍的 <strong>alt-b</strong>、<strong>alt-f</strong> 等命令中用到），打开 偏好设置 -&gt; 描述文件 -&gt; 键盘 并勾选“使用 Option 键作为 Meta 键”。</p>
+</li>
+<li>
+<p>用 <code class="notranslate">open</code> 或者 <code class="notranslate">open -a /Applications/Whatever.app</code> 使用桌面应用打开文件。</p>
+</li>
+<li>
+<p>Spotlight：用 <code class="notranslate">mdfind</code> 搜索文件，用 <code class="notranslate">mdls</code> 列出元数据（例如照片的 EXIF 信息）。</p>
+</li>
+<li>
+<p>注意 OS X 系统是基于 BSD UNIX 的，许多命令（例如 <code class="notranslate">ps</code>，<code class="notranslate">ls</code>，<code class="notranslate">tail</code>，<code class="notranslate">awk</code>，<code class="notranslate">sed</code>）都和 Linux 中有微妙的不同（ Linux 很大程度上受到了 System V-style Unix 和 GNU 工具影响）。你可以通过标题为 "BSD General Commands Manual" 的 man 页面发现这些不同。在有些情况下 GNU 版本的命令也可能被安装（例如 <code class="notranslate">gawk</code> 和 <code class="notranslate">gsed</code> 对应 GNU 中的 awk 和 sed ）。如果要写跨平台的 Bash 脚本，避免使用这些命令（例如，考虑 Python 或者 <code class="notranslate">perl</code> ）或者经过仔细的测试。</p>
+</li>
+<li>
+<p>用 <code class="notranslate">sw_vers</code> 获取 OS X 的版本信息。</p>
+</li>
+</ul>
+<h2>仅限 Windows 系统</h2>
+<p>以下是<em>仅限于</em> Windows 系统的技巧。</p>
+<h3>在 Windows 下获取 Unix 工具</h3>
+<ul>
+<li>
+<p>可以安装 <a href="https://cygwin.com/" rel="nofollow">Cygwin</a> 允许你在 Microsoft Windows 中体验 Unix shell 的威力。这样的话，本文中介绍的大多数内容都将适用。</p>
+</li>
+<li>
+<p>在 Windows 10 上，你可以使用 <a href="https://msdn.microsoft.com/commandline/wsl/about" rel="nofollow">Bash on Ubuntu on Windows</a>，它提供了一个熟悉的 Bash 环境，包含了不少 Unix 命令行工具。好处是它允许 Linux 上编写的程序在 Windows 上运行，而另一方面，Windows 上编写的程序却无法在 Bash 命令行中运行。</p>
+</li>
+<li>
+<p>如果你在 Windows 上主要想用 GNU 开发者工具（例如 GCC），可以考虑 <a href="http://www.mingw.org/" rel="nofollow">MinGW</a> 以及它的 <a href="http://www.mingw.org/wiki/msys" rel="nofollow">MSYS</a> 包，这个包提供了例如 bash，gawk，make 和 grep 的工具。MSYS 并不包含所有可以与 Cygwin 媲美的特性。当制作 Unix 工具的原生 Windows 端口时 MinGW 将特别地有用。</p>
+</li>
+<li>
+<p>另一个在 Windows 下实现接近 Unix 环境外观效果的选项是 <a href="https://github.com/dthree/cash">Cash</a>。注意在此环境下只有很少的 Unix 命令和命令行可用。</p>
+</li>
+</ul>
+<h3>实用 Windows 命令行工具</h3>
+<ul>
+<li>
+<p>可以使用 <code class="notranslate">wmic</code> 在命令行环境下给大部分 Windows 系统管理任务编写脚本以及执行这些任务。</p>
+</li>
+<li>
+<p>Windows 实用的原生命令行网络工具包括 <code class="notranslate">ping</code>，<code class="notranslate">ipconfig</code>，<code class="notranslate">tracert</code>，和 <code class="notranslate">netstat</code>。</p>
+</li>
+<li>
+<p>可以使用 <code class="notranslate">Rundll32</code> 命令来实现<a href="http://www.thewindowsclub.com/rundll32-shortcut-commands-windows" rel="nofollow">许多有用的 Windows 任务</a> 。</p>
+</li>
+</ul>
+<h3>Cygwin 技巧</h3>
+<ul>
+<li>
+<p>通过 Cygwin 的包管理器来安装额外的 Unix 程序。</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">mintty</code> 作为你的命令行窗口。</p>
+</li>
+<li>
+<p>要访问 Windows 剪贴板，可以通过 <code class="notranslate">/dev/clipboard</code>。</p>
+</li>
+<li>
+<p>运行 <code class="notranslate">cygstart</code> 以通过默认程序打开一个文件。</p>
+</li>
+<li>
+<p>要访问 Windows 注册表，可以使用 <code class="notranslate">regtool</code>。</p>
+</li>
+<li>
+<p>注意 Windows 驱动器路径 <code class="notranslate">C:\</code> 在 Cygwin 中用 <code class="notranslate">/cygdrive/c</code> 代表，而 Cygwin 的 <code class="notranslate">/</code> 代表 Windows 中的 <code class="notranslate">C:\cygwin</code>。要转换 Cygwin 和 Windows 风格的路径可以用 <code class="notranslate">cygpath</code>。这在需要调用 Windows 程序的脚本里很有用。</p>
+</li>
+<li>
+<p>学会使用 <code class="notranslate">wmic</code>，你就可以从命令行执行大多数 Windows 系统管理任务，并编成脚本。</p>
+</li>
+<li>
+<p>要在 Windows 下获得 Unix 的界面和体验，另一个办法是使用 <a href="https://github.com/dthree/cash">Cash</a>。需要注意的是，这个环境支持的 Unix 命令和命令行参数非常少。</p>
+</li>
+<li>
+<p>要在 Windows 上获取 GNU 开发者工具（比如 GCC）的另一个办法是使用 <a href="http://www.mingw.org/" rel="nofollow">MinGW</a> 以及它的 <a href="http://www.mingw.org/wiki/msys" rel="nofollow">MSYS</a> 软件包，该软件包提供了 bash、gawk、make、grep 等工具。然而 MSYS 提供的功能没有 Cygwin 完善。MinGW 在创建 Unix 工具的 Windows 原生移植方面非常有用。</p>
+</li>
+</ul>
+<h2>更多资源</h2>
+<ul>
+<li><a href="https://github.com/alebcay/awesome-shell">awesome-shell</a>：一份精心组织的命令行工具及资源的列表。</li>
+<li><a href="https://github.com/herrbischoff/awesome-osx-command-line">awesome-osx-command-line</a>：一份针对 OS X 命令行的更深入的指南。</li>
+<li><a href="http://redsymbol.net/articles/unofficial-bash-strict-mode/" rel="nofollow">Strict mode</a>：为了编写更好的脚本文件。</li>
+<li><a href="https://github.com/koalaman/shellcheck">shellcheck</a>：一个静态 shell 脚本分析工具，本质上是 bash／sh／zsh 的 lint。</li>
+<li><a href="http://www.dwheeler.com/essays/filenames-in-shell.html" rel="nofollow">Filenames and Pathnames in Shell</a>：有关如何在 shell 脚本里正确处理文件名的细枝末节。</li>
+<li><a href="http://datascienceatthecommandline.com/#tools" rel="nofollow">Data Science at the Command Line</a>：用于数据科学的一些命令和工具，摘自同名书籍。</li>
+</ul>
+<h2>免责声明</h2>
+<p>除去特别小的工作，你编写的代码应当方便他人阅读。能力往往伴随着责任，你 <em>有能力</em> 在 Bash 中玩一些奇技淫巧并不意味着你应该去做！;)</p>
+<h2>授权条款</h2>
+<p><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow"><img src="https://camo.githubusercontent.com/69e3e681f1cf6b155fc6148fc6d44d3fccc65dff25e654cba40733e10558bea9/68747470733a2f2f692e6372656174697665636f6d6d6f6e732e6f72672f6c2f62792d73612f342e302f38387833312e706e67" alt="Creative Commons License" data-canonical-src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="max-width: 100%;"></a></p>
+<p>本文使用授权协议 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow">Creative Commons Attribution-ShareAlike 4.0 International License</a>。</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/qing-liang-de-xiao-jiu-jiu.html">上一篇：清凉的小啾啾</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
