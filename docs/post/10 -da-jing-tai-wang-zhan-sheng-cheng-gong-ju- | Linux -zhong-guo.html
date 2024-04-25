@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="10 大静态网站生成工具 | Linux 中国">
+<title>10 大静态网站生成工具 | Linux 中国</title>
+
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">10 大静态网站生成工具 | Linux 中国</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/25" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Title: 10 大静态网站生成工具 | Linux 中国</p>
+<p>URL Source: <a href="https://zhuanlan.zhihu.com/p/260957368" rel="nofollow">https://zhuanlan.zhihu.com/p/260957368</a></p>
+<p>Markdown Content:</p>
+<blockquote>
+<p>在寻找部署静态网页的方法吗？这几个开源的静态网站生成工具可以帮你迅速部署界面优美、功能强大的静态网站，无需掌握复杂的 HTML 和 CSS 技能。</p>
+</blockquote>
+<ul>
+<li>来源：<a href="https://link.zhihu.com/?target=https%3A//linux.cn/article-12671-1.html" rel="nofollow">https://linux.cn/article-12671-1.html</a></li>
+<li>作者：Ankush Das</li>
+<li>译者：Xiaobin.Liu</li>
+</ul>
+<p><em>（本文字数：3396，阅读时长大约：5 分钟）</em></p>
+<blockquote>
+<p>在寻找部署静态网页的方法吗？这几个开源的静态网站生成工具可以帮你迅速部署界面优美、功能强大的静态网站，无需掌握复杂的 HTML 和 CSS 技能。</p>
+</blockquote>
+<h2>静态网站是什么？</h2>
+<p>技术上来讲，静态网站是指网页不是由服务器动态生成的。HTML、CSS 和 JavaScript 文件就静静地躺在服务器的某个路径下，它们的内容与终端用户接收到的版本是一样的。原始的源码文件已经提前编译好了，源码在每次请求后都不会变化。</p>
+<p><a href="https://link.zhihu.com/?target=http%3A//linux.cn/" rel="nofollow">Linux.CN</a> 是一个依赖多个数据库的动态网站，当有浏览器的请求时，网页就会生成并提供服务。大部分网站是动态的，你与这些网站互动时，大量的内容会经常改变。</p>
+<p>静态网站有一些好处，比如加载时间更短，请求的服务器资源更少、更安全（值得商榷）。</p>
+<p>传统上，静态网站更适合于创建只有少量网页、内容变化不频繁的小网站。</p>
+<p>然而，随着静态网站生成工具出现后，静态网站的适用范围越来越大。你还可以使用这些工具搭建博客网站。</p>
+<p>我整理了几个开源的静态网站生成工具，这些工具可以帮你搭建界面优美的网站。</p>
+<h2>最好的开源静态网站生成工具</h2>
+<p>请注意，静态网站不会提供很复杂的功能。如果你需要复杂的功能，那么你可以参考适用于动态网站的<a href="https://link.zhihu.com/?target=https%3A//itsfoss.com/open-source-cms/" rel="nofollow">最佳开源 CMS</a>列表。</p>
+<p><strong>1、Jekyll</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a4f7da55317dffb19d6391db025b2f9c6e14b943e48c94bfed318e29bd16a190/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33653132343937313235396263633033343835316534616538353562396538385f622e6a7067"><img src="https://camo.githubusercontent.com/a4f7da55317dffb19d6391db025b2f9c6e14b943e48c94bfed318e29bd16a190/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d33653132343937313235396263633033343835316534616538353562396538385f622e6a7067" alt="Image 1: a website with a black and yellow design" data-canonical-src="https://pic1.zhimg.com/v2-3e124971259bcc034851e4ae855b9e88_b.jpg" style="max-width: 100%;"></a></p>
+<p>Jekyll 是用 <a href="https://link.zhihu.com/?target=https%3A//www.ruby-lang.org/en/" rel="nofollow">Ruby</a> 写的最受欢迎的开源静态生成工具之一。实际上，Jekyll 是 <a href="https://link.zhihu.com/?target=https%3A//pages.github.com/" rel="nofollow">GitHub 页面</a> 的引擎，它可以让你免费用 GitHub 托管网站。</p>
+<p>你可以很轻松地跨平台配置 Jekyll，包括 Ubuntu。它利用 <a href="https://link.zhihu.com/?target=https%3A//github.com/Shopify/liquid/wiki" rel="nofollow">Markdown</a>、<a href="https://link.zhihu.com/?target=https%3A//github.com/Shopify/liquid/wiki" rel="nofollow">Liquid</a>（模板语言）、HTML 和 CSS 来生成静态的网页文件。如果你要搭建一个没有广告或推广自己工具或服务的产品页的博客网站，它是个不错的选择。</p>
+<p>它还支持从常见的 CMS（ <em>内容管理系统(Content management system)</em>）如 Ghost、WordPress、Drupal 7 迁移你的博客。你可以管理永久链接、类别、页面、文章，还可以自定义布局，这些功能都很强大。因此，即使你已经有了一个网站，如果你想转成静态网站，Jekyll 会是一个完美的解决方案。你可以参考<a href="https://link.zhihu.com/?target=https%3A//jekyllrb.com/docs/" rel="nofollow">官方文档</a>或 <a href="https://link.zhihu.com/?target=https%3A//github.com/jekyll/jekyll" rel="nofollow">GitHub 页面</a>了解更多内容。</p>
+<p><strong>2、Hugo</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/efdb56fc6bdb0a30c6c8881f194b0c9360020f6b764991dd462bf3047fb687b9/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d37383830393336376235393731363763333139376336336264656630653361645f622e6a7067"><img src="https://camo.githubusercontent.com/efdb56fc6bdb0a30c6c8881f194b0c9360020f6b764991dd462bf3047fb687b9/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d37383830393336376235393731363763333139376336336264656630653361645f622e6a7067" alt="Image 2: hugo - the world's fastest framework for building websites" data-canonical-src="https://pic2.zhimg.com/v2-78809367b597167c3197c63bdef0e3ad_b.jpg" style="max-width: 100%;"></a></p>
+<p>Hugo 是另一个很受欢迎的用于搭建静态网站的开源框架。它是用 <a href="https://link.zhihu.com/?target=https%3A//golang.org/" rel="nofollow">Go 语言</a>写的。</p>
+<p>它运行速度快、使用简单、可靠性高。如果你需要，它也可以提供更高级的主题。它还提供了一些有用的快捷方式来帮助你轻松完成任务。无论是组合展示网站还是博客网站，Hogo 都有能力管理大量的内容类型。</p>
+<p>如果你想使用 Hugo，你可以参照它的<a href="https://link.zhihu.com/?target=https%3A//gohugo.io/getting-started/" rel="nofollow">官方文档</a>或它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/gohugoio/hugo" rel="nofollow">GitHub 页面</a>来安装以及了解更多相关的使用方法。如果需要的话，你还可以将 Hugo 部署在 GitHub 页面或任何 CDN 上。</p>
+<p><strong>3、Hexo</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4d0ed0463de618b4470aeee4693ab8025c3fb4dc5208e0fae563e05c90e204f3/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d63343161623366663162656631653539646363633635323736656239323831345f622e6a7067"><img src="https://camo.githubusercontent.com/4d0ed0463de618b4470aeee4693ab8025c3fb4dc5208e0fae563e05c90e204f3/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d63343161623366663162656631653539646363633635323736656239323831345f622e6a7067" alt="Image 3: a black screen with the words fast simple 6 powerful blog framework" data-canonical-src="https://pic1.zhimg.com/v2-c41ab3ff1bef1e59dccc65276eb92814_b.jpg" style="max-width: 100%;"></a></p>
+<p>Hexo 是一个有趣的开源框架，基于 <a href="https://link.zhihu.com/?target=https%3A//nodejs.org/en/" rel="nofollow">Node.js</a>。像其他的工具一样，你可以用它搭建相当快速的网站，不仅如此，它还提供了丰富的主题和插件。</p>
+<p>它还根据用户的每个需求提供了强大的 API 来扩展功能。如果你已经有一个网站，你可以用它的<a href="https://link.zhihu.com/?target=https%3A//hexo.io/api/migrator.html" rel="nofollow">迁移</a>扩展轻松完成迁移工作。</p>
+<p>你可以参照<a href="https://link.zhihu.com/?target=https%3A//hexo.io/docs/" rel="nofollow">官方文档</a>或 <a href="https://link.zhihu.com/?target=https%3A//github.com/hexojs/hexo" rel="nofollow">GitHub 页面</a> 来使用 Hexo。</p>
+<p><strong>4、Gatsby</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/32ace1a1a5d8c671a8db7ab3f980526b520306118eff8a137ed2dbe58d014668/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d61633637643366636262306534666332633737343334313764316331386138335f622e6a7067"><img src="https://camo.githubusercontent.com/32ace1a1a5d8c671a8db7ab3f980526b520306118eff8a137ed2dbe58d014668/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d61633637643366636262306534666332633737343334313764316331386138335f622e6a7067" alt="Image 4: the modern way to build the web" data-canonical-src="https://pic4.zhimg.com/v2-ac67d3fcbb0e4fc2c7743417d1c18a83_b.jpg" style="max-width: 100%;"></a></p>
+<p>Gatsby 是一个越来越流行的开源网站生成框架。它使用 <a href="https://link.zhihu.com/?target=https%3A//reactjs.org/" rel="nofollow">React.js</a> 来生成快速、界面优美的网站。</p>
+<p>几年前在一个实验性的项目中，我曾经非常想尝试一下这个工具，它提供的成千上万的新插件和主题的能力让我印象深刻。与其他静态网站生成工具不同的是，你可以使用 Gatsby 生成一个网站，并在不损失任何功能的情况下获得静态网站的好处。</p>
+<p>它提供了与很多流行的服务的整合功能。当然，你可以不使用它的复杂的功能，或将其与你选择的流行 CMS 配合使用，这也会很有趣。你可以查看他们的<a href="https://link.zhihu.com/?target=https%3A//www.gatsbyjs.com/docs/" rel="nofollow">官方文档</a>或它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/gatsbyjs/gatsby" rel="nofollow">GitHub 页面</a>了解更多内容。</p>
+<p><strong>5、VuePress</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/104363a6c01fbaa13af6a399004361fd315c409ba40936848005c571cd3e314c/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d30656363666431343331376162636461616565313931653564363733656633375f622e6a7067"><img src="https://camo.githubusercontent.com/104363a6c01fbaa13af6a399004361fd315c409ba40936848005c571cd3e314c/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d30656363666431343331376162636461616565313931653564363733656633375f622e6a7067" alt="Image 5: vuepress is a static site generator" data-canonical-src="https://pic4.zhimg.com/v2-0eccfd14317abcdaaee191e5d673ef37_b.jpg" style="max-width: 100%;"></a></p>
+<p>VuePress 是由 <a href="https://link.zhihu.com/?target=https%3A//vuejs.org/" rel="nofollow">Vue.js</a> 支持的静态网站生成工具，而 Vue.js 是一个开源的渐进式 JavaScript 框架。</p>
+<p>如果你了解 HTML、CSS 和 JavaScript，那么你可以无压力地使用 VuePress。你应该可以找到几个有用的插件和主题来为你的网站建设开个头。此外，看起来 Vue.js 的更新一直很活跃，很多开发者都在关注 Vue.js，这是一件好事。</p>
+<p>你可以参照他们的<a href="https://link.zhihu.com/?target=https%3A//vuepress.vuejs.org/guide/" rel="nofollow">官方文档</a>和 <a href="https://link.zhihu.com/?target=https%3A//github.com/vuejs/vuepress" rel="nofollow">GitHub 页面</a>了解更多。</p>
+<p><strong>6、Nuxt.js</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a93970e7b9869d8f3bbf70dcdca250482a9acfc29f309251fba557d7d604486b/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d36626136623165323461643236616161383964323439616339653262376637645f622e6a7067"><img src="https://camo.githubusercontent.com/a93970e7b9869d8f3bbf70dcdca250482a9acfc29f309251fba557d7d604486b/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d36626136623165323461643236616161383964323439616339653262376637645f622e6a7067" alt="Image 6: the intuitive vue framework" data-canonical-src="https://pic2.zhimg.com/v2-6ba6b1e24ad26aaa89d249ac9e2b7f7d_b.jpg" style="max-width: 100%;"></a></p>
+<p>Nuxt.js 使用了 Vue.js 和 Node.js，但它致力于模块化，并且有能力依赖服务端而非客户端。不仅如此，它的目标是为开发者提供直观的体验，并提供描述性错误，以及详细的文档等。</p>
+<p>正如它声称的那样，在你用来搭建静态网站的所有工具中，Nuxt.js 可以做到功能和灵活性两全其美。他们还提供了一个 <a href="https://link.zhihu.com/?target=https%3A//template.nuxtjs.org/" rel="nofollow">Nuxt 线上沙盒</a>，让你不费吹灰之力就能直接测试它。</p>
+<p>你可以查看它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/nuxt/nuxt.js" rel="nofollow">GitHub 页面</a>和<a href="https://link.zhihu.com/?target=https%3A//nuxtjs.org/" rel="nofollow">官方网站</a>了解更多。</p>
+<p><strong>7、Docusaurus</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e304e0be31303cb669c4eb8668575630415f8a0bffa169eab84c61858a4e188c/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d39643539643533653735346461343836306432346364353266376532346132335f622e6a7067"><img src="https://camo.githubusercontent.com/e304e0be31303cb669c4eb8668575630415f8a0bffa169eab84c61858a4e188c/68747470733a2f2f706963342e7a68696d672e636f6d2f76322d39643539643533653735346461343836306432346364353266376532346132335f622e6a7067" alt="Image 7: docusa makes it easy to maintain open source documentation websites" data-canonical-src="https://pic4.zhimg.com/v2-9d59d53e754da4860d24cd52f7e24a23_b.jpg" style="max-width: 100%;"></a></p>
+<p>Docusaurus 是一个有趣的开源静态网站生成工具，为搭建文档类网站量身定制。它还是 <a href="https://link.zhihu.com/?target=https%3A//opensource.facebook.com/" rel="nofollow">Facebook 开源计划</a>的一个项目。</p>
+<p>Docusaurus 是用 React 构建的。你可以使用所有的基本功能，像文档版本管理、文档搜索和翻译大多是预先配置的。如果你想为你的产品或服务搭建一个文档网站，那么可以试试 Docusaurus。</p>
+<p>你可以从它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/docusaurus" rel="nofollow">GitHub 页面</a>和它的<a href="https://link.zhihu.com/?target=https%3A//docusaurus.io/" rel="nofollow">官网</a>获取更多信息。</p>
+<p><strong>8、Eleventy</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/579e00d4ecbcddcb383bab34eb6057ca45d6679665bccd9d5b7d01280dbc5b1a/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d37396663373234386638663235613965313934636538386464303835316239655f622e6a7067"><img src="https://camo.githubusercontent.com/579e00d4ecbcddcb383bab34eb6057ca45d6679665bccd9d5b7d01280dbc5b1a/68747470733a2f2f706963332e7a68696d672e636f6d2f76322d37396663373234386638663235613965313934636538386464303835316239655f622e6a7067" alt="Image 8: 11ty logo on a black background" data-canonical-src="https://pic3.zhimg.com/v2-79fc7248f8f25a9e194ce88dd0851b9e_b.jpg" style="max-width: 100%;"></a></p>
+<p>Eleventy 自称是 Jekyll 的替代品，旨在以更简单的方法来制作更快的静态网站。</p>
+<p>它似乎很容易上手，而且它还提供了适当的文档来帮助你。如果你想找一个简单的静态网站生成工具，Eleventy 似乎会是一个有趣的选择。</p>
+<p>你可以参照它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/11ty/eleventy/" rel="nofollow">GitHub 页面</a>和<a href="https://link.zhihu.com/?target=https%3A//www.11ty.dev/" rel="nofollow">官网</a>来了解更多的细节。</p>
+<p><strong>9、Publii</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7a97a20e09c4ab1b316a042e4782fb53d98af2ecb3abc0ccc53b84629e767f7e/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d66633937333835306339356536636466303739353563666637633334306430645f622e6a7067"><img src="https://camo.githubusercontent.com/7a97a20e09c4ab1b316a042e4782fb53d98af2ecb3abc0ccc53b84629e767f7e/68747470733a2f2f706963322e7a68696d672e636f6d2f76322d66633937333835306339356536636466303739353563666637633334306430645f622e6a7067" alt="Image 9: static css with guu build an extremely fast html website" data-canonical-src="https://pic2.zhimg.com/v2-fc973850c95e6cdf07955cff7c340d0d_b.jpg" style="max-width: 100%;"></a></p>
+<p>Publii 是一个令人印象深刻的开源 CMS，它能使生成一个静态网站变得很容易。它是用 <a href="https://link.zhihu.com/?target=https%3A//www.electronjs.org/" rel="nofollow">Electron</a> 和 Vue.js 构建的。如果有需要，你也可以把你的文章从 WorkPress 网站迁移过来。此外，它还提供了与 GitHub 页面、Netlify 及其它类似服务的一键同步功能。</p>
+<p>如果你利用 Publii 生成一个静态网站，你还可以得到一个所见即所得的编辑器。你可以从<a href="https://link.zhihu.com/?target=https%3A//getpublii.com/" rel="nofollow">官网</a>下载它，或者从它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/GetPublii/Publii" rel="nofollow">GitHub 页面</a>了解更多信息。</p>
+<p><strong>10、Primo</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e4dd5271288998a349ac45aead5ca12ec7bda6bf576892d706021ec65b4be8d4/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d64343635616464396134316135616430613565656665613661386666333438305f622e6a7067"><img src="https://camo.githubusercontent.com/e4dd5271288998a349ac45aead5ca12ec7bda6bf576892d706021ec65b4be8d4/68747470733a2f2f706963312e7a68696d672e636f6d2f76322d64343635616464396134316135616430613565656665613661386666333438305f622e6a7067" alt="Image 10: the homepage of a coffee shop" data-canonical-src="https://pic1.zhimg.com/v2-d465add9a41a5ad0a5eefea6a8ff3480_b.jpg" style="max-width: 100%;"></a></p>
+<p>一个有趣的开源静态网站生成工具，目前开发工作仍很活跃。虽然与其他的静态生成工具相比，它还不是一个成熟的解决方案，有些功能还不完善，但它是一个独特的项目。</p>
+<p>Primo 旨在使用可视化的构建器帮你构建和搭建网站，这样你就可以轻松编辑和部署到任意主机上。</p>
+<p>你可以参照<a href="https://link.zhihu.com/?target=https%3A//primo.af/" rel="nofollow">官网</a>或查看它的 <a href="https://link.zhihu.com/?target=https%3A//github.com/primo-app/primo-desktop" rel="nofollow">GitHub 页面</a>了解更多信息。</p>
+<h2>结语</h2>
+<p>还有很多文章中没有列出的网站生成工具。然而，我试图提到最好的静态生成器，为您提供最快的加载时间，最好的安全性和令人印象深刻的灵活性。</p>
+<p>列表中没有你最喜欢的工具？在下面的评论中告诉我。</p>
+<hr>
+<p>via: <a href="https://link.zhihu.com/?target=https%3A//itsfoss.com/open-source-static-site-generators/" rel="nofollow">https://itsfoss.com/open-source-static-site-generators/</a></p>
+<p>作者：<a href="https://link.zhihu.com/?target=https%3A//itsfoss.com/author/ankush/" rel="nofollow">Ankush Das</a> 选题：<a href="https://link.zhihu.com/?target=https%3A//github.com/lujun9972" rel="nofollow">lujun9972</a> 译者：<a href="https://link.zhihu.com/?target=https%3A//github.com/lxbwolf" rel="nofollow">lxbwolf</a> 校对：<a href="https://link.zhihu.com/?target=https%3A//github.com/wxy" rel="nofollow">wxy</a></p>
+<p>本文由 <a href="https://link.zhihu.com/?target=https%3A//github.com/LCTT/TranslateProject" rel="nofollow">LCTT</a> 原创编译，<a href="https://link.zhihu.com/?target=https%3A//linux.cn/" rel="nofollow">Linux中国</a> 荣誉推出</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/Resilio%20Sync%20%7C%20-quan-ping-tai-duo-she-bei-wen-jian-tong-bu-he-chuan-shu-zhong-ji-chan-pin.html">上一篇：Resilio Sync | 全平台多设备文件同步和传输终极产品</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
