@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="闲置安卓手机当旁路网关">
+<title>闲置安卓手机当旁路网关</title>
+
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">闲置安卓手机当旁路网关</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/28" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Title:</p>
+<p>URL Source: <a href="https://bulianglin.com/archives/android-gateway.html" rel="nofollow">https://bulianglin.com/archives/android-gateway.html</a></p>
+<h2>Markdown Content:<br>
+视频教程</h2>
+<h2>安卓shell</h2>
+<h3>电脑使用adb</h3>
+<ul>
+<li><strong>下载地址：</strong></li>
+</ul>
+<p>Windows版本：<a href="https://bulianglin.com/g/aHR0cHM6Ly9kbC5nb29nbGUuY29tL2FuZHJvaWQvcmVwb3NpdG9yeS9wbGF0Zm9ybS10b29scy1sYXRlc3Qtd2luZG93cy56aXA" rel="nofollow">https://dl.google.com/android/repository/platform-tools-latest-windows.zip</a><br>
+Mac版本：<a href="https://bulianglin.com/g/aHR0cHM6Ly9kbC5nb29nbGUuY29tL2FuZHJvaWQvcmVwb3NpdG9yeS9wbGF0Zm9ybS10b29scy1sYXRlc3Qtd2luZG93cy56aXA" rel="nofollow">https://dl.google.com/android/repository/platform-tools-latest-darwin.zip</a><br>
+Linux版本：<a href="https://bulianglin.com/g/aHR0cHM6Ly9kbC5nb29nbGUuY29tL2FuZHJvaWQvcmVwb3NpdG9yeS9wbGF0Zm9ybS10b29scy1sYXRlc3QtbGludXguemlw" rel="nofollow">https://dl.google.com/android/repository/platform-tools-latest-linux.zip</a></p>
+<ul>
+<li><strong>使用方式</strong>：</li>
+</ul>
+<blockquote>
+<p>需开启“Android调试”，在「设置」-「开发者选项」-「Android 调试」，如果找不到“开发者选项”，需要在「设置」-「关于手机」连续点击「版本号」7 次</p>
+</blockquote>
+<p>查看设备：<code class="notranslate">adb devices</code></p>
+<p>无线连接：<code class="notranslate">adb connect 192.168.0.111</code></p>
+<blockquote>
+<p>无线连接需要开启网络ADB调试</p>
+</blockquote>
+<p>进入shell：<code class="notranslate">adb shell</code></p>
+<p>上传文件到手机：<code class="notranslate">adb push 电脑路径 手机路径</code></p>
+<p>下载文件到电脑：<code class="notranslate">adb pull 手机路径 电脑路径</code></p>
+<p>安装APK：<code class="notranslate">adb install APK路径</code></p>
+<h3>手机使用Termux</h3>
+<ul>
+<li><strong>下载地址：</strong></li>
+</ul>
+<p><a href="https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tL3Rlcm11eC90ZXJtdXgtYXBwL3JlbGVhc2Vz" rel="nofollow">https://github.com/termux/termux-app/releases</a></p>
+<ul>
+<li><strong>使用方式：(略)</strong></li>
+</ul>
+<h2>配置旁路网关</h2>
+<blockquote>
+<p>建议先将手机设置为固定IP，方式很多请自行Google</p>
+</blockquote>
+<h3>一键脚本</h3>
+<p>赋予可执行权限：<code class="notranslate">chmod +x proxy.sh</code></p>
+<p>执行：<code class="notranslate">nohup ./proxy.sh &amp;</code></p>
+<h3>更改网关</h3>
+<p>全局设备更改：修改主路由的DHCP设置</p>
+<p>单一设备更改：更改设备的网关</p>
+<h3>排错</h3>
+<blockquote>
+<p>安卓系统每次切换网络设置都会将部分设置重置，一些“永久生效”的配置方式在手机重启后也会被重置</p>
+</blockquote>
+<p>检查IP转发功能是否启用：<code class="notranslate">cat /proc/sys/net/ipv4/ip_forward</code></p>
+<p>检查iptables是否允许数据包通过：<code class="notranslate">iptables -nvL -t (filter|nat|mangle)</code></p>
+<p>检查路由策略：<code class="notranslate">ip rule</code></p>
+<p>检查网卡接口：<code class="notranslate">ip a</code></p>
+<h2>视频文稿（忽略）</h2>
+<p>用安卓手机当软路由可行吗？<br>
+已知大部分软路由都是刷openwrt系统<br>
+并且openwrt是基于linux<br>
+又因为安卓也是基于linux<br>
+可知安卓就是软路由<br>
+没毛病<br>
+Hello大家好 我是不良林<br>
+闲置的安卓手机相信大部分家庭都有<br>
+本期教大家利用它充当家里面的旁路网关<br>
+让他继续发光发热<br>
+你可以在手机上使用任何VPN进行科学上网<br>
+只要手机能科学上网你家里面的电脑<br>
+电视盒子<br>
+VR头显等网络设备不需要运行任何科学上网工具<br>
+只需要接入居域网<br>
+即可实现居域网内所有设备通过安卓手机进行科学上网<br>
+接触过软路由的朋友 是不是感觉非常熟悉<br>
+没错 我们要做的就是将安卓手机当旁路由用<br>
+这样做的好处是省去了购买软路由的钱<br>
+并且如果你之前没有接触过软路由的话<br>
+需要通过一定时间去学习才能上手<br>
+而安卓手机的话人人都会用<br>
+省去了这部分的学习成本<br>
+还有一个优势是VPN客户端非常丰富<br>
+你可以使用需要导入节点的clash<br>
+也可以使用自带节点的第三方VPN、加速器等客户端<br>
+并且可以突破设备限制<br>
+比如快连VPN<br>
+他家的客户端只允许绑定两台设备<br>
+使用这个方式就可以突破限制<br>
+你可能知道其他通过手机共享网络的方式<br>
+比如wifi共享vpn<br>
+http代理共享等<br>
+这些都只能临时用一下<br>
+并且每台设备都需要单独设置<br>
+长期使用并不方便<br>
+而我介绍的这种旁路网关模式<br>
+是可以真正用来7x24小时长期稳定使用的方式<br>
+你可能听过透明网关<br>
+透明代理 旁路网关 旁路由 网关模式<br>
+网关代理等等这些名词<br>
+从原理来讲其实说的是同一种方式<br>
+由于通过不同终端设备实现<br>
+导致造出来这么多不同的术语<br>
+本期的实现方式使用旁路网关的叫法更贴切一点<br>
+其中的关键词就是网关<br>
+网关是什么 以及能干什么<br>
+我在节点搭建系列第一节已经详细介绍过了<br>
+感兴趣的朋友可以回去看一下<br>
+简单来讲 就是你家里面的电脑访问任何公网ip都需要去找网关<br>
+相当于家里面的网络出口<br>
+你可以简单的理解为网关就是路由器<br>
+旁路网关的意思是在旁边又加了一台当做网关的路由器<br>
+局域网其他设备访问任何公网ip都会交给这台旁路由<br>
+这台旁路由常见的做法是购买软路由设备<br>
+或者使用电脑开个linux虚拟机<br>
+或者使用linux开发版<br>
+而我们本期则是使用安卓手机来充当旁路由<br>
+只要确保这台手机能科学上网<br>
+使用它当做网关的其他设备也都可以实现科学上网了<br>
+对于局域网其他设备而言<br>
+他并不知道网关已经帮他实现了科学上网<br>
+这个过程对他来讲是完全透明的<br>
+所以也称为透明代理<br>
+或者叫透明网关<br>
+虽然从硬件配置的角度来看手机肯定要比软路由性能强悍<br>
+但手机毕竟是手机 不是一个路由器<br>
+没有专门针对路由转发做相应的优化<br>
+甚至可能为了省电还会有性能限制<br>
+肯定是比不过专门为路由开发的openwrt系统<br>
+和专门为路由而生的软路由设备<br>
+不过 这种旁路网关的方式可以很大程度上减少手机的负担<br>
+内网设备之间的数据传输并不需要经过手机<br>
+只有上网的数据才需要发给手机进行路由转发<br>
+这样才让路由转发性能不强的安卓手机充当网关成为可能<br>
+经过我的实际使用体验<br>
+跑满我本地的100M带宽是没有任何问题的<br>
+什么<br>
+作为一个专注与网络知识分享的youtuber博主<br>
+竟然还在使用100M的带宽<br>
+我的上帝<br>
+还使用了两台上古时期的路由器<br>
+分别是2009年产的DIR-600M<br>
+和2010年产的MW300R<br>
+通过一条19.9元包邮长度30米的垃圾网线连接<br>
+unbelievable<br>
+我的实际网络环境就是这样子的<br>
+主要的原因是因为穷<br>
+字幕君：企图掩盖穷的本质<br>
+可以发现我的网络拓扑中性能最好的<br>
+就是这台不是路由器的安卓手机了<br>
+由于性能瓶颈不在手机上<br>
+所以接入旁路网关之后感觉不到区别<br>
+没法测出手机的性能极限<br>
+我的安卓手机是锤子的坚果Pro2s<br>
+安卓9 刷的魔趣系统<br>
+这个配置当路由跑个500M应该是没有问题的<br>
+大家的设备和系统应该都不一样<br>
+由于各个手机厂商对安卓系统进行不同程度的定制<br>
+所以在我这里能成功实现并不代表适合所有安卓手机<br>
+如果你的预期效果和我不同<br>
+只能靠你自己想办法解决了<br>
+接下来正式开始教程<br>
+首先 第一步<br>
+先将手机root<br>
+这是最难的一步<br>
+只要root了后面就简单了<br>
+root之后最好再刷一个比较原生的安卓系统<br>
+每个厂商的root方式都不太一样<br>
+只能靠你自己去网上找相关的教程去解决了<br>
+接着我们需要进入手机的命令行环境<br>
+电脑端可以使用adb工具<br>
+手机端可以使用termux<br>
+我这里演示以电脑为例<br>
+下载你电脑对应的adb版本<br>
+我这里下载windows版本<br>
+下载完成之后 将其解压出来<br>
+进入该文件夹<br>
+直接在地址栏输入cmd回车<br>
+即可在当前目录运行cmd<br>
+在连接安卓手机的命令行之前<br>
+我们还需要先开启安卓的<br>
+调试模式<br>
+在设置里的开发者选项<br>
+每个品牌都略有不同<br>
+我的在系统的高级里<br>
+目前并没有看到<br>
+因为默认情况下是隐藏的<br>
+点击关于手机<br>
+划到最底下的版本号<br>
+对其疯狂输出七次<br>
+会提示我们启动了开发者选项<br>
+回到刚才的位置<br>
+进入开发者选项设置<br>
+首先将root授权开启<br>
+然后将安卓调试开启<br>
+我这边默认已经开启了<br>
+如果你是直接通过usb将手机连接电脑<br>
+这样设置之后就可以直接使用了<br>
+如果你是通过wifi或者网线连接局域网<br>
+需要开启网络adb调试<br>
+设置完成之后 就可以将你的手机通过usb连接电脑<br>
+接着 在cmd命令中输入adb devices<br>
+查看已连接的设备<br>
+可以看到已经连接了<br>
+如果你的没有输出结果<br>
+你可以尝试自己排错<br>
+搞不定的话可以使用待会要讲的手机终端termux<br>
+然后使用adb进入手机的命令行界面<br>
+输出这一行就表示已经成功进入了手机的shell<br>
+确保这里是#号 表示 root用户<br>
+输入ls可以查看手机的文件列表<br>
+用法和linux的终端是一样的<br>
+如果觉得用电脑连接很繁琐<br>
+就可以使用手机终端termux<br>
+进入这个网址下载<br>
+大部分较新的设备都可以安装第一个<br>
+如果不清楚 可以直接下载这个通用版<br>
+效果是一样的 只是安装包有点大<br>
+我这里已经安装好了<br>
+直接打开即可进入命令行环境<br>
+可以看到开头是$<br>
+这个是普通用户<br>
+输入su回车切换为root用户<br>
+提示我们需要授权 点击允许<br>
+这样就变成了root用户的#号<br>
+接下来的操作都是一样的<br>
+输入ls可以查看手机的文件列表<br>
+我这里为了方便视频演示 就直接使用adb了<br>
+首先需要先确保手机可以正常的科学上网<br>
+我这里以clash为例 你可以使用任何vpn工具<br>
+点击启动服务<br>
+此时右上角多了一把小锁<br>
+说明开启了VPN服务<br>
+你手机的图标可能和我的不太一样<br>
+尝试一下是否可以正常访问谷歌<br>
+可以看到是没有问题的<br>
+另外还需要再补充一点 作为网关使用<br>
+手机的ip地址 强烈建议改成静态ip<br>
+设置的方式有很多 可以使用linux指令<br>
+也可以在主路由上绑定静态ip到mac地址<br>
+还可以直接在手机上设置<br>
+我这里演示直接在手机上设置<br>
+打开wifi设置<br>
+进入你当前连接的wifi设置<br>
+可以在高级中查看路由器目前给我们分配的ip信息<br>
+但是这个ip并不是固定的<br>
+下次连接可能就变了<br>
+所以需要手动设置成固定的静态ip<br>
+在当前的wifi设置中 将dhcp改成静态<br>
+然后输入你需要的地址<br>
+注意要和刚才自动分配的ip段在同一网段<br>
+为了好记 我这里设置成192.168.0.123<br>
+如果实在不会填写<br>
+可以直接填写刚才路由器给我们手机自动分配的ip信息<br>
+保存后 ip就不会再随意变动了<br>
+再来确认一下是否可以正常上网 没有问题<br>
+确保手机的ip固定不变<br>
+确保手机可以科学上网<br>
+这样前期的准备就算是完成了<br>
+接下来要让他成为一台网关<br>
+在手机的shell里执行这条指令进入这个目录<br>
+创建一个名叫proxy的文件夹<br>
+进入到这个文件夹<br>
+使用vi编辑器创建一个名为proxy.sh的脚本文件<br>
+如果对vi编辑器使用不熟悉<br>
+也可以直接使用文件管理器创建<br>
+复制我给大家准备的这段脚本<br>
+将其粘贴上去<br>
+可以看到中文注释乱码了<br>
+不影响 将其保存 退出<br>
+可以查看一下当前目录下的文件<br>
+目前这个文件没有可执行权限<br>
+输入这条指令赋予可执行权限<br>
+这样就可以执行了<br>
+最后再输入这条指令 将其设置成后台运行<br>
+此时这台手机就成为了一台旁路网关<br>
+就是这么简单<br>
+接着 我们需要将局域网其他设备的网关改成这台手机的ip地址<br>
+有两种方式<br>
+一种是直接修改主路由的dhcp设置<br>
+让其直接给局域网的其他设备下发手机ip作为网关<br>
+这样做的好处是可以让所有设备直接翻墙了<br>
+另一种是手动修改单一设备的网关<br>
+只有这台修改了网关的设备才能进行翻墙<br>
+看你自己的需求<br>
+我这里先演示第一种<br>
+先来查看一下我这台电脑当前的网关<br>
+默认网关是192.168.0.1<br>
+也就是说 访问任何公网ip都会转交给这个地址<br>
+这个ip地址是我们的主路由<br>
+在浏览器中访问该地址进入路由器的控制台<br>
+输入账号密码进行登录<br>
+默认账号密码一般写在路由器的底部<br>
+直接输入密码进行登录<br>
+每个厂商的设置页面都不太一样<br>
+但是都会有dhcp功能 自己找一下<br>
+找到之后我们只需要改动网关这里<br>
+将其改成手机的ip地址<br>
+也就是123 点击保存<br>
+此时再有设备接入当前网络<br>
+路由器给该设备下方的网关就变成了手机的ip地址了<br>
+此时我们需要重新连接来获取新的ip信息<br>
+找到你的网络设置页面 先将网卡禁用<br>
+然后再启用<br>
+接着再来查看ip信息<br>
+可以看到默认网关已经变成了手机ip地址<br>
+接下来电脑不需要运行任何科学上网工具即可直接翻墙了<br>
+退出科学上网工具 尝试访问谷歌<br>
+可以看到是没有问题的<br>
+查看一下当前节点的ip<br>
+这是香港的节点<br>
+在clash中切换节点试试<br>
+可以看到电脑一起跟着换了<br>
+如果你的预期效果和我一样 那是最好的<br>
+说明你已经成功实现了旁路网关<br>
+由于各个手机系统的差异<br>
+在仔细确保每部操作都没问题 还是无法使用<br>
+可以在评论区反馈<br>
+此时我们可以在手机上运行任何vpn工具<br>
+注意 在切换其他VPN客户端之前 最好是先断开原来的VPN服务<br>
+否则可能会出现无法连接的情况<br>
+后面会说明<br>
+尝试使用v2rayNG<br>
+切换为日本的节点<br>
+可以看到也是没有问题的<br>
+也可以使用自带节点的第三方VPN客户端<br>
+比如快连VPN 连接了阿根廷的节点<br>
+也是没有问题的<br>
+另外 这种方式可以突破设备限制<br>
+由于没有流量限制<br>
+他家一个账号只能绑定两台设备<br>
+明显是不够用的<br>
+当旁路网关之后<br>
+局域网所有的设备都可以直接使用了<br>
+无视设备限制<br>
+其他有设备限制的VPN客户端应该都能突破<br>
+尝试更换节点<br>
+另外设备的分流信息也是跟着旁路网关走的<br>
+由于缓存的原因 出现了两个IP<br>
+换个其他的网站来测试<br>
+可以看到是没有问题的<br>
+分流规则为全局模式<br>
+回到clash<br>
+此处有一个注意事项<br>
+当我们点击启用时<br>
+右上角的小锁并不是先消失再重新显示<br>
+也就是说 clash在启动VPN服务前并没有帮我们优雅的先关闭快连的VPN服务<br>
+而是直接将快连的VPN服务挤掉了<br>
+这样造成的问题是 虚拟网卡接口的名称会发生变化<br>
+我给大家提供的脚本需要手动设置接口名<br>
+所以是固定的 如果名称发生了变化<br>
+将会无法正常添加路由规则 导致无法科学上网<br>
+解决方法也很简单<br>
+只需要先断开连接 再重新启用即可<br>
+这样虚拟网卡的接口名称又会恢复了<br>
+这种情况只会出现在切换不同VPN客户端时才会出现<br>
+直接在clash中切换其他节点是不会出现这种情况的<br>
+接下来 尝试进行测速<br>
+我家的带宽是一百兆<br>
+目前手机是通过wifi连接到局域网的<br>
+只跑到了二十兆 由于我家的上古配置<br>
+这个结果也在意料之中<br>
+如果你家的wifi质量不错<br>
+直接使用wifi就可以了<br>
+如果你想更快速稳定<br>
+建议和我一样购买一条type-c转网卡的转换器<br>
+使用网线将手机接入主路由<br>
+这样速度会非常稳定和快速<br>
+并且为了让其7x24小时在线<br>
+最好买个带PD充电口的转换器<br>
+接着就来演示使用网线接入的方式<br>
+先将脚本停止 你可以直接重启手机<br>
+或者在手机终端输入这条指令<br>
+查看脚本的进程id为3241<br>
+通过kill命令将进程杀死<br>
+建议直接将wifi关闭<br>
+然后将手机通过网线插在主路由上<br>
+连接之后可以在这里看到有线连接的图标<br>
+wifi和网线使用的接口是不一样的<br>
+所以ip地址也不一样<br>
+我们可以在手机终端查看ip地址<br>
+输入su 切换为root用户<br>
+输入ip a 回车<br>
+可以查看各个网络接口设备的信息<br>
+比如wlan0就是wifi的接口<br>
+wlan1就是手机开启wifi共享的接口<br>
+tun0就是vpn开启的虚拟网卡接口<br>
+eth0就是网线接口<br>
+可以在下方查看当前接口的局域网ip是192.168.0.111<br>
+还有mac地址<br>
+由于充电口被转换器占用<br>
+无法通过usb直接连接 电脑访问adb<br>
+可以使用adb connect 192.168.0.111<br>
+使用网络连接的方式访问adb<br>
+连接之后就可以进入shell了<br>
+现在我们的网关地址需要改成网线接入的地址<br>
+也就是192.168.0.111<br>
+但是我并不希望家里所有设备都翻墙<br>
+那就可以手动为单台设备设置网关<br>
+先将dhcp配置恢复<br>
+另外 网线接口在手机上配置静态ip不太方便<br>
+可以在你家的路由器上将接口的mac地址和ip进行绑定<br>
+这样也能实现每次连接都会分配相同的ip地址<br>
+接着我们来测试一下在连接网线的情况下测速是否有提升<br>
+先确定手机可以科学上网<br>
+接着回到刚才存放脚本的位置<br>
+此时需要修改一下脚本<br>
+将这里的接口改成网线接口<br>
+也就是eth0 保存退出<br>
+然后后台启动脚本<br>
+这里有一条提示信息<br>
+是之前添加的路由策略 不用管<br>
+ctrl+c退出即可<br>
+由于我们没有配置dhcp<br>
+下发给电脑的网关并不是手机的ip<br>
+所以需要手动配置电脑的ip地址<br>
+跟着视频的演示找到配置ip的位置<br>
+给电脑随便设置一个同网段的ip<br>
+关键是默认网关要设置成手机的ip地址<br>
+也就是111<br>
+另外关于dns 如果出现某些网站无法访问<br>
+大概率是dns污染的问题<br>
+将其改成1.1.1.1<br>
+可以缓解dns污染的问题<br>
+但是会出现其他问题<br>
+比如国内网站解析到国外<br>
+dns是一个比较棘手的问题<br>
+后续会专门出视频讲解<br>
+修改完成后 这台电脑的网关会变成手机<br>
+其他设备要想科学上网 也需要手动配置网关<br>
+尝试访问<br>
+可以看到是没有问题的<br>
+接着来测试一下 看看通过网线连接的方式对速度有没有提升<br>
+这个速度已经非常不错了<br>
+已经算是跑满我的带宽了<br>
+我直连也差不多只能跑到这个速度<br>
+最后再说一点注意事项<br>
+手机每次重启后网络设置都会被重置<br>
+需要再次重新启动一键脚本<br>
+有的手机可能熄屏之后 为了省电会降低设备性能<br>
+当路由器用肯定不能让这种情况发生<br>
+网络需要时刻保持稳定<br>
+将一切省电的选项全部关闭<br>
+性能调整为最优<br>
+并且关闭没必要的后台进程<br>
+这些的话就需要你自己去了解了<br>
+毕竟每个人的设备不一样<br>
+如果你的手机出现莫名其妙无法解决的问题<br>
+可以直接重启手机<br>
+网络设置都会被恢复<br>
+如果操作的过程中有什么问题 或者解决了什么疑难杂症<br>
+也可以在评论区给大家分享<br>
+完成知识的传递<br>
+这是第一种方式<br>
+使用安卓的VPN服务实现旁路网关<br>
+好处是可以直接在手机上切换节点<br>
+坏处是只能在手机上切换节点<br>
+如果手机不再触手可及的地方<br>
+切换节点还比较费劲<br>
+还有一种方式可以绕过安卓系统的VPN服务<br>
+直接使用linux内核加载v2ray<br>
+或者clash的内核实现旁路网关<br>
+通过clash的webui<br>
+就能在局域网的其他设备上切换节点了<br>
+就和普通的linux开发版用法是一样的<br>
+好处是切换节点比较方便<br>
+坏处是无法使用第三方VPN客户端<br>
+由于时间关系 本期就不介绍了<br>
+毕竟这个需求比较小众<br>
+如果你有需要请点赞留言转发<br>
+根据大家的反馈 再决定要不要单独做一期<br>
+你的支持是我更新的最大动力<br>
+感谢大家的支持 我们下次再见</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/ji-chang-lie-biao.html">上一篇：机场列表</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
