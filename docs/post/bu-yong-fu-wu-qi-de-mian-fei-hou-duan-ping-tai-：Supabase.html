@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="不用服务器的免费后端平台：Supabase">
+<title>不用服务器的免费后端平台：Supabase</title>
+
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">不用服务器的免费后端平台：Supabase</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/29" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Title: How to use supabase in a Next.js project</p>
+<p>URL Source: <a href="https://xiaole-9709.xlog.app/how-to-use-supabase-in-a-Next-js-project" rel="nofollow">https://xiaole-9709.xlog.app/how-to-use-supabase-in-a-Next-js-project</a></p>
+<p>Published Time: 2023-08-16T07:58:05.000Z</p>
+<h2>Markdown Content:<br>
+What is supabase<a href="#what-is-supabase">#</a></h2>
+<p><a href="https://supabase.com/" rel="nofollow">supabase</a> 是一个替代 Firebase 的开源 BaaS 项目。其提供了各种现代应用所需的稳定、强大、易于使用和可扩展的后端功能。Supabase 基于 PostgreSQL 数据库和 RESTful API 构建，并提供身份验证、实时数据推送、存储和其他一些常见的后端服务。</p>
+<p>不需要买服务器，只需掌握简单的 SQL 语句和数据库知识就可以创建一个后端服务。当然它的功能是非常强大的，这篇文章只介绍如何在 Next.js 中使用。</p>
+<h2>Using supabase<a href="#using-supabase">#</a></h2>
+<blockquote>
+<p>Detailed reading of the official documentation is required for learning tasks.</p>
+</blockquote>
+<p>According to the content in the section <a href="https://supabase.com/docs/guides/getting-started/quickstarts/nextjs" rel="nofollow">Use Supabase with NextJS</a> of the official documentation, the usage steps are as follows:</p>
+<p>Here I use supabase to store the number of views for a blog.</p>
+<h3>Creating a project and setting up tables and data<a href="#creating-a-project-and-setting-up-tables-and-data">#</a></h3>
+<p>Create a project through <a href="https://app.supabase.com/projects" rel="nofollow">https://app.supabase.com/projects</a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/268efbb25b62d9ad3c1a02b2bdf95a03683abad4335019453137e341134148f6/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d556d4259436347394d794d5265394a4b4e684833343171484b41446539544778785570594a34476933656e703f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430"><img src="https://camo.githubusercontent.com/268efbb25b62d9ad3c1a02b2bdf95a03683abad4335019453137e341134148f6/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d556d4259436347394d794d5265394a4b4e684833343171484b41446539544778785570594a34476933656e703f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430" alt="Image 1: new project" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmUmBYCcG9MyMRe9JKNhH341qHKADe9TGxxUpYJ4Gi3enp?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=3840" style="max-width: 100%;"></a></p>
+<p>Create a table named "Views" in the SQL editor or the graphical interface of the Database.</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d0944ba2619937320bc536c11e218ccc3dba3fff313a6b23ffda65b3ec83f646/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d516352424e425858766832556a515632375742486b773636546e59707a6b46723536556f41326b6e46776a693f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d31393230"><img src="https://camo.githubusercontent.com/d0944ba2619937320bc536c11e218ccc3dba3fff313a6b23ffda65b3ec83f646/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d516352424e425858766832556a515632375742486b773636546e59707a6b46723536556f41326b6e46776a693f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d31393230" alt="Image 2: database" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmQcRBNBXXvh2UjQV27WBHkw66TnYpzkFr56UoA2knFwji?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=1920" style="max-width: 100%;"></a></p>
+<p>Here, create the "Views" table using the graphical interface by clicking "New table" in the top right corner of the Database.</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1e3f9fc6cd34c984abbf58c3bf09bda6974b6d8b4bca49363defed8d76ccacd8/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d57774367704b6462705642686a6a475461334c6e6b7151514b4a4b74724c6673583662787361796335564a4e3f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430"><img src="https://camo.githubusercontent.com/1e3f9fc6cd34c984abbf58c3bf09bda6974b6d8b4bca49363defed8d76ccacd8/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d57774367704b6462705642686a6a475461334c6e6b7151514b4a4b74724c6673583662787361796335564a4e3f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430" alt="Image 3: create table" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmWwCgpKdbpVBhjjGTa3LnkqQQKJKtrLfsX6bxsayc5VJN?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=3840" style="max-width: 100%;"></a></p>
+<p>The "slug" in the columns represents the title of the blog, and "count" represents the corresponding blog's view count.</p>
+<h3>Creating a Next.js project<a href="#creating-a-nextjs-project">#</a></h3>
+<p>npx create-next-app@latest --typescript</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f94a5c483e1a140bd644d49f31e706d2aa4e8187de1f66cef957212499605a76/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d5963746872564447433468375955334b514c6b51504448626d563647714446524d38366d77774131623551483f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430"><img src="https://camo.githubusercontent.com/f94a5c483e1a140bd644d49f31e706d2aa4e8187de1f66cef957212499605a76/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d5963746872564447433468375955334b514c6b51504448626d563647714446524d38366d77774131623551483f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430" alt="Image 4: image.png" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmYcthrVDGC4h7YU3KQLkQPDHbmV6GqDFRM86mwwA1b5QH?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=3840" style="max-width: 100%;"></a></p>
+<h3>Installing supabase-js<a href="#installing-supabase-js">#</a></h3>
+<p>npm install @supabase/supabase-js</p>
+<h3>Creating supabase<a href="#creating-supabase">#</a></h3>
+<p>Create a folder named "lib" in the root directory, and create a file named "supabase.ts" inside it.</p>
+<p>import { createClient } from '@supabase/supabase-js';</p>
+<p>const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;<br>
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY as string;<br>
+export const supabase = createClient(supabaseUrl, supabaseKey);</p>
+<p>The project_url and supabase_key can be found in the project's settings.</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2eacbb9e313b4df6a370810178e44321ff677ed0d92b6c839e51f0eea06dd69a/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d6174764a4c4e544d5879357054774757483875594d5358356a736d39635a6e33795a357335756d79757639753f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430"><img src="https://camo.githubusercontent.com/2eacbb9e313b4df6a370810178e44321ff677ed0d92b6c839e51f0eea06dd69a/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d6174764a4c4e544d5879357054774757483875594d5358356a736d39635a6e33795a357335756d79757639753f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d33383430" alt="Image 5: image.png" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmatvJLNTMXy5pTwGWH8uYMSX5jsm9cZn3yZ5s5umyuv9u?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=3840" style="max-width: 100%;"></a></p>
+<p>It is not recommended to expose the key, so it can be stored in env.local.</p>
+<blockquote>
+<p>💡 tips: In Next.js, when using env.local, you need to add the prefix NEXT_PUBLIC, otherwise an error will occur.</p>
+</blockquote>
+<h3>CRUD<a href="#crud">#</a></h3>
+<p>Detailed commands can be found in the <a href="https://supabase.com/docs/reference/javascript/installing" rel="nofollow">JavaScript</a> documentation.</p>
+<p>When opening a blog post page, you need to retrieve the view count of the current blog. You can use:</p>
+<p>Create an index.ts file in the pages/api/views directory:</p>
+<p>import { supabase } from '@/lib/supabase';<br>
+import type { NextApiRequest, NextApiResponse } from 'next';</p>
+<p>export default async function handler(<br>
+req: NextApiRequest,<br>
+res: NextApiResponse<br>
+) {<br>
+try {<br>
+let { data } = await supabase.from('Views').select('*');<br>
+return res.status(200).json(data);<br>
+} catch (e: any) {<br>
+console.log(e);<br>
+return res.status(500).json({ message: e.message });<br>
+}<br>
+}</p>
+<p>By writing SQL-like statements, you can retrieve all the data from the Views table.</p>
+<p>You can also pass the slug as a parameter through a POST request to retrieve the corresponding data.</p>
+<p>At the same time, when opening a blog post page, you also need to increment the view count of the current blog. You can use a POST request to pass the slug parameter:</p>
+<p>fetch(<code class="notranslate">/api/views/${slug}</code>, {<br>
+method: 'POST'<br>
+});</p>
+<p>Create a file named <code class="notranslate">[slug].ts</code> in the pages/api/views directory:</p>
+<p>import { supabase } from '@/lib/supabase';<br>
+import type { NextApiRequest, NextApiResponse } from 'next';</p>
+<p>export default async function handler(<br>
+req: NextApiRequest,<br>
+res: NextApiResponse<br>
+) {<br>
+try {<br>
+const slug = req.query?.slug as string;<br>
+if (!slug) {<br>
+return res.status(400).json({ message: 'Slug is required.' });<br>
+}</p>
+<p>const { data } = await supabase<br>
+.from('Views')<br>
+.select('count')<br>
+.eq('slug', slug);</p>
+<p>const views = !data?.length ? 0 : Number(data[0].count);</p>
+<p>if (req.method === 'POST') {<br>
+if (views === 0) {<br>
+await supabase.from('Views').insert({ count: views + 1, slug: slug });</p>
+<p>return res.status(200).json({<br>
+total: views + 1<br>
+});<br>
+} else {<br>
+await supabase<br>
+.from('views')<br>
+.update({ count: views + 1 })<br>
+.eq('slug', slug);<br>
+return res.status(200).json({<br>
+total: views + 1<br>
+});<br>
+}<br>
+}</p>
+<p>if (req.method === 'GET') {<br>
+return res.status(200).json({ total: views });<br>
+}<br>
+} catch (e: any) {<br>
+console.log(e);<br>
+return res.status(500).json({ message: e.message });<br>
+}<br>
+}</p>
+<p>Use insert for creating and update for updating. This way, the view count can be stored in supabase.</p>
+<h2>Other features<a href="#other-features">#</a></h2>
+<p>Supabase also supports bucket storage. In my project, I store the og image in supabase.</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1a8537ef026a53028ca6031b44c88b1dfa16fab34d4b9ffa689456ee079b83da/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d586e314d336e665054416a4a427778624a326a4a6a78625154443141354d50456f516e644a5665794c6762553f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d363430"><img src="https://camo.githubusercontent.com/1a8537ef026a53028ca6031b44c88b1dfa16fab34d4b9ffa689456ee079b83da/68747470733a2f2f697066732e63726f737362656c6c2e696f2f697066732f516d586e314d336e665054416a4a427778624a326a4a6a78625154443141354d50456f516e644a5665794c6762553f696d672d7175616c6974793d373526696d672d666f726d61743d6175746f26696d672d6f6e6572726f723d726564697265637426696d672d77696474683d363430" alt="Image 6: image.png" data-canonical-src="https://ipfs.crossbell.io/ipfs/QmXn1M3nfPTAjJBwxbJ2jJjxbQTD1A5MPEoQndJVeyLgbU?img-quality=75&amp;img-format=auto&amp;img-onerror=redirect&amp;img-width=640" style="max-width: 100%;"></a></p>
+<p>I will continue using supabase in the upcoming projects as a replacement for Firebase.</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/xian-zhi-an-zhuo-shou-ji-dang-pang-lu-wang-guan.html">上一篇：闲置安卓手机当旁路网关</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
