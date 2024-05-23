@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>欢迎来到啾啾家</title><link>http://120.26.14.101:7094</link><description>童话是一种生活态度，仅此而已。</description><copyright>欢迎来到啾啾家</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://120.26.14.101:7094</link></image><lastBuildDate>Mon, 13 May 2024 08:42:21 +0000</lastBuildDate><managingEditor>欢迎来到啾啾家</managingEditor><ttl>60</ttl><webMaster>欢迎来到啾啾家</webMaster><item><title> Vue3 全局变量和全局方法</title><link>http://120.26.14.101:7094/post/%20Vue3%20-quan-ju-bian-liang-he-quan-ju-fang-fa.html</link><description>URL Source: http://konnga.cn/vue3-typescript/skills/global.html&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>欢迎来到啾啾家</title><link>http://120.26.14.101:7094</link><description>童话是一种生活态度，仅此而已。</description><copyright>欢迎来到啾啾家</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://120.26.14.101:7094</link></image><lastBuildDate>Thu, 23 May 2024 03:37:26 +0000</lastBuildDate><managingEditor>欢迎来到啾啾家</managingEditor><ttl>60</ttl><webMaster>欢迎来到啾啾家</webMaster><item><title>Node:解决Error: error:0308010C:digital envelope routines::unsupported</title><link>http://120.26.14.101:7094/post/Node%3A-jie-jue-Error%3A%20error%3A0308010C%3Adigital%20envelope%20routines%3A%3Aunsupported.html</link><description>Title: Node:解决Error: error:0308010C:digital envelope routines::unsupported的四种解决方案-CSDN博客&#13;
+&#13;
+URL Source: https://blog.csdn.net/a1010256340/article/details/136525419&#13;
+&#13;
+Markdown Content:&#13;
+### 问题描述：  &#13;
+        报错：Error: error:0308010C:digital envelope routines::unsupported&#13;
+&#13;
+### 报错原因：&#13;
+&#13;
+主要是因为 nodeJs V17 版本发布了 OpenSSL3.0 对算法和秘钥大小增加了更为严格的限制，nodeJs v17 之前版本没影响，但 V17 和之后版本会出现这个错误。</description><guid isPermaLink="true">http://120.26.14.101:7094/post/Node%3A-jie-jue-Error%3A%20error%3A0308010C%3Adigital%20envelope%20routines%3A%3Aunsupported.html</guid><pubDate>Thu, 23 May 2024 03:36:56 +0000</pubDate></item><item><title> Vue3 全局变量和全局方法</title><link>http://120.26.14.101:7094/post/%20Vue3%20-quan-ju-bian-liang-he-quan-ju-fang-fa.html</link><description>URL Source: http://konnga.cn/vue3-typescript/skills/global.html&#13;
 vue3 全局变量和全局方法&#13;
 --------------&#13;
 vue3 已经抛弃了直接在 `Vue.prototype` 上定义全局属性的方式，而是采用 `app.config.globalProperties` 的方式。</description><guid isPermaLink="true">http://120.26.14.101:7094/post/%20Vue3%20-quan-ju-bian-liang-he-quan-ju-fang-fa.html</guid><pubDate>Mon, 13 May 2024 08:41:55 +0000</pubDate></item><item><title>不用服务器的免费后端平台：Supabase</title><link>http://120.26.14.101:7094/post/bu-yong-fu-wu-qi-de-mian-fei-hou-duan-ping-tai-%EF%BC%9ASupabase.html</link><description>Title: How to use supabase in a Next.js project&#13;
