@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark"
+    data-light-theme="light" lang="zh-CN">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg">
+    <script>
+        if (localStorage.getItem("meek_theme") == null) { }
+        else if (localStorage.getItem("meek_theme") == "dark") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark"; }
+        else if (localStorage.getItem("meek_theme") == "light") { document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light"; }
+    </script>
+    
+<meta name="description" content="为什么是 Astro?">
+<title>为什么是 Astro?</title>
+
+
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 45px;
+        font-size: 16px;
+        font-family: sans-serif;
+        line-height: 1.25;
+    }
+
+    #header {
+        display: flex;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));
+        margin-bottom: 16px;
+    }
+
+    #footer {
+        margin-top: 64px;
+        text-align: center;
+        font-size: small;
+    }
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">为什么是 Astro?</h1>
+<div class="title-right">
+    
+    <a href="http://120.26.14.101:7094"><button id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+
+    
+    <a href="https://github.com/aa1049372051/aa1049372051.github.io/issues/35" target="_blank"><button class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </button></a>
+    
+
+    <button class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </button>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Title: 为什么是 Astro?</p>
+<p>URL Source: <a href="https://docs.astro.build/zh-cn/concepts/why-astro/" rel="nofollow">https://docs.astro.build/zh-cn/concepts/why-astro/</a></p>
+<p>Markdown Content:<br>
+<strong>Astro</strong> 是最适合构建像博客、营销网站、电子商务网站这样的<strong>以内容驱动的网站</strong>的 Web 框架。Astro 以开创了一种新的<a href="https://docs.astro.build/zh-cn/concepts/islands/" rel="nofollow">前端架构</a>而闻名，与其他框架相比它减少了 JavaScript 的开销和复杂性。如果你需要一个加载速度快、具有良好 SEO 的网站，那么 Astro 就是你的选择。</p>
+<p>**Astro 是一个集多功能于一体的 Web 框架。**它内置包含了你构建网站所需的一切。还有数百个不同的<a href="https://astro.build/integrations/" rel="nofollow">集成</a>和 <a href="https://docs.astro.build/zh-cn/reference/integrations-reference/" rel="nofollow">API 钩子</a>可根据你的具体用例和需求定制你的项目。</p>
+<p>一些亮点包括：</p>
+<ul>
+<li><strong><a href="https://docs.astro.build/zh-cn/concepts/islands/" rel="nofollow">群岛</a></strong>：一种基于组件的针对内容驱动的网站进行优化的 Web 架构。</li>
+<li><strong><a href="https://docs.astro.build/zh-cn/guides/framework-components/" rel="nofollow">UI 无关</a></strong>：支持 React、Preact、Svelte、Vue、Solid、Lit、HTMX、Web 组件等等。</li>
+<li><strong><a href="https://docs.astro.build/zh-cn/basics/rendering-modes/" rel="nofollow">服务器优先</a></strong>：将沉重的渲染移出访问者的设备。</li>
+<li><strong><a href="https://docs.astro.build/zh-cn/basics/astro-components/" rel="nofollow">默认无 JS</a></strong>：让客户端更少的执行 JS ，以提升网站速度。</li>
+<li><strong><a href="https://docs.astro.build/zh-cn/guides/content-collections/" rel="nofollow">内容集合</a></strong>：为你的 Markdown 内容，提供组织、校验并保证 TypeScript 类型安全。</li>
+<li><strong><a href="https://docs.astro.build/zh-cn/guides/integrations-guide/" rel="nofollow">可定制</a></strong>：Tailwind、MDX 和数百个集成可供选择。</li>
+</ul>
+<p>以下的五个核心设计原则有助于解释我们为什么做了 Astro，它需要解决的问题以及为什么 Astro 可能是你的项目或团队的最佳选择。</p>
+<p>Astro 是…</p>
+<ol>
+<li><strong><a href="#%E5%86%85%E5%AE%B9%E9%A9%B1%E5%8A%A8">内容驱动</a></strong>：Astro 专为展示你的内容而设计。</li>
+<li><strong><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E5%85%88">服务器优先</a></strong>：网站在服务器上渲染 HTML 时运行速度更快。</li>
+<li><strong><a href="#%E9%BB%98%E8%AE%A4%E5%BF%AB%E9%80%9F">默认快速</a></strong>：在 Astro 中应当不可能做出缓慢的网站。</li>
+<li><strong><a href="#%E6%98%93%E4%BA%8E%E4%BD%BF%E7%94%A8">易于使用</a></strong>：你不需要是一个专家即可使用 Astro 做点什么。</li>
+<li><strong><a href="#%E4%BB%A5%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%BA%E4%B8%AD%E5%BF%83">以开发者为中心</a></strong>：你应该拥有成功所需的资源。</li>
+</ol>
+<p>**Astro 专为构建内容丰富的网站而设计。**这包括大多数营销网站、出版网站、文档网站、博客、个人作品集、着陆页、社区网站和电子商务网站。如果你有内容要展示，它需要快速地到达你的读者。</p>
+<p>相比之下，大多数现代 Web 框架都是为构建 <strong>Web 应用程序</strong>而设计的。这些框架擅长于在浏览器中构建复杂的、类似应用程序的体验：登录后的管理仪表板、收件箱、社交网络、待办事项列表，甚至是像 <a href="https://figma.com/" rel="nofollow">Figma</a> 和 <a href="https://ping.gg/" rel="nofollow">Ping</a> 这样的类原生应用程序。然而随着复杂性的增加，它们在提供内容时可能会遇到性能问题。</p>
+<p>Astro 从它最初作为静态网站生成器的开始就专注于内容，使得 Astro 可以<strong>合理地扩展到性能强大的动态 Web 应用程序</strong>，同时仍然尊重你的内容和你的受众。Astro 对内容的独特关注让 Astro 能够做出取舍并提供无与伦比的在其他框架中实现起来不合理的性能功能。</p>
+<p>**Astro 尽可能多地使用<a href="https://docs.astro.build/zh-cn/basics/rendering-modes/" rel="nofollow">服务器渲染</a>而不是在浏览器中的客户端渲染。**这与传统的服务器端框架 -- 像 PHP、WordPress、Laravel、Ruby on Rails 等 -- 使用了几十年的方法相同。但你不需要学习第二种服务端语言来解锁它。使用 Astro，一切仍然只是 HTML、CSS 和 JavaScript（或 TypeScript，如果你乐意的话）。</p>
+<p>这种方法与其他现代 JavaScript Web 框架形成鲜明对比，如 Next.js、SvelteKit、Nuxt、Remix 等。这些框架是为客户端渲染整个网站而制作的，提供服务器端渲染主要是为了解决性能问题。这种方法被称为<strong>单页应用程序（SPA）</strong>，对比 Astro 的<strong>多页应用程序（MPA）</strong>。</p>
+<p>SPA 模式有它的优势。然而，这些都是以牺牲额外的复杂性和性能权衡为代价的。这些取舍损害了页面性能 -- 比如<a href="https://web.dev/interactive/" rel="nofollow">可交互时间（TTI）</a>等关键指标 -- 对于以内容为中心的网站没有多大意义，而这种网站的首次加载性能至关重要。</p>
+<p>Astro 的服务器优先方法使你可以在且仅在必要的时候选择加入客户端渲染。你可以选择添加在客户端运行的 UI 框架组件。你可以利用 Astro 的<a href="https://docs.astro.build/zh-cn/guides/view-transitions/" rel="nofollow">视图过渡路由</a>来更精细地控制选定页面的过渡和动画。Astro 的服务器优先渲染，无论是预渲染还是按需渲染，都提供了可以增强和扩展的高性能默认值。</p>
+<p>好的性能总是重要的，但它对于那些成功取决于展示你的内容的网站来说_尤其_重要。事实已经充分证明糟糕的性能表现会让你失去参与度、转化率和金钱。例如：</p>
+<ul>
+<li>每快 100ms → 转化率增加 1% (<a href="https://web.dev/why-speed-matters/" rel="nofollow">Mobify</a>, 收入 +$380,000/年)</li>
+<li>每快 50% → 销售额增加 12% (<a href="https://www.digitalcommerce360.com/2010/08/19/web-accelerator-revs-conversion-and-sales-autoanything/" rel="nofollow">AutoAnything</a>)</li>
+<li>每快 20% → 转换率增加 10% (<a href="https://www.thinkwithgoogle.com/intl/en-gb/marketing-strategies/app-and-mobile/furniture-village-and-greenlight-slash-page-load-times-boosting-user-experience/" rel="nofollow">Furniture Village</a>)</li>
+<li>每快 40% → 注册率增加 15% (<a href="https://medium.com/pinterest-engineering/driving-user-growth-with-performance-improvements-cfc50dafadd7" rel="nofollow">Pinterest</a>)</li>
+<li>每快 850ms → 转化率增加 7% (<a href="https://web.dev/why-speed-matters/" rel="nofollow">COOK</a>)</li>
+<li>每慢 1 秒 → 减少 10% 的用户 (<a href="https://www.creativebloq.com/features/how-the-bbc-builds-websites-that-scale" rel="nofollow">BBC</a>)</li>
+</ul>
+<p>在许多 Web 框架中，很容易在开发过程中构建一个看起来很棒的网站，但在部署后加载速度非常慢。JavaScript 通常是罪魁祸首，因为用户的手机和低功耗设备很少能与开发者的电脑速度相匹配。</p>
+<p>Astro 的魔力在于它如何将上述两个价值 -- 以内容为中心和服务器优先的架构 -- 相结合，做出权衡并提供其他框架无法实现的功能。结果是每个网站都开箱即有令人惊叹的 Web 性能。我们的目标：<strong>使用 Astro 几乎不可能做出缓慢的网站。</strong></p>
+<p>一个 Astro 网站可以比使用最受欢迎的 React Web 框架构建的同一网站<a href="https://twitter.com/t3dotgg/status/1437195415439360003" rel="nofollow">加载速度快 40%，JavaScript 减少 90%</a>。但不要直接相信我们的话：看 Astro 的性能让 Ryan Carniato（Solid.js 和 Marko 的创始人）<a href="https://youtu.be/2ZEMb_H-LYE?t=8163" rel="nofollow">说不出话来</a>。</p>
+<p>**Astro 的目标是使所有 Web 开发者都对它易于理解。**Astro 被设计成熟悉和平易近人的感觉，无论技能水平或过去的 Web 开发经验如何。</p>
+<p>Astro 的 <code class="notranslate">.astro</code> UI 语言是 HTML 的超集：任何有效的 HTML 都是有效的 Astro 模板语法！因此，如果你能编写 HTML，你就可以编写 Astro 组件！但是，它还结合了我们从其他组件语言中借用的一些我们最喜欢的功能，如 JSX 表达式（React）和默认使用 CSS 作用域（Svelte 和 Vue）。这种与 HTML 的相似性也使得使用渐进式增强和常见的可访问性模式变得更加容易而无额外开销。</p>
+<p>我们然后确保你还可以使用你已经了解的最喜欢的 UI 组件语言，甚至可以复用你可能已经有的组件。React、Preact、Svelte、Vue、Solid、Lit 和其他的，包括 Web components，都被支持在 Astro 项目中编写 UI 组件。</p>
+<p>Astro 的设计比其他 UI 框架和语言更简单。其中一个重要原因是 Astro 被设计为在服务器上渲染，不是在浏览器中。这意味着你无需担心：hooks (React)、stale closures (还是 React)、refs (Vue)、observables (Svelte)、atoms、selectors、reactions、或 derivations。服务器上没有响应式，因此这些复杂性都消失了。</p>
+<p>我们最喜欢的说法之一是：<strong>复杂性是可选的</strong>。我们设计 Astro 是为了尽可能多地从开发者体验中消除“必须的复杂性”，尤其是你首次加入时。你可以在 Astro 中只使用 HTML 和 CSS 构建一个“Hello World”示例网站。然后，当你需要构建更强大的东西时，你随时可以逐渐取用新功能和 API。</p>
+<p>我们坚信，只有当人们喜欢使用 Astro 时，Astro 才是一个成功的项目。Astro 有支持你使用 Astro 构建网站所需的一切。</p>
+<p>Astro 在开发者工具方面有所投入，例如从你打开终端的那一刻起就有的很棒的 CLI 体验、一个提供语法高亮的官方 VS Code 扩展、TypeScript 和 Intellisense，以及提供 14 种语言由数百名社区贡献者积极维护的文档。</p>
+<p>我们友善、尊重和包容的 Discord 社区已准备好提供支持、动力和鼓励。创建一个 <code class="notranslate">#support</code> 帖子来获取关于你的项目的帮助。访问我们专门的 <code class="notranslate">#showcase</code> 频道，分享你的 Astro 网站、博客文章、视频、甚至是半成品以获得安全的反馈和建设性的批评。参加定期的实时活动，如我们每周的社区会议、“Talking and Doc’ing”、以及 API/bug 修复。</p>
+<p>作为一个开源项目，我们欢迎各种经验程度的社区成员以各种类型和规模做出贡献。你被邀请参与路线图讨论以塑造 Astro 的未来，我们也希望你能为核心代码库、编译器、文档、语言工具、网站和其他项目贡献修复和功能。</p></div>
+<div>
+    
+    <a style="float: left" id="prevPostUrl" href="/post/10-ge-chuang-yi-wang-zhan-%EF%BC%8C-jie-jue-ni-mei-you-ling-gan-de-wen-ti.html">上一篇：10个创意网站，解决你没有灵感的问题</a>
+    
+    
+</div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="http://120.26.14.101:7094"> 欢迎来到啾啾家 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+    var IconList = {'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+    var utterancesLoad = 0;
+    if (localStorage.getItem("meek_theme") == null) { localStorage.setItem("meek_theme", "light"); changeLight(); }
+    else if (localStorage.getItem("meek_theme") == "dark") { changeDark(); }
+    else if (localStorage.getItem("meek_theme") == "light") { changeLight(); }
+
+    function changeDark() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "dark";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["moon"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#00f0ff";
+        if (utterancesLoad == 1) { utterancesTheme("dark-blue"); }
+    }
+    function changeLight() {
+        document.getElementsByTagName("html")[0].attributes.getNamedItem("data-color-mode").value = "light";
+        document.getElementById("themeSwitch").setAttribute("d", value = IconList["sun"]);
+        document.getElementById("themeSwitch").parentNode.style.color = "#ff5000";
+        if (utterancesLoad == 1) { utterancesTheme("github-light"); }
+    }
+    function modeSwitch() {
+        if (document.getElementsByTagName("html")[0].attributes[0].value == "light") { changeDark(); localStorage.setItem("meek_theme", "dark"); }
+        else { changeLight(); localStorage.setItem("meek_theme", "light"); }
+    }
+    function utterancesTheme(theme) {
+        const message = { type: 'set-theme', theme: theme };
+        const iframe = document.getElementsByClassName('utterances-frame')[0];
+        iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+    }
+
+    console.log("\n %c Gmeek last %c https://github.com/Meekdai/Gmeek \n\n", "color: #fff; background-image: linear-gradient(90deg, rgb(47, 172, 178) 0%, rgb(45, 190, 96) 100%); padding:5px 1px;", "background-image: linear-gradient(90deg, rgb(45, 190, 96) 0%, rgb(255, 255, 255) 100%); padding:5px 0;");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","aa1049372051/aa1049372051.github.io");
+    script.setAttribute("issue-term","title");
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else{script.setAttribute("theme","github-light");}
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+</script>
+
+
+
+
+</html>
