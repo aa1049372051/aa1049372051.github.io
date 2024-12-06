@@ -111,7 +111,7 @@
 
 
 <span class="pl-s1">针对base</span><span class="pl-c1">-</span><span class="pl-c1">64</span><span class="pl-s1">格式图片，需要先将base</span><span class="pl-c1">-</span><span class="pl-c1">64</span><span class="pl-s1">解码，转为blob格式，再用navigator</span><span class="pl-kos">.</span><span class="pl-c1">clipboard方法</span>
-<span class="pl-s1">具体如下：</span>
+<span class="pl-en">具体如下：</span>
 <span class="pl-s">``</span>`<span class="pl-s1">javascript</span>
 <span class="pl-k">const</span> <span class="pl-s1">blobInput</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">base64ToBlob</span><span class="pl-kos">(</span><span class="pl-s1">imgEle</span><span class="pl-kos">.</span><span class="pl-c1">src</span><span class="pl-kos">,</span> <span class="pl-s">'image/png'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-k">const</span> <span class="pl-s1">clipboardItemInput</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">ClipboardItem</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-s">'image/png'</span>: <span class="pl-s1">blobInput</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
