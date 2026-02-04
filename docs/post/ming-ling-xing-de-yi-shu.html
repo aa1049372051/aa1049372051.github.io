@@ -16,7 +16,7 @@
     
 <meta name="description" content="命令行的艺术">
 <title>命令行的艺术</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 </head>
 <style>
@@ -200,8 +200,9 @@
 <p>使用 <code class="notranslate">xargs</code> （ 或 <code class="notranslate">parallel</code>）。他们非常给力。注意到你可以控制每行参数个数（<code class="notranslate">-L</code>）和最大并行数（<code class="notranslate">-P</code>）。如果你不确定它们是否会按你想的那样工作，先使用 <code class="notranslate">xargs echo</code> 查看一下。此外，使用 <code class="notranslate">-I{}</code> 会很方便。例如：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      find <span class="pl-c1">.</span> -name <span class="pl-s"><span class="pl-pds">'</span>*.py<span class="pl-pds">'</span></span> <span class="pl-k">|</span> xargs grep some_function
-      cat hosts <span class="pl-k">|</span> xargs -I{} ssh root@{} hostname</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">      find . -name '*.py' | xargs grep some_function
+      cat hosts | xargs -I{} ssh root@{} hostname
+</code></pre>
 <ul>
 <li>
 <p><code class="notranslate">pstree -p</code> 以一种优雅的方式展示进程树。</p>
@@ -243,14 +244,16 @@
 <p>在 Bash 脚本中，使用 <code class="notranslate">set -x</code> 去调试输出（或者使用它的变体 <code class="notranslate">set -v</code>，它会记录原始输入，包括多余的参数和注释）。尽可能地使用严格模式：使用 <code class="notranslate">set -e</code> 令脚本在发生错误时退出而不是继续运行；使用 <code class="notranslate">set -u</code> 来检查是否使用了未赋值的变量；试试 <code class="notranslate">set -o pipefail</code>，它可以监测管道中的错误。当牵扯到很多脚本时，使用 <code class="notranslate">trap</code> 来检测 ERR 和 EXIT。一个好的习惯是在脚本文件开头这样写，这会使它能够检测一些错误，并在错误发生时中断程序并输出信息：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c1">set</span> -euo pipefail
-      <span class="pl-c1">trap</span> <span class="pl-s"><span class="pl-pds">"</span>echo 'error: Script failed: see failed command above'<span class="pl-pds">"</span></span> ERR</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">      set -euo pipefail
+      trap "echo 'error: Script failed: see failed command above'" ERR
+</code></pre>
 <ul>
 <li>在 Bash 脚本中，子 shell（使用括号 <code class="notranslate">(...)</code>）是一种组织参数的便捷方式。一个常见的例子是临时地移动工作路径，代码如下：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c"><span class="pl-c">#</span> do something in current dir</span>
-      (cd /some/other/dir <span class="pl-k">&amp;&amp;</span> other-command)
-      <span class="pl-c"><span class="pl-c">#</span> continue in original dir</span></pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">      # do something in current dir
+      (cd /some/other/dir &amp;&amp; other-command)
+      # continue in original dir
+</code></pre>
 <ul>
 <li>
 <p>在 Bash 中，变量有许多的扩展方式。<code class="notranslate">${name:?error message}</code> 用于检查变量是否存在。此外，当 Bash 脚本只需要一个参数时，可以使用这样的代码 <code class="notranslate">input_file=${1:?usage: $0 input_file}</code>。在变量为空时使用默认值：<code class="notranslate">${name:-default}</code>。如果你要在之前的例子中再加一个（可选的）参数，可以使用类似这样的代码 <code class="notranslate">output_file=${2:-logfile}</code>，如果省略了 $2，它的值就为空，于是 <code class="notranslate">output_file</code> 就会被设为 <code class="notranslate">logfile</code>。数学表达式：<code class="notranslate">i=$(( (i + 1) % 5 ))</code>。序列：<code class="notranslate">{1..10}</code>。截断字符串：<code class="notranslate">${var%suffix}</code> 和 <code class="notranslate">${var#prefix}</code>。例如，假设 <code class="notranslate">var=foo.pdf</code>，那么 <code class="notranslate">echo ${var%.pdf}.txt</code> 将输出 <code class="notranslate">foo.txt</code>。</p>
@@ -262,13 +265,15 @@
 <p>通过使用 <code class="notranslate">&lt;(some command)</code> 可以将输出视为文件。例如，对比本地文件 <code class="notranslate">/etc/hosts</code> 和一个远程文件：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      diff /etc/hosts <span class="pl-s"><span class="pl-pds">&lt;(</span>ssh somehost cat /etc/hosts<span class="pl-pds">)</span></span></pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)
+</code></pre>
 <ul>
 <li>编写脚本时，你可能会想要把代码都放在大括号里。缺少右括号的话，代码就会因为语法错误而无法执行。如果你的脚本是要放在网上分享供他人使用的，这样的写法就体现出它的好处了，因为这样可以防止下载不完全代码被执行。</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">{
-      <span class="pl-c"><span class="pl-c">#</span> 在这里写代码</span>
-}</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">{
+      # 在这里写代码
+}
+</code></pre>
 <ul>
 <li>
 <p>了解 Bash 中的“here documents”，例如 <code class="notranslate">cat &lt;&lt;EOF ...</code>。</p>
@@ -308,7 +313,8 @@
 <p>获取八进制形式的文件访问权限（修改系统设置时通常需要，但 <code class="notranslate">ls</code> 的功能不那么好用并且通常会搞砸），可以使用类似如下的代码：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      stat -c <span class="pl-s"><span class="pl-pds">'</span>%A %a %n<span class="pl-pds">'</span></span> /etc/timezone</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      stat -c '%A %a %n' /etc/timezone
+</code></pre>
 <ul>
 <li>
 <p>使用 <a href="https://github.com/mooz/percol"><code class="notranslate">percol</code></a> 或者 <a href="https://github.com/junegunn/fzf"><code class="notranslate">fzf</code></a> 可以交互式地从另一个命令输出中选取值。</p>
@@ -393,20 +399,23 @@
 <p>替换一个或多个文件中出现的字符串：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      perl -pi.bak -e <span class="pl-s"><span class="pl-pds">'</span>s/old-string/new-string/g<span class="pl-pds">'</span></span> my-files-<span class="pl-k">*</span>.txt</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      perl -pi.bak -e 's/old-string/new-string/g' my-files-*.txt
+</code></pre>
 <ul>
 <li>使用 <a href="https://github.com/jlevy/repren"><code class="notranslate">repren</code></a> 来批量重命名文件，或是在多个文件中搜索替换内容。（有些时候 <code class="notranslate">rename</code> 命令也可以批量重命名，但要注意，它在不同 Linux 发行版中的功能并不完全一样。）</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-c"><span class="pl-c">#</span> 将文件、目录和内容全部重命名 foo -&gt; bar:</span>
-      repren --full --preserve-case --from foo --to bar <span class="pl-c1">.</span>
-      <span class="pl-c"><span class="pl-c">#</span> 还原所有备份文件 whatever.bak -&gt; whatever:</span>
-      repren --renames --from <span class="pl-s"><span class="pl-pds">'</span>(.*)\.bak<span class="pl-pds">'</span></span> --to <span class="pl-s"><span class="pl-pds">'</span>\1<span class="pl-pds">'</span></span> <span class="pl-k">*</span>.bak
-      <span class="pl-c"><span class="pl-c">#</span> 用 rename 实现上述功能（若可用）:</span>
-      rename <span class="pl-s"><span class="pl-pds">'</span>s/\.bak$//<span class="pl-pds">'</span></span> <span class="pl-k">*</span>.bak</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      # 将文件、目录和内容全部重命名 foo -&gt; bar:
+      repren --full --preserve-case --from foo --to bar .
+      # 还原所有备份文件 whatever.bak -&gt; whatever:
+      repren --renames --from '(.*)\.bak' --to '\1' *.bak
+      # 用 rename 实现上述功能（若可用）:
+      rename 's/\.bak$//' *.bak
+</code></pre>
 <ul>
 <li>根据 man 页面的描述，<code class="notranslate">rsync</code> 是一个快速且非常灵活的文件复制工具。它闻名于设备之间的文件同步，但其实它在本地情况下也同样有用。在安全设置允许下，用 <code class="notranslate">rsync</code> 代替 <code class="notranslate">scp</code> 可以实现文件续传，而不用重新从头开始。它同时也是删除大量文件的<a href="https://web.archive.org/web/20130929001850/http://linuxnote.net/jianingy/en/linux/a-fast-way-to-remove-huge-number-of-files.html" rel="nofollow">最快方法</a>之一：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir empty <span class="pl-k">&amp;&amp;</span> rsync -r --delete empty/ some-dir <span class="pl-k">&amp;&amp;</span> rmdir some-dir</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">mkdir empty &amp;&amp; rsync -r --delete empty/ some-dir &amp;&amp; rmdir some-dir
+</code></pre>
 <ul>
 <li>
 <p>若要在复制文件时获取当前进度，可使用 <code class="notranslate">pv</code>，<a href="https://github.com/dmerejkowsky/pycp"><code class="notranslate">pycp</code></a>，<a href="https://github.com/Xfennec/progress"><code class="notranslate">progress</code></a>，<code class="notranslate">rsync --progress</code>。若所执行的复制为block块拷贝，可以使用 <code class="notranslate">dd status=progress</code>。</p>
@@ -436,7 +445,8 @@
 <p>使用 <code class="notranslate">iconv</code> 更改文本编码。需要更高级的功能，可以使用 <code class="notranslate">uconv</code>，它支持一些高级的 Unicode 功能。例如，这条命令移除了所有重音符号：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      uconv -f utf-8 -t utf-8 -x <span class="pl-s"><span class="pl-pds">'</span>::Any-Lower; ::Any-NFD; [:Nonspacing Mark:] &gt;; ::Any-NFC; <span class="pl-pds">'</span></span> <span class="pl-k">&lt;</span> input.txt <span class="pl-k">&gt;</span> output.txt</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      uconv -f utf-8 -t utf-8 -x '::Any-Lower; ::Any-NFD; [:Nonspacing Mark:] &gt;; ::Any-NFC; ' &lt; input.txt &gt; output.txt
+</code></pre>
 <ul>
 <li>
 <p>拆分文件可以使用 <code class="notranslate">split</code>（按大小拆分）和 <code class="notranslate">csplit</code>（按模式拆分）。</p>
@@ -454,8 +464,9 @@
 <p>使用 <code class="notranslate">getfacl</code> 和 <code class="notranslate">setfacl</code> 以保存和恢复文件权限。例如：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">   getfacl -R /some/path <span class="pl-k">&gt;</span> permissions.txt
-   setfacl --restore=permissions.txt</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">   getfacl -R /some/path &gt; permissions.txt
+   setfacl --restore=permissions.txt
+</code></pre>
 <ul>
 <li>为了高效地创建空文件，请使用 <code class="notranslate">truncate</code>（创建<a href="https://zh.wikipedia.org/wiki/%E7%A8%80%E7%96%8F%E6%96%87%E4%BB%B6" rel="nofollow">稀疏文件</a>），<code class="notranslate">fallocate</code>（用于 ext4，xfs，btrf 和 ocfs2 文件系统），<code class="notranslate">xfs_mkfile</code>（适用于几乎所有的文件系统，包含在 xfsprogs 包中），<code class="notranslate">mkfile</code>（用于类 Unix 操作系统，比如 Solaris 和 Mac OS）。</li>
 </ul>
@@ -528,9 +539,10 @@
 <ul>
 <li>当你需要对文本文件做集合交、并、差运算时，<code class="notranslate">sort</code> 和 <code class="notranslate">uniq</code> 会是你的好帮手。具体例子请参照代码后面的，此处假设 <code class="notranslate">a</code> 与 <code class="notranslate">b</code> 是两内容不同的文件。这种方式效率很高，并且在小文件和上 G 的文件上都能运用（注意尽管在 <code class="notranslate">/tmp</code> 在一个小的根分区上时你可能需要 <code class="notranslate">-T</code> 参数，但是实际上 <code class="notranslate">sort</code> 并不被内存大小约束），参阅前文中关于 <code class="notranslate">LC_ALL</code> 和 <code class="notranslate">sort</code> 的 <code class="notranslate">-u</code> 参数的部分。</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      sort a b <span class="pl-k">|</span> uniq <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a 并 b</span>
-      sort a b <span class="pl-k">|</span> uniq -d <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a 交 b</span>
-      sort a b b <span class="pl-k">|</span> uniq -u <span class="pl-k">&gt;</span> c   <span class="pl-c"><span class="pl-c">#</span> c 是 a - b</span></pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      sort a b | uniq &gt; c   # c 是 a 并 b
+      sort a b | uniq -d &gt; c   # c 是 a 交 b
+      sort a b b | uniq -u &gt; c   # c 是 a - b
+</code></pre>
 <ul>
 <li>
 <p>使用 <code class="notranslate">grep . *</code>（每行都会附上文件名）或者 <code class="notranslate">head -100 *</code>（每个文件有一个标题）来阅读检查目录下所有文件的内容。这在检查一个充满配置文件的目录（如 <code class="notranslate">/sys</code>、<code class="notranslate">/proc</code>、<code class="notranslate">/etc</code>）时特别好用。</p>
@@ -539,15 +551,18 @@
 <p>计算文本文件第三列中所有数的和（可能比同等作用的 Python 代码快三倍且代码量少三倍）：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      awk <span class="pl-s"><span class="pl-pds">'</span>{ x += $3 } END { print x }<span class="pl-pds">'</span></span> myfile</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      awk '{ x += $3 } END { print x }' myfile
+</code></pre>
 <ul>
 <li>如果你想在文件树上查看大小/日期，这可能看起来像递归版的 <code class="notranslate">ls -l</code> 但比 <code class="notranslate">ls -lR</code> 更易于理解：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      find <span class="pl-c1">.</span> -type f -ls</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      find . -type f -ls
+</code></pre>
 <ul>
 <li>假设你有一个类似于 web 服务器日志文件的文本文件，并且一个确定的值只会出现在某些行上，假设一个 <code class="notranslate">acct_id</code> 参数在 URI 中。如果你想计算出每个 <code class="notranslate">acct_id</code> 值有多少次请求，使用如下代码：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      egrep -o <span class="pl-s"><span class="pl-pds">'</span>acct_id=[0-9]+<span class="pl-pds">'</span></span> access.log <span class="pl-k">|</span> cut -d= -f2 <span class="pl-k">|</span> sort <span class="pl-k">|</span> uniq -c <span class="pl-k">|</span> sort -rn</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      egrep -o 'acct_id=[0-9]+' access.log | cut -d= -f2 | sort | uniq -c | sort -rn
+</code></pre>
 <ul>
 <li>
 <p>要持续监测文件改动，可以使用 <code class="notranslate">watch</code>，例如检查某个文件夹中文件的改变，可以用 <code class="notranslate">watch -d -n 2 'ls -rtlh | tail'</code>；或者在排查 WiFi 设置故障时要监测网络设置的更改，可以用 <code class="notranslate">watch -d -n 2 ifconfig</code>。</p>
@@ -556,14 +571,15 @@
 <p>运行这个函数从这篇文档中随机获取一条技巧（解析 Markdown 文件并抽取项目）：</p>
 </li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">      <span class="pl-k">function</span> <span class="pl-en">taocl()</span> {
-        curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-zh.md<span class="pl-k">|</span>
-          pandoc -f markdown -t html <span class="pl-k">|</span>
-          iconv -f <span class="pl-s"><span class="pl-pds">'</span>utf-8<span class="pl-pds">'</span></span> -t <span class="pl-s"><span class="pl-pds">'</span>unicode<span class="pl-pds">'</span></span> <span class="pl-k">|</span>
-          xmlstarlet fo --html --dropdtd <span class="pl-k">|</span>
-          xmlstarlet sel -t -v <span class="pl-s"><span class="pl-pds">"</span>(html/body/ul/li[count(p)&gt;0])[<span class="pl-smi">$RANDOM</span> mod last()+1]<span class="pl-pds">"</span></span> <span class="pl-k">|</span>
-          xmlstarlet unesc <span class="pl-k">|</span> fmt -80
-      }</pre></div>
+<pre lang="sh" class="notranslate"><code class="notranslate">      function taocl() {
+        curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-zh.md|
+          pandoc -f markdown -t html |
+          iconv -f 'utf-8' -t 'unicode' |
+          xmlstarlet fo --html --dropdtd |
+          xmlstarlet sel -t -v "(html/body/ul/li[count(p)&gt;0])[$RANDOM mod last()+1]" |
+          xmlstarlet unesc | fmt -80
+      }
+</code></pre>
 <h2>冷门但有用</h2>
 <ul>
 <li>
